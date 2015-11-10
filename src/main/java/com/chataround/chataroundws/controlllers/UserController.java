@@ -4,6 +4,7 @@ import com.chataround.chataroundws.models.DTOs.UserDTO;
 import com.chataround.chataroundws.models.entities.User;
 import com.chataround.chataroundws.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,6 +12,7 @@ import java.util.Collection;
 /**
  * Created by Gewrgia on 10/11/2015.
  */
+@Controller
 public class UserController implements IUserController{
 
     @Autowired
