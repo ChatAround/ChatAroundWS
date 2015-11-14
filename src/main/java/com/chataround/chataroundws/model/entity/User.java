@@ -1,4 +1,4 @@
-package com.chataround.chataroundws.models.entities;
+package com.chataround.chataroundws.model.entity;
 
 import javax.persistence.*;
 
@@ -6,21 +6,19 @@ import javax.persistence.*;
  * Created by Gewrgia on 10/11/2015.
  */
 @Entity
-@Table(name="user")
+@Table(name = "user_table")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
-    @Column(name= "username")
+    private Long id;
+
     private String username;
-    @AttributeOverrides({
-            @AttributeOverride(name="latitude", column = @Column(name="latitude")),
-            @AttributeOverride(name="longitude", column = @Column(name="longitude"))
-    })
+
+    @Embedded
     private Coordinates coordinates;
 
-    public User(){}
+    public User() {
+    }
 
     public User(String username, Coordinates coordinates) {
         this.username = username;
@@ -43,11 +41,11 @@ public class User {
         this.username = username;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

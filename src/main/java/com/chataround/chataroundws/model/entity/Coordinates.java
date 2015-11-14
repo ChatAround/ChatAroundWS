@@ -1,4 +1,4 @@
-package com.chataround.chataroundws.models.entities;
+package com.chataround.chataroundws.model.entity;
 
 import javax.persistence.Embeddable;
 import org.springframework.data.geo.Point;

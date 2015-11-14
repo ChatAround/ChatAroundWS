@@ -1,31 +1,30 @@
-package com.chataround.chataroundws.models.DTOs;
+package com.chataround.chataroundws.model.DTO;
 
-import com.chataround.chataroundws.models.entities.Coordinates;
-
-import java.io.Serializable;
+import com.chataround.chataroundws.model.entity.Coordinates;
 
 /**
  * Created by Gewrgia on 10/11/2015.
  */
-public class UserDTO implements Serializable {
-    private Long userId;
+public class UserDTO {
+    private Long id;
     private String username;
     private Coordinates coordinates;
 
-    public UserDTO(){}
+    public UserDTO() {
+    }
 
-    public UserDTO(Long userId, String username, Coordinates coordinates) {
-        this.userId = userId;
+    public UserDTO(Long id, String username, Coordinates coordinates) {
+        this.id = id;
         this.username = username;
         this.coordinates = coordinates;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
