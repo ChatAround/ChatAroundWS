@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 import org.springframework.data.geo.Point;
 
 /**
- * Created by Gewrgia on 10/11/2015.
+ * @author Georgia Grigoriadou
  */
 @Embeddable
 public class Coordinates {

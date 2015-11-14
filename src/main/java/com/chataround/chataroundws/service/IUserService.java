@@ -6,7 +6,7 @@ import com.chataround.chataroundws.model.entity.User;
 import java.util.List;
 
 /**
- * Created by Gewrgia on 10/11/2015.
+ * @author Georgia Grigoriadou
  */
 public interface IUserService {
     List<User> getAll();

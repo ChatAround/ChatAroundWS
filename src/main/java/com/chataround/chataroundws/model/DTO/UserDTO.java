@@ -3,7 +3,7 @@ package com.chataround.chataroundws.model.DTO;
 import com.chataround.chataroundws.model.entity.Coordinates;
 
 /**
- * Created by Gewrgia on 10/11/2015.
+ * @author Georgia Grigoriadou
  */
 public class UserDTO {
     private Long id;

@@ -3,10 +3,10 @@ package com.chataround.chataroundws.model.entity;
 import javax.persistence.*;
 
 /**
- * Created by Gewrgia on 10/11/2015.
+ * @author Georgia Grigoriadou
  */
 @Entity
-@Table(name = "user_table")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

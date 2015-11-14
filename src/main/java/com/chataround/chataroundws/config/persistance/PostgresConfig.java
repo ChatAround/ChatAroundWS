@@ -8,7 +8,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 /**
- * Created by Gewrgia on 14/11/2015.
+ * @author Georgia Grigoriadou
  */
 @Configuration
 @Profile("Production")

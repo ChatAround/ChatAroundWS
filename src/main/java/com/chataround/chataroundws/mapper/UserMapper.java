@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gewrgia on 14/11/2015.
+ * @author Georgia Grigoriadou
  */
 @Component
 public class UserMapper implements IMapper<User, UserDTO> {

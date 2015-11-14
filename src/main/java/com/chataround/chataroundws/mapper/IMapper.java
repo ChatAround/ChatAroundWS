@@ -3,7 +3,7 @@ package com.chataround.chataroundws.mapper;
 import java.util.List;
 
 /**
- * Created by Gewrgia on 14/11/2015.
+ * @author Georgia Grigoriadou
  */
 public interface IMapper<T, D> {
     T fromDTO(D dto);

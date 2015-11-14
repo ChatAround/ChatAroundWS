@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 import java.io.File;
 
 /**
- * Created by Gewrgia on 14/11/2015.
+ * @author Georgia Grigoriadou
  */
 @Configuration
 @Profile("Development")
