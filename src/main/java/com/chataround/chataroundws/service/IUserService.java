@@ -9,5 +9,5 @@ import java.util.List;
  * @author Georgia Grigoriadou
  */
 public interface IUserService {
-    List<User> getAll();
+    List<UserDTO> getAll();
 }

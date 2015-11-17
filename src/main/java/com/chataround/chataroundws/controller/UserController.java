@@ -1,7 +1,5 @@
 package com.chataround.chataroundws.controller;
 
-import com.chataround.chataroundws.mapper.IMapper;
-import com.chataround.chataroundws.model.entity.User;
 import com.chataround.chataroundws.service.IUserService;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import org.apache.log4j.Logger;
@@ -23,13 +21,12 @@ public class UserController implements IUserController {
     @Autowired
     IUserService userService;
 
-    @Autowired
-    IMapper<User, UserDTO> userMapper;
+
 
     @Override
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ResponseEntity<List<UserDTO>> getAllUsers() {
-        List<UserDTO> userDTOs = userMapper.toDTO(userService.getAll());
+        List<UserDTO> userDTOs = userService.getAll();
 
         return ResponseEntity
                 .ok(userDTOs);
