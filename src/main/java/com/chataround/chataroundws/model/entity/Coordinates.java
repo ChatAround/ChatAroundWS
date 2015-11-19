@@ -1,6 +1,8 @@
 package com.chataround.chataroundws.model.entity;
 
 import javax.persistence.Embeddable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.geo.Point;
 
 /**
@@ -40,6 +42,7 @@ public class Coordinates {
         this.longitude = longitude;
     }
 
+    @JsonIgnore
     public Point getCoordinates() {
         return new Point(latitude, longitude);
     }
