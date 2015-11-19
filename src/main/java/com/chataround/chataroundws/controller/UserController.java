@@ -1,6 +1,6 @@
 package com.chataround.chataroundws.controller;
 
-import com.chataround.chataroundws.model.entity.LogIn;
+import com.chataround.chataroundws.model.entity.LogInMsg;
 import com.chataround.chataroundws.service.IUserService;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import org.apache.log4j.Logger;
@@ -37,9 +37,9 @@ public class UserController implements IUserController {
     @Override
     @RequestMapping(value = "/login")
     @SendTo("/topic/chat")
-    public LogIn loginUser(UserDTO userDTO){
+    public LogInMsg loginUser(UserDTO userDTO){
         userService.addUser(userDTO);
-        return new LogIn( userDTO.getUsername() + "  logged in");
+        return new LogInMsg( userDTO.getUsername() + "  logged in");
 
     }
 }
