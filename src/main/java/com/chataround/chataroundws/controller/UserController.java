@@ -1,10 +1,12 @@
 package com.chataround.chataroundws.controller;
 
+import com.chataround.chataroundws.model.entity.LogIn;
 import com.chataround.chataroundws.service.IUserService;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,5 +32,14 @@ public class UserController implements IUserController {
 
         return ResponseEntity
                 .ok(userDTOs);
+    }
+
+    @Override
+    @RequestMapping(value = "/login")
+    @SendTo("/topic/chat")
+    public LogIn loginUser(UserDTO userDTO){
+        userService.addUser(userDTO);
+        return new LogIn( userDTO.getUsername() + "  logged in");
+
     }
 }
