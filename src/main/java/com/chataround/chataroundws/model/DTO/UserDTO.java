@@ -8,15 +8,17 @@ import com.chataround.chataroundws.model.entity.Coordinates;
 public class UserDTO {
     private Long id;
     private String username;
-    private Coordinates coordinates;
+    private Double latitude;
+    private Double logitude;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String username, Coordinates coordinates) {
+    public UserDTO(Long id, String username, Double latitude, Double logitude) {
         this.id = id;
         this.username = username;
-        this.coordinates = coordinates;
+        this.latitude = latitude;
+        this.logitude = logitude;
     }
 
     public Long getId() {
@@ -35,11 +37,20 @@ public class UserDTO {
         this.username = username;
     }
 
-    public Coordinates getCoordinates() {
-        return coordinates;
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLogitude() {
+        return logitude;
+    }
+
+    public void setLogitude(Double logitude) {
+        this.logitude = logitude;
     }
 }
+

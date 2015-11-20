@@ -28,7 +28,8 @@ public class UserMapper implements IMapper<User, UserDTO> {
         UserDTO userDTO = new UserDTO(
                 user.getId(),
                 user.getUsername(),
-                user.getCoordinates()
+                user.getCoordinates().getLatitude(),
+                user.getCoordinates().getLongitude()
         );
 
         return userDTO;

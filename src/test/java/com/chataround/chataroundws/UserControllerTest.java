@@ -66,16 +66,17 @@ public class UserControllerTest{
         List<UserDTO> userDTOs =  new ArrayList<>();
 
         UserDTO first=new UserDTO();
-        Coordinates f_coor=new Coordinates(41.123456,20.98765);
+
         first.setId(1L);
         first.setUsername("first");
-        first.setCoordinates(f_coor);
+        first.setLatitude(41.123456);
+        first.setLogitude(20.98765);
 
         UserDTO second=new UserDTO();
-        Coordinates s_coor=new Coordinates(41.678765,21.4561239);
         second.setId(2L);
         second.setUsername("second");
-        second.setCoordinates(s_coor);
+        second.setLatitude(41.678765);
+        second.setLogitude(21.4561239);
 
         userDTOs.add(first);
         userDTOs.add(second);
@@ -88,15 +89,16 @@ public class UserControllerTest{
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[*].id").exists())
                 .andExpect(jsonPath("$[*].username").exists())
-                .andExpect(jsonPath("$[*].coordinates").exists())
+                .andExpect(jsonPath("$[*].latitude").exists())
+                .andExpect(jsonPath("$[*].logitude").exists())
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[1].id", is(2)))
                 .andExpect(jsonPath("$[0].username", is("first")))
                 .andExpect(jsonPath("$[1].username", is("second")))
-                .andExpect(jsonPath("$[0].coordinates.latitude", is(41.123456)))
-                .andExpect(jsonPath("$[0].coordinates.longitude", is(20.98765)))
-                .andExpect(jsonPath("$[1].coordinates.latitude", is(41.678765)))
-                .andExpect(jsonPath("$[1].coordinates.longitude", is(21.4561239)))
+                .andExpect(jsonPath("$[0].latitude", is(41.123456)))
+                .andExpect(jsonPath("$[0].logitude", is(20.98765)))
+                .andExpect(jsonPath("$[1].latitude", is(41.678765)))
+                .andExpect(jsonPath("$[1].logitude", is(21.4561239)))
         ;
 
         verify(userService, times(1)).getAll();
