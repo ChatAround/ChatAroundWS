@@ -15,12 +15,22 @@ import java.util.List;
 public class UserMapper implements IMapper<User, UserDTO> {
     @Override
     public User fromDTO(UserDTO dto) {
-        throw new NotImplementedException();
+        User user=new User(
+                dto.getUsername(),
+                dto.getCoordinates()
+        );
+        return user;
+
     }
 
     @Override
     public List<User> fromDTO(List<UserDTO> DTOs) {
-        throw new NotImplementedException();
+        List<User> users= new ArrayList<>();
+
+        for (UserDTO dto :DTOs){
+            users.add(fromDTO(dto));
+        }
+        return users;
     }
 
     @Override

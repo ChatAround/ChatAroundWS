@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface IUserService {
     List<UserDTO> getAll();
+
+    void addUser(UserDTO dto);
 }

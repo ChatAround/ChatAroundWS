@@ -26,4 +26,8 @@ public class UserService implements IUserService {
     public List<UserDTO> getAll() {
         return userMapper.toDTO(userRepository.findAll());
     }
+    @Override
+    public void addUser(UserDTO dto){
+        userMapper.fromDTO(dto);
+    }
 }
