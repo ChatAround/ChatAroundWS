@@ -1,27 +1,27 @@
 package com.chataround.chataroundws.controller;
 
-import com.chataround.chataroundws.model.entity.LogInMsg;
+import com.chataround.chataroundws.repository.UserRepository;
 import com.chataround.chataroundws.service.IUserService;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
  * @author Georgia Grigoriadou
  */
-@RestController
+@Controller
 public class UserController implements IUserController {
     private final static Logger LOGGER = Logger.getLogger(UserController.class);
 
     @Autowired
     IUserService userService;
+
+@Autowired
+    UserRepository repository;
 
 
 
@@ -35,11 +35,10 @@ public class UserController implements IUserController {
     }
 
     @Override
-    @RequestMapping(value = "/login")
-    @SendTo("/topic/chat")
-    public LogInMsg loginUser(UserDTO userDTO){
-        userService.addUser(userDTO);
-        return new LogInMsg( userDTO.getUsername() + "  logged in");
-
+    @RequestMapping(value="/login",method = RequestMethod.POST)
+    public void loginUser(@RequestParam UserDTO dto) {
+        userService.addUser(dto);
     }
+
+
 }

@@ -1,8 +1,10 @@
 package com.chataround.chataroundws.controller;
 
 import com.chataround.chataroundws.model.DTO.UserDTO;
-import com.chataround.chataroundws.model.entity.LogInMsg;
+import com.chataround.chataroundws.model.entity.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -11,5 +13,5 @@ import java.util.List;
  */
 public interface IUserController {
     ResponseEntity<List<UserDTO>> getAllUsers();
-    LogInMsg loginUser(UserDTO userDTO);
+    void loginUser(UserDTO dto);
 }

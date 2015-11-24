@@ -9,6 +9,8 @@ package com.chataround.chataroundws;
         import com.chataround.chataroundws.controller.UserController;
         import com.chataround.chataroundws.model.DTO.UserDTO;
         import com.chataround.chataroundws.model.entity.Coordinates;
+        import com.chataround.chataroundws.model.entity.LogInMsg;
+        import com.chataround.chataroundws.model.entity.User;
         import com.chataround.chataroundws.service.IUserService;
 
         import org.junit.Before;
@@ -24,8 +26,10 @@ package com.chataround.chataroundws;
         import org.springframework.test.web.servlet.MockMvc;
         import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+        import static org.mockito.Matchers.isA;
         import static org.mockito.Mockito.*;
         import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+        import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
         import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
         import static org.hamcrest.Matchers.*;
 
@@ -104,6 +108,7 @@ public class UserControllerTest{
         verify(userService, times(1)).getAll();
 
     }
+
 
 
 
