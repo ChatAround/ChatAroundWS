@@ -16,9 +16,7 @@ import java.util.List;
 public class UserMapper implements IMapper<User, UserDTO> {
     @Override
     public User fromDTO(UserDTO dto) {
-        Coordinates coordinates= new Coordinates(
-                dto.getLatitude(),
-                dto.getLogitude());
+        Coordinates coordinates=new Coordinates(dto.getLatitude(),dto.getLongitude());
         User user=new User(
                 dto.getUsername(),
                 coordinates

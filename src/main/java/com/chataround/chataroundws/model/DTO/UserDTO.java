@@ -9,16 +9,16 @@ public class UserDTO {
     private Long id;
     private String username;
     private Double latitude;
-    private Double logitude;
+    private Double longitude;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String username, Double latitude, Double logitude) {
+    public UserDTO(Long id, String username, Double latitude, Double longitude) {
         this.id = id;
         this.username = username;
         this.latitude = latitude;
-        this.logitude = logitude;
+        this.longitude = longitude;
     }
 
     public Long getId() {
@@ -45,12 +45,12 @@ public class UserDTO {
         this.latitude = latitude;
     }
 
-    public Double getLogitude() {
-        return logitude;
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public void setLogitude(Double logitude) {
-        this.logitude = logitude;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }
 

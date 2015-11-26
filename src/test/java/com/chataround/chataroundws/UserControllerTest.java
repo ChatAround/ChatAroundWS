@@ -8,9 +8,6 @@ package com.chataround.chataroundws;
 
         import com.chataround.chataroundws.controller.UserController;
         import com.chataround.chataroundws.model.DTO.UserDTO;
-        import com.chataround.chataroundws.model.entity.Coordinates;
-        import com.chataround.chataroundws.model.entity.LogInMsg;
-        import com.chataround.chataroundws.model.entity.User;
         import com.chataround.chataroundws.service.IUserService;
 
         import org.junit.Before;
@@ -74,13 +71,13 @@ public class UserControllerTest{
         first.setId(1L);
         first.setUsername("first");
         first.setLatitude(41.123456);
-        first.setLogitude(20.98765);
+        first.setLongitude(20.98765);
 
         UserDTO second=new UserDTO();
         second.setId(2L);
         second.setUsername("second");
         second.setLatitude(41.678765);
-        second.setLogitude(21.4561239);
+        second.setLongitude(21.4561239);
 
         userDTOs.add(first);
         userDTOs.add(second);

@@ -1,29 +1,34 @@
 package com.chataround.chataroundws.controller;
 
-import com.chataround.chataroundws.repository.UserRepository;
+import com.chataround.chataroundws.model.entity.User;
 import com.chataround.chataroundws.service.IUserService;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 /**
  * @author Georgia Grigoriadou
  */
-@Controller
+@RestController
 public class UserController implements IUserController {
     private final static Logger LOGGER = Logger.getLogger(UserController.class);
 
     @Autowired
     IUserService userService;
 
-@Autowired
-    UserRepository repository;
+    @ModelAttribute
+    public UserDTO newRequest(@RequestParam(required=false) Integer id) {
+        User user=new User();
+        UserDTO dto=new UserDTO();
+        dto.setId(user.getId());
+        return (dto);
 
-
+    }
 
     @Override
     @RequestMapping(value = "/users", method = RequestMethod.GET)
@@ -35,10 +40,10 @@ public class UserController implements IUserController {
     }
 
     @Override
-    @RequestMapping(value="/login",method = RequestMethod.POST)
-    public void loginUser(@RequestParam UserDTO dto) {
-        userService.addUser(dto);
-    }
+    @RequestMapping(value="/login",method = RequestMethod.POST )
+    public ResponseEntity<UserDTO> loginUser(UserDTO dto, Model model) {
 
+     return ResponseEntity.ok(userService.addUser(dto));
+    }
 
 }
