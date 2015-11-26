@@ -1,6 +1,7 @@
 package com.chataround.chataroundws.mapper;
 
 import com.chataround.chataroundws.model.DTO.UserDTO;
+import com.chataround.chataroundws.model.entity.Coordinates;
 import com.chataround.chataroundws.model.entity.User;
 import org.springframework.stereotype.Component;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -15,12 +16,23 @@ import java.util.List;
 public class UserMapper implements IMapper<User, UserDTO> {
     @Override
     public User fromDTO(UserDTO dto) {
-        throw new NotImplementedException();
+        Coordinates coordinates=new Coordinates(dto.getLatitude(),dto.getLongitude());
+        User user=new User(
+                dto.getUsername(),
+                coordinates
+        );
+        return user;
+
     }
 
     @Override
     public List<User> fromDTO(List<UserDTO> DTOs) {
-        throw new NotImplementedException();
+        List<User> users= new ArrayList<>();
+
+        for (UserDTO dto :DTOs){
+            users.add(fromDTO(dto));
+        }
+        return users;
     }
 
     @Override
