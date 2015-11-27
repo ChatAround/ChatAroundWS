@@ -23,7 +23,6 @@ package com.chataround.chataroundws;
         import org.springframework.test.web.servlet.MockMvc;
         import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-        import static org.mockito.Matchers.isA;
         import static org.mockito.Mockito.*;
         import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
         import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -36,7 +35,7 @@ package com.chataround.chataroundws;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class,  loader = SpringApplicationContextLoader.class)
-public class UserControllerTest{
+public class UserControllerTest {
 
     @Mock
     private IUserService userService;
@@ -54,26 +53,25 @@ public class UserControllerTest{
 
 
     @Before
-    public void setup(){
+    public void setup() {
         MockitoAnnotations.initMocks(this);
-        this.mockMvc= MockMvcBuilders.standaloneSetup(userController).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
 
     @Test
-    public void testGetAllUsers() throws Exception{
+    public void testGetAllUsers() throws Exception {
 
 
+        List<UserDTO> userDTOs = new ArrayList<>();
 
-        List<UserDTO> userDTOs =  new ArrayList<>();
-
-        UserDTO first=new UserDTO();
+        UserDTO first = new UserDTO();
 
         first.setId(1L);
         first.setUsername("first");
         first.setLatitude(41.123456);
         first.setLongitude(20.98765);
 
-        UserDTO second=new UserDTO();
+        UserDTO second = new UserDTO();
         second.setId(2L);
         second.setUsername("second");
         second.setLatitude(41.678765);
@@ -91,22 +89,40 @@ public class UserControllerTest{
                 .andExpect(jsonPath("$[*].id").exists())
                 .andExpect(jsonPath("$[*].username").exists())
                 .andExpect(jsonPath("$[*].latitude").exists())
-                .andExpect(jsonPath("$[*].logitude").exists())
+                .andExpect(jsonPath("$[*].longitude").exists())
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[1].id", is(2)))
                 .andExpect(jsonPath("$[0].username", is("first")))
                 .andExpect(jsonPath("$[1].username", is("second")))
                 .andExpect(jsonPath("$[0].latitude", is(41.123456)))
-                .andExpect(jsonPath("$[0].logitude", is(20.98765)))
+                .andExpect(jsonPath("$[0].longitude", is(20.98765)))
                 .andExpect(jsonPath("$[1].latitude", is(41.678765)))
-                .andExpect(jsonPath("$[1].logitude", is(21.4561239)))
+                .andExpect(jsonPath("$[1].longitude", is(21.4561239)))
         ;
 
         verify(userService, times(1)).getAll();
 
     }
 
+    @Test
+    public void loginUserTset() throws Exception {
+        String username = "username";
+        Double latitude = 41.123456;
+        Double longitude = 20.098765;
+        UserDTO dto=new UserDTO(null,username,latitude,longitude);
 
 
+
+        mockMvc.perform(post("/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(TestUtil.convertObjectToJsonBytes(dto))
+        )
+                .andExpect(status().isOk());
+
+
+    }
 
 }
+
+
+

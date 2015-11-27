@@ -1,5 +1,6 @@
 package com.chataround.chataroundws.controller;
 
+import com.chataround.chataroundws.exception.NullLocationPropertiesException;
 import com.chataround.chataroundws.model.entity.User;
 import com.chataround.chataroundws.service.IUserService;
 import com.chataround.chataroundws.model.DTO.UserDTO;
@@ -42,8 +43,9 @@ public class UserController implements IUserController {
     @Override
     @RequestMapping(value="/login",method = RequestMethod.POST )
     public ResponseEntity<UserDTO> loginUser(UserDTO dto, Model model) {
+        if(dto.getLongitude()==null || dto.getLongitude()==null)throw new NullLocationPropertiesException();
+           return ResponseEntity.ok(userService.addUser(dto));
 
-     return ResponseEntity.ok(userService.addUser(dto));
     }
 
 }
