@@ -21,6 +21,7 @@ public class UserMapper implements IMapper<User, UserDTO> {
                 dto.getUsername(),
                 coordinates
         );
+        user.setId(dto.getId());
         return user;
 
     }

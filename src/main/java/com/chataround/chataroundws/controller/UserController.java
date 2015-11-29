@@ -42,9 +42,9 @@ public class UserController implements IUserController {
 
     @Override
     @RequestMapping(value="/user",method = RequestMethod.POST )
-    public ResponseEntity<UserDTO> createUser(UserDTO dto, Model model) {
+    public ResponseEntity<Long> createUser(UserDTO dto, Model model) {
         if(dto.getLongitude()==null || dto.getLongitude()==null)throw new NullLocationPropertiesException();
-           return ResponseEntity.ok(userService.addUser(dto));
+           return ResponseEntity.ok(userService.addUser(dto).getId());
 
     }
 
