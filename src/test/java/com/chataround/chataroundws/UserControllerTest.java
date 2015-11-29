@@ -21,6 +21,7 @@ package com.chataround.chataroundws;
         import org.springframework.test.context.ContextConfiguration;
         import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
         import org.springframework.test.web.servlet.MockMvc;
+        import org.springframework.test.web.servlet.RequestBuilder;
         import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
         import static org.mockito.Mockito.*;
@@ -80,6 +81,8 @@ public class UserControllerTest {
         userDTOs.add(first);
         userDTOs.add(second);
 
+
+
         doReturn(userDTOs).when(userService).getAll();
         mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -101,24 +104,6 @@ public class UserControllerTest {
         ;
 
         verify(userService, times(1)).getAll();
-
-    }
-
-    @Test
-    public void loginUserTset() throws Exception {
-        String username = "username";
-        Double latitude = 41.123456;
-        Double longitude = 20.098765;
-        UserDTO dto=new UserDTO(null,username,latitude,longitude);
-
-
-
-        mockMvc.perform(post("/login")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(TestUtil.convertObjectToJsonBytes(dto))
-        )
-                .andExpect(status().isOk());
-
 
     }
 

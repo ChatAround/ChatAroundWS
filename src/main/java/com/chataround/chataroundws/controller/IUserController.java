@@ -12,6 +12,6 @@ import java.util.List;
  */
 public interface IUserController {
     ResponseEntity<List<UserDTO>> getAllUsers();
-   ResponseEntity<UserDTO> loginUser(UserDTO dto, Model model);
+   ResponseEntity<UserDTO> createUser(UserDTO dto, Model model);
 
 }
