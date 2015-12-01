@@ -29,7 +29,8 @@ public class UserService implements IUserService {
 
     @Override
     public UserDTO addUser(UserDTO dto){
-        userRepository.saveAndFlush(userMapper.fromDTO(dto));
-        return dto;
+        User added=userMapper.fromDTO(dto);
+        userRepository.saveAndFlush(added);
+        return userMapper.toDTO(added);
     }
 }
