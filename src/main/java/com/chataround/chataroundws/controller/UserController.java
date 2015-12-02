@@ -22,14 +22,6 @@ public class UserController implements IUserController {
     @Autowired
     IUserService userService;
 
-    @ModelAttribute
-    public UserDTO newRequest(@RequestParam(required=false) Integer id) {
-        User user=new User();
-        UserDTO dto=new UserDTO();
-        dto.setId(user.getId());
-        return (dto);
-
-    }
 
     @Override
     @RequestMapping(value = "/users", method = RequestMethod.GET)
@@ -43,9 +35,21 @@ public class UserController implements IUserController {
     @Override
     @RequestMapping(value="/user",method = RequestMethod.POST )
     public ResponseEntity<Long> createUser(UserDTO dto, Model model) {
-        if(dto.getLongitude()==null || dto.getLongitude()==null)throw new NullLocationPropertiesException();
-           return ResponseEntity.ok(userService.addUser(dto).getId());
+        if(dto.getLongitude()==null || dto.getLongitude()==null) throw new NullLocationPropertiesException();
+            return ResponseEntity.ok(userService.addUser(dto).getId());
 
+    }
+
+    @Override
+    @RequestMapping(value="/user",method = RequestMethod.DELETE )
+    public ResponseEntity<String> deleteUser(@RequestParam("id") Long id) {
+        return ResponseEntity.ok(userService.deleteUser(id));
+    }
+
+    @Override
+    @RequestMapping(value="/user",method = RequestMethod.PUT )
+    public ResponseEntity<String> updateUser(UserDTO dto, Model model) {
+        return ResponseEntity.ok(userService.update(dto));
     }
 
 }
