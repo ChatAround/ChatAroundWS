@@ -12,6 +12,8 @@ import java.util.List;
  */
 public interface IUserController {
     ResponseEntity<List<UserDTO>> getAllUsers();
-   ResponseEntity<Long> createUser(UserDTO dto, Model model);
+    ResponseEntity<Long> createUser(UserDTO dto, Model model);
+    ResponseEntity<String> deleteUser(Long id);
+    ResponseEntity<String> updateUser(UserDTO dto, Model model);
 
 }
