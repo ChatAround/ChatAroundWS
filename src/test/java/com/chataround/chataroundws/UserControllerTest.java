@@ -8,8 +8,6 @@ package com.chataround.chataroundws;
 
         import com.chataround.chataroundws.controller.UserController;
         import com.chataround.chataroundws.model.DTO.UserDTO;
-        import com.chataround.chataroundws.model.entity.Coordinates;
-        import com.chataround.chataroundws.model.entity.User;
         import com.chataround.chataroundws.service.IUserService;
 
         import org.junit.Before;
@@ -60,9 +58,6 @@ public class UserControllerTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
-        Coordinates testCoordinates = new Coordinates(41.123456,21.4561239);
-        User testUser = new User("testUsername", testCoordinates);
-        testUser.setId(1L);
     }
 
     @Test
@@ -89,7 +84,7 @@ public class UserControllerTest {
 
 
         doReturn(userDTOs).when(userService).getAll();
-        mockMvc.perform(get("/user").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(applicationJsonMediaType))
                 .andExpect(jsonPath("$").isArray())
@@ -111,10 +106,5 @@ public class UserControllerTest {
         verify(userService, times(1)).getAll();
 
     }
-
-
-
-
-
 }
 
