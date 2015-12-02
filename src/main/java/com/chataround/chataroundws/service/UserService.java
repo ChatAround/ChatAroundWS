@@ -36,7 +36,7 @@ public class UserService implements IUserService {
         return userMapper.toDTO(added);
     }
 
-    public String logout(Long id) {
+    public String deleteUser(Long id) {
         userRepository.delete(id);
         return "ok";
     }
