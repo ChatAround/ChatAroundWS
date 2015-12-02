@@ -22,14 +22,6 @@ public class UserController implements IUserController {
     @Autowired
     IUserService userService;
 
-    @ModelAttribute
-    public UserDTO newRequest(@RequestParam(required=false) Integer id) {
-        User user=new User();
-        UserDTO dto=new UserDTO();
-        dto.setId(user.getId());
-        return (dto);
-
-    }
 
     @Override
     @RequestMapping(value = "/users", method = RequestMethod.GET)
@@ -50,8 +42,8 @@ public class UserController implements IUserController {
 
     @Override
     @RequestMapping(value="/user",method = RequestMethod.DELETE )
-    public ResponseEntity<String> logoutUser(@RequestParam("id") Long id) {
-        return ResponseEntity.ok(userService.logout(id));
+    public ResponseEntity<String> deleteUser(@RequestParam("id") Long id) {
+        return ResponseEntity.ok(userService.deleteUser(id));
     }
 
     @Override

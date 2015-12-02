@@ -13,7 +13,7 @@ import java.util.List;
 public interface IUserController {
     ResponseEntity<List<UserDTO>> getAllUsers();
     ResponseEntity<Long> createUser(UserDTO dto, Model model);
-    ResponseEntity<String> logoutUser(Long id);
+    ResponseEntity<String> deleteUser(Long id);
     ResponseEntity<String> updateUser(UserDTO dto, Model model);
 
 }
