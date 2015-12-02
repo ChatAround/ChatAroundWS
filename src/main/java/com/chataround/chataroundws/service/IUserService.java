@@ -12,4 +12,6 @@ public interface IUserService {
     List<UserDTO> getAll();
 
     UserDTO addUser(UserDTO dto);
+    String logout(Long id);
+    String update(UserDTO dto);
 }
