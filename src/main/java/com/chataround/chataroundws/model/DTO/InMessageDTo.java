@@ -37,7 +37,7 @@ public class InMessageDTO {
         return radius;
     }
 
-    public void setRadious(Double radious) {
-        this.radius = radious;
+    public void setRadius(Double radius) {
+        this.radius = radius;
     }
 }
