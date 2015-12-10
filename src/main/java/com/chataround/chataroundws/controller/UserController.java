@@ -23,10 +23,12 @@ public class UserController implements IUserController {
     IUserService userService;
 
 
+
+
     @Override
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public ResponseEntity<List<UserDTO>> getAllUsers() {
-        List<UserDTO> userDTOs = userService.getAll();
+    public ResponseEntity<List<UserDTO>> getUsersInRadius(@RequestParam("id") Long id,@RequestParam("radius") Double radius) {
+        List<UserDTO> userDTOs = userService.getInRadius(id,radius);
 
         return ResponseEntity
                 .ok(userDTOs);

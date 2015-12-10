@@ -11,6 +11,8 @@ import java.util.List;
 public interface IUserService {
     List<UserDTO> getAll();
 
+    List<UserDTO> getInRadius(Long id, Double radius);
+
     UserDTO addUser(UserDTO dto);
     String deleteUser(Long id);
     String update(UserDTO dto);

@@ -27,8 +27,11 @@ public class MessageService implements IMessageService {
     @Override
     public void addMessage(InMessageDTO dto){
         User sender=userRepository.findOne(dto.getId());
-
-        List<User> receivers=userRepository.findAll();
+        List<User> receivers=userRepository.findInRadius(
+                sender.getCoordinates().getLatitude(),
+                sender.getCoordinates().getLongitude(),
+                dto.getRadious()
+        );
         for(User receiver:receivers) {
             Message message = new Message();
             message.setSenderId(sender.getId());
