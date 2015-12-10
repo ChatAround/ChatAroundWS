@@ -30,6 +30,15 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public List<UserDTO> getInRadius(Long id,Double radius) {
+        User user=getUserById(id);
+        return userMapper.toDTO(userRepository.findInRadius(
+                user.getCoordinates().getLatitude(),
+                user.getCoordinates().getLongitude(),
+                radius));
+    }
+
+    @Override
     public UserDTO addUser(UserDTO dto){
         User added=userMapper.fromDTO(dto);
         userRepository.saveAndFlush(added);

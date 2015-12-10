@@ -17,6 +17,8 @@ public interface IMessageController {
     @RequestMapping(method = RequestMethod.POST)
     void createMessage(InMessageDTO dto, Model model);
 
+
+
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     ResponseEntity<List<OutMessageDTO>> getMessages(@RequestParam("id") Long id);
 }

@@ -32,6 +32,8 @@ public class MessageController implements IMessageController {
         messageService.addMessage(dto);
     }
 
+
+
     @Override
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<OutMessageDTO>> getMessages(@RequestParam("id") Long id) {
