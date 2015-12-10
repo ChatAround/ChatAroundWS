@@ -33,7 +33,7 @@ public class InMessageDTO {
         this.content = content;
     }
 
-    public Double getRadious() {
+    public Double getRadius() {
         return radius;
     }
 

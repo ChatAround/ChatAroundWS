@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85016672-8c73-473e-8615-a2b6a8898e5c" name="Default" comment="">
+    <list default="true" id="85016672-8c73-473e-8615-a2b6a8898e5c" name="Default" comment="altered functions to work by radius">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/MessageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application-production.properties" afterPath="$PROJECT_DIR$/src/main/resources/application-production.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/InMessageDTo.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/InMessageDTo.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -78,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InMessageDTO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InMessageDTO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/InMessageDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.18763797">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -98,7 +97,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application-production.properties" pinned="false" current-in-tab="true">
+      <file leaf-file-name="application-production.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application-production.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
@@ -936,7 +935,7 @@
       <workItem from="1449582018214" duration="26383000" />
       <workItem from="1449736774698" duration="5343000" />
       <workItem from="1449770329873" duration="2201000" />
-      <workItem from="1449775349269" duration="226000" />
+      <workItem from="1449775349269" duration="547000" />
     </task>
     <task id="LOCAL-00001" summary="Created Message entity,dto,repo,service,controller">
       <created>1449657742485</created>
@@ -962,11 +961,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449771012558</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="altered functions to work by radius">
+      <created>1449775654945</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1449775654945</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34153000" />
+    <option name="totallyTimeSpent" value="34474000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1040" height="754" extended-state="0" />
@@ -1041,7 +1046,8 @@
     <MESSAGE value="Created Message entity,dto,repo,service,controller" />
     <MESSAGE value="Added query to get messages for each user" />
     <MESSAGE value="fixed typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed typo" />
+    <MESSAGE value="altered functions to work by radius" />
+    <option name="LAST_COMMIT_MESSAGE" value="altered functions to work by radius" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1433,14 +1439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/InMessageDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1463,6 +1461,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="41" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/InMessageDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18763797">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding />
         </state>
       </provider>
