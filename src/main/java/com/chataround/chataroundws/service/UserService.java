@@ -36,11 +36,12 @@ public class UserService implements IUserService {
         return userMapper.toDTO(added);
     }
 
+    @Override
     public String deleteUser(Long id) {
         userRepository.delete(id);
         return "ok";
     }
-
+    @Override
     public String update(UserDTO dto){
 
         User user = userRepository.findOne(userMapper.fromDTO(dto).getId());
@@ -51,5 +52,9 @@ public class UserService implements IUserService {
 
         userRepository.saveAndFlush(user);
         return "ok";
+    }
+
+    public User getUserById(Long id){
+        return userRepository.findOne(id);
     }
 }
