@@ -6,3 +6,4 @@ INSERT INTO user_table (username, coordinates_latitude, coordinates_longitude) V
 INSERT INTO message (senderid, receiverid, content,hassent) VALUES (3, 5,'hi',FALSE );
 INSERT INTO message (senderid, receiverid, content,hassent) VALUES (2, 5,'alex',FALSE );
 INSERT INTO message (senderid, receiverid, content,hassent) VALUES (1, 5,':P',FALSE );
+INSERT INTO message (senderid, receiverid, content,hassent) VALUES (3, 6,'yaaa',FALSE );

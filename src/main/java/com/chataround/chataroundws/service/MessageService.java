@@ -42,8 +42,8 @@ public class MessageService implements IMessageService {
     @Override
     public List<OutMessageDTO> getMessages(Long id) {
         List<OutMessageDTO> messageDTOs=new ArrayList<>();
-        for(Message message:messageRepository.findAll()) {
-            if (message.getReceiverId().equals(id) && !message.isHasSent()) {
+        for(Message message:messageRepository.findByUserId(id)){
+            if (!message.isHasSent()) {
                 User sender = userRepository.findOne(message.getSenderId());
                 OutMessageDTO msgDTO = new OutMessageDTO(
                         sender.getUsername(),
