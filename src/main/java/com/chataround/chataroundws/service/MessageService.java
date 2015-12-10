@@ -30,7 +30,7 @@ public class MessageService implements IMessageService {
         List<User> receivers=userRepository.findInRadius(
                 sender.getCoordinates().getLatitude(),
                 sender.getCoordinates().getLongitude(),
-                dto.getRadious()
+                dto.getRadius()
         );
         for(User receiver:receivers) {
             Message message = new Message();
