@@ -76,15 +76,25 @@ public class UserControllerTest {
         UserDTO second = new UserDTO();
         second.setId(2L);
         second.setUsername("second");
-        second.setLatitude(41.678765);
-        second.setLongitude(21.4561239);
+        second.setLatitude(41.123455);
+        second.setLongitude(20.98760);
+
+        UserDTO third = new UserDTO();
+        third.setId(2L);
+        third.setUsername("third");
+        third.setLatitude(41.678765);
+        third.setLongitude(21.4561239);
 
         userDTOs.add(first);
         userDTOs.add(second);
 
+        Long id=1L;
+        Double radius=10.000000;
 
-        doReturn(userDTOs).when(userService).getAll();
-        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON))
+        doReturn(userDTOs).when(userService).getInRadius(id,radius);
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
+                .param("id", String.valueOf(id)).param("radius", String.valueOf(radius)))
+
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(applicationJsonMediaType))
                 .andExpect(jsonPath("$").isArray())
@@ -99,11 +109,11 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[1].username", is("second")))
                 .andExpect(jsonPath("$[0].latitude", is(41.123456)))
                 .andExpect(jsonPath("$[0].longitude", is(20.98765)))
-                .andExpect(jsonPath("$[1].latitude", is(41.678765)))
-                .andExpect(jsonPath("$[1].longitude", is(21.4561239)))
+                .andExpect(jsonPath("$[1].latitude", is(41.123455)))
+                .andExpect(jsonPath("$[1].longitude", is(20.98760)))
         ;
 
-        verify(userService, times(1)).getAll();
+        verify(userService, times(1)).getInRadius(id,radius);
 
     }
 }
