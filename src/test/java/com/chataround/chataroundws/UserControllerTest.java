@@ -88,6 +88,7 @@ public class UserControllerTest {
         userDTOs.add(first);
         userDTOs.add(second);
 
+
         Long id=1L;
         Double radius=10.000000;
 

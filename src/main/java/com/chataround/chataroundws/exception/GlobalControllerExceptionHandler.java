@@ -20,4 +20,9 @@ public class GlobalControllerExceptionHandler {
     @ExceptionHandler(NullLocationPropertiesException.class)
     public void handleNullLocationPropertiesException(NullLocationPropertiesException e) {
     }
+    @ResponseStatus(value = HttpStatus.NOT_FOUND,reason="No such id")
+    @ExceptionHandler(IdNotFoundException.class)
+    public void handleIdNotFoundException(IdNotFoundException e){
+
+    }
 }
