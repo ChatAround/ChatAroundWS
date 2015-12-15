@@ -49,6 +49,7 @@ public class MessageService implements IMessageService {
             if (!message.isHasSent()) {
                 User sender = userRepository.findOne(message.getSenderId());
                 OutMessageDTO msgDTO = new OutMessageDTO(
+                        message.getId(),
                         sender.getUsername(),
                         message.getContent()
                 );
