@@ -198,7 +198,7 @@
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/UserControllerTest.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/MessageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/InMessageDTo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/InMessageDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/InMessageDTO.java" />
       </list>
     </option>
