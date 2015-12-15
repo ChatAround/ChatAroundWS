@@ -2,7 +2,6 @@ package com.chataround.chataroundws.mapper;
 
 import com.chataround.chataroundws.model.DTO.InMessageDTO;
 import com.chataround.chataroundws.model.entity.Message;
-import com.chataround.chataroundws.model.entity.User;
 import com.chataround.chataroundws.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

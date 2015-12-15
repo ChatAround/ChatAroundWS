@@ -1,6 +1,5 @@
 package com.chataround.chataroundws.model.DTO;
 
-import com.chataround.chataroundws.model.entity.Coordinates;
 
 /**
  * @author Georgia Grigoriadou

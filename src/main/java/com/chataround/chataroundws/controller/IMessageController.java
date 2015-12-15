@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface IMessageController {
     @RequestMapping(method = RequestMethod.POST)
-    void createMessage(InMessageDTO dto, Model model);
+    ResponseEntity<?> createMessage(InMessageDTO dto, Model model);
 
 
 

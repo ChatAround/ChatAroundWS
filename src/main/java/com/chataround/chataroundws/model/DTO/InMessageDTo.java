@@ -7,14 +7,16 @@ public class InMessageDTO {
     Long id;
     String content;
     Double radius;
+    int duration;
 
     public InMessageDTO() {
     }
 
-    public InMessageDTO(Long id, String content, Double radius) {
+    public InMessageDTO(Long id, String content, Double radius, int duration) {
         this.id = id;
         this.content = content;
         this.radius = radius;
+        this.duration = duration;
     }
 
     public Long getId() {
@@ -39,5 +41,13 @@ public class InMessageDTO {
 
     public void setRadius(Double radius) {
         this.radius = radius;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }
