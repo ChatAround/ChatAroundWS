@@ -3,10 +3,8 @@ package com.chataround.chataroundws.controller;
 
 import com.chataround.chataroundws.model.DTO.InMessageDTO;
 import com.chataround.chataroundws.model.DTO.OutMessageDTO;
-import com.chataround.chataroundws.model.DTO.UserDTO;
 import com.chataround.chataroundws.service.IMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
