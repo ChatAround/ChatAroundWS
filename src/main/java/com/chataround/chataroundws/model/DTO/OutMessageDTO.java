@@ -4,16 +4,26 @@ package com.chataround.chataroundws.model.DTO;
  * @author Georgia Grigoriadou
  */
 public class OutMessageDTO {
+    Long id;
     String username;
     String content;
 
     public OutMessageDTO() {
     }
 
-    public OutMessageDTO(String username, String content)
+    public OutMessageDTO(Long id,String username, String content)
     {
+        this.id=id;
         this.username=username;
         this.content = content;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {

@@ -31,6 +31,7 @@ public class OutMessageMapper implements IMapper<Message,OutMessageDTO> {
     @Override
     public OutMessageDTO toDTO(Message model) {
         OutMessageDTO dto=new OutMessageDTO(
+                model.getId(),
                 userRepository.findOne(model.getSenderId()).getUsername(),
                 model.getContent()
         );
