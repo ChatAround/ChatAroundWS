@@ -12,7 +12,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long senderId;
+    private String username;
     private String content;
     Double radius;
 
@@ -20,8 +20,8 @@ public class Message {
     public Message() {
     }
 
-    public Message(Long senderId, String content, Double radius) {
-        this.senderId = senderId;
+    public Message(String username, String content, Double radius) {
+        this.username = username;
         this.content = content;
         this.radius = radius;
     }
@@ -34,12 +34,12 @@ public class Message {
         this.id = id;
     }
 
-    public Long getSenderId() {
-        return senderId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setSenderId(Long senderId) {
-        this.senderId = senderId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getContent() {

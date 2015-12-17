@@ -24,14 +24,14 @@ public class UserController implements IUserController {
 
     @Override
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public ResponseEntity<List<UserDTO>> getUsersInRadius(@RequestParam("id") Long id,@RequestParam("radius") Double radius) {
+    public ResponseEntity<List<UserDTO>> getUsersInRadius(@RequestParam("username") String username,@RequestParam("radius") Double radius) {
         if(radius==null) return ResponseEntity.ok(userService.getAll());
-        return ResponseEntity.ok(userService.getInRadius(id,radius));
+        return ResponseEntity.ok(userService.getInRadius(username,radius));
     }
 
     @Override
     @RequestMapping(value="/user",method = RequestMethod.POST )
-    public ResponseEntity<Long> createUser(UserDTO dto, Model model) {
+    public ResponseEntity<String> createUser(UserDTO dto, Model model) {
         if(dto.getLongitude()==null || dto.getLongitude()==null) throw new NullLocationPropertiesException();
             return ResponseEntity.ok(userService.addUser(dto));
 
@@ -39,18 +39,12 @@ public class UserController implements IUserController {
 
     @Override
     @RequestMapping(value="/user",method = RequestMethod.DELETE )
-    public ResponseEntity<?> deleteUser(@RequestParam("id") Long id) {
-        userService.deleteUser(id);
+    public ResponseEntity<?> deleteUser(@RequestParam("username") String username) {
+        userService.deleteUser(username);
         return ResponseEntity.ok(HttpStatus.OK);
 
     }
 
-    @Override
-    @RequestMapping(value="/user",method = RequestMethod.PUT )
-    public ResponseEntity<?> updateUser(UserDTO dto, Model model) {
-        userService.update(dto);
-        return ResponseEntity.ok(HttpStatus.OK);
-    }
 
 
 }

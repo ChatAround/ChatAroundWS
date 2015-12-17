@@ -10,9 +10,9 @@ import java.util.List;
 public interface IUserService {
     List<UserDTO> getAll();
 
-    List<UserDTO> getInRadius(Long id, Double radius);
 
-    Long addUser(UserDTO dto);
-    void deleteUser(Long id);
-    void update(UserDTO dto);
+    List<UserDTO> getInRadius(String username, Double radius);
+
+    String addUser(UserDTO dto);
+    void deleteUser(String username);
 }

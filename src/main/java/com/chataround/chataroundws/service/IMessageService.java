@@ -1,7 +1,6 @@
 package com.chataround.chataroundws.service;
 
-import com.chataround.chataroundws.model.DTO.InMessageDTO;
-import com.chataround.chataroundws.model.DTO.OutMessageDTO;
+import com.chataround.chataroundws.model.DTO.MessageDTO;
 
 import java.util.List;
 
@@ -9,7 +8,7 @@ import java.util.List;
  * @author Georgia Grigoriadou
  */
 public interface IMessageService {
-    void addMessage(InMessageDTO dto);
+    void addMessage(MessageDTO dto);
 
-    List<OutMessageDTO> getMessages(Long id);
+    List<MessageDTO> getMessages(String username);
 }

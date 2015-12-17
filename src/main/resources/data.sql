@@ -3,7 +3,7 @@ INSERT INTO user_table (username, coordinates_latitude, coordinates_longitude) V
 INSERT INTO user_table (username, coordinates_latitude, coordinates_longitude) VALUES ('Giannis', 41.0769825,23.5420477);
 INSERT INTO user_table (username, coordinates_latitude, coordinates_longitude) VALUES ('Giorgos', 41.0747267,23.5540053);
 
-INSERT INTO message (senderid,content,radius) VALUES (3,'hi',100.0000 );
-INSERT INTO message (senderid,content,radius) VALUES (2,'alex',100.0000 );
-INSERT INTO message (senderid,content,radius) VALUES (1,':P',100.0000 );
-INSERT INTO message (senderid,content,radius) VALUES (3,'yaaa',100.0000 );
+INSERT INTO message (username,content,radius) VALUES ('Maria','hi',100.0000 );
+INSERT INTO message (username,content,radius) VALUES ('Eleni','alex',100.0000 );
+INSERT INTO message (username,content,radius) VALUES ('Giannis',':P',100.0000 );
+INSERT INTO message (username,content,radius) VALUES ('Giorgos','yaaa',100.0000 );

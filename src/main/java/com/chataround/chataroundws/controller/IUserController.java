@@ -15,10 +15,9 @@ import java.util.List;
 public interface IUserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    ResponseEntity<List<UserDTO>> getUsersInRadius(@RequestParam("id") Long id, @RequestParam("radius") Double radius);
+    ResponseEntity<List<UserDTO>> getUsersInRadius( String username,  Double radius);
 
-    ResponseEntity<Long> createUser(UserDTO dto, Model model);
-    ResponseEntity<?> deleteUser(Long id);
-    ResponseEntity<?> updateUser(UserDTO dto, Model model);
+    ResponseEntity<String> createUser(UserDTO dto, Model model);
+    ResponseEntity<?> deleteUser(String username);
 
 }

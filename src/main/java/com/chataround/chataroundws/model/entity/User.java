@@ -11,9 +11,6 @@ import javax.persistence.*;
 @Table(name = "user_table")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String username;
 
     @Embedded
@@ -43,11 +40,4 @@ public class User {
         this.username = username;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

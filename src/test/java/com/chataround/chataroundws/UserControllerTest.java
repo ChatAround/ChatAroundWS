@@ -68,19 +68,17 @@ public class UserControllerTest {
 
         UserDTO first = new UserDTO();
 
-        first.setId(1L);
+
         first.setUsername("first");
         first.setLatitude(41.123456);
         first.setLongitude(20.98765);
 
         UserDTO second = new UserDTO();
-        second.setId(2L);
         second.setUsername("second");
         second.setLatitude(41.123455);
         second.setLongitude(20.98760);
 
         UserDTO third = new UserDTO();
-        third.setId(2L);
         third.setUsername("third");
         third.setLatitude(41.678765);
         third.setLongitude(21.4561239);
@@ -89,23 +87,20 @@ public class UserControllerTest {
         userDTOs.add(second);
 
 
-        Long id=1L;
+        String username="first";
         Double radius=10.000000;
 
-        doReturn(userDTOs).when(userService).getInRadius(id,radius);
+        doReturn(userDTOs).when(userService).getInRadius(username,radius);
         mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
-                .param("id", String.valueOf(id)).param("radius", String.valueOf(radius)))
+                .param("id", username).param("radius", String.valueOf(radius)))
 
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(applicationJsonMediaType))
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[*].id").exists())
                 .andExpect(jsonPath("$[*].username").exists())
                 .andExpect(jsonPath("$[*].latitude").exists())
                 .andExpect(jsonPath("$[*].longitude").exists())
-                .andExpect(jsonPath("$[0].id", is(1)))
-                .andExpect(jsonPath("$[1].id", is(2)))
                 .andExpect(jsonPath("$[0].username", is("first")))
                 .andExpect(jsonPath("$[1].username", is("second")))
                 .andExpect(jsonPath("$[0].latitude", is(41.123456)))
@@ -114,7 +109,7 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[1].longitude", is(20.98760)))
         ;
 
-        verify(userService, times(1)).getInRadius(id,radius);
+        verify(userService, times(1)).getInRadius(username,radius);
 
     }
 }

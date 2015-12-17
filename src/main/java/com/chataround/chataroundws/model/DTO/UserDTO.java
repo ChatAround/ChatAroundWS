@@ -5,7 +5,6 @@ package com.chataround.chataroundws.model.DTO;
  * @author Georgia Grigoriadou
  */
 public class UserDTO {
-    private Long id;
     private String username;
     private Double latitude;
     private Double longitude;
@@ -13,20 +12,13 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String username, Double latitude, Double longitude) {
-        this.id = id;
+    public UserDTO( String username, Double latitude, Double longitude) {
+
         this.username = username;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
