@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
         @Query(value = "SELECT DISTINCT * FROM user_table WHERE earth_box(ll_to_earth(?1, ?2), ?3) @> ll_to_earth(coordinates_latitude, coordinates_longitude)", nativeQuery = true)
         List<User> findInRadius(Double latitude, Double longitude, Double radius);
 
-        @Query(value="SELECT DISTINCT * FROM  user_table WHERE user_table.username=?1",nativeQuery = true)
+        @Query(value="SELECT * FROM  user_table WHERE user_table.username=?1",nativeQuery = true)
         User findOne(String username);
 
         @Modifying
