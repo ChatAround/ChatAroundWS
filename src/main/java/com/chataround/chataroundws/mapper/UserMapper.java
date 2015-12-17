@@ -4,14 +4,13 @@ import com.chataround.chataroundws.model.DTO.UserDTO;
 import com.chataround.chataroundws.model.entity.Coordinates;
 import com.chataround.chataroundws.model.entity.User;
 import org.springframework.stereotype.Component;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Georgia Grigoriadou
  */
+
 @Component
 public class UserMapper implements IMapper<User, UserDTO> {
     @Override

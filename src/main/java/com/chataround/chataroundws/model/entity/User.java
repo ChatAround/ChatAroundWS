@@ -5,6 +5,8 @@ import javax.persistence.*;
 /**
  * @author Georgia Grigoriadou
  */
+
+
 @Entity
 @Table(name = "user_table")
 public class User {

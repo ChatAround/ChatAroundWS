@@ -13,18 +13,17 @@ public class Message {
     private Long id;
 
     private Long senderId;
-    private Long receiverId;
     private String content;
-    private boolean hasSent;
+    Double radius;
+
 
     public Message() {
     }
 
-    public Message(Long senderId, Long receiverId, String content, boolean hasSent) {
+    public Message(Long senderId, String content, Double radius) {
         this.senderId = senderId;
-        this.receiverId = receiverId;
         this.content = content;
-        this.hasSent = hasSent;
+        this.radius = radius;
     }
 
     public Long getId() {
@@ -43,14 +42,6 @@ public class Message {
         this.senderId = senderId;
     }
 
-    public Long getReceiverId() {
-        return receiverId;
-    }
-
-    public void setReceiverId(Long receiverId) {
-        this.receiverId = receiverId;
-    }
-
     public String getContent() {
         return content;
     }
@@ -59,11 +50,11 @@ public class Message {
         this.content = content;
     }
 
-    public boolean isHasSent() {
-        return hasSent;
+    public Double getRadius() {
+        return radius;
     }
 
-    public void setHasSent(boolean hasSent) {
-        this.hasSent = hasSent;
+    public void setRadius(Double radius) {
+        this.radius = radius;
     }
 }

@@ -12,6 +12,8 @@ import java.util.List;
  */
 @Repository
 public interface MessageRepository extends JpaRepository<Message,Long> {
-    @Query(value="select * from message  where receiverId = ?1",nativeQuery = true)
-    List<Message> findByUserId(Long id);
+
+    @Query(value = "SELECT DISTINCT * FROM message WHERE earth_box(ll_to_earth((SELECT coordinates_latitude FROM user_table WHERE user_table.id=senderId), (SELECT coordinates_longitude FROM user_table WHERE user_table.id=senderid)),radius) @> ll_to_earth((SELECT coordinates_latitude FROM user_table WHERE user_table.id=?1),(SELECT coordinates_longitude FROM user_table WHERE user_table.id=?1) )", nativeQuery = true)
+    List<Message> findById(Long id);
+
 }

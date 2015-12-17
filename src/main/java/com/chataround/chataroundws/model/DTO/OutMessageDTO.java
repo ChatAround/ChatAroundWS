@@ -11,9 +11,10 @@ public class OutMessageDTO {
     public OutMessageDTO() {
     }
 
-    public OutMessageDTO(Long id, String username, String content) {
-        this.id = id;
-        this.username = username;
+    public OutMessageDTO(Long id,String username, String content)
+    {
+        this.id=id;
+        this.username=username;
         this.content = content;
     }
 

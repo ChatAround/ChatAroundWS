@@ -1,7 +1,6 @@
 package com.chataround.chataroundws.controller;
 
 import com.chataround.chataroundws.model.DTO.UserDTO;
-import com.chataround.chataroundws.model.entity.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ public interface IUserController {
     ResponseEntity<List<UserDTO>> getUsersInRadius(@RequestParam("id") Long id, @RequestParam("radius") Double radius);
 
     ResponseEntity<Long> createUser(UserDTO dto, Model model);
-    ResponseEntity<String> deleteUser(Long id);
-    ResponseEntity<String> updateUser(UserDTO dto, Model model);
+    ResponseEntity<?> deleteUser(Long id);
+    ResponseEntity<?> updateUser(UserDTO dto, Model model);
 
 }
