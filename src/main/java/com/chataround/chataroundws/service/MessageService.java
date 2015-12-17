@@ -1,8 +1,7 @@
 package com.chataround.chataroundws.service;
 
 import com.chataround.chataroundws.mapper.IMapper;
-import com.chataround.chataroundws.model.DTO.InMessageDTO;
-import com.chataround.chataroundws.model.DTO.OutMessageDTO;
+import com.chataround.chataroundws.model.DTO.MessageDTO;
 import com.chataround.chataroundws.model.entity.Message;
 import com.chataround.chataroundws.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +19,18 @@ public class MessageService implements IMessageService {
     MessageRepository messageRepository;
 
     @Autowired
-    IMapper<Message,InMessageDTO> inMessageMapper;
+    IMapper<Message,MessageDTO> messageMapper;
 
-    @Autowired
-    IMapper<Message,OutMessageDTO> outMessageMapper;
 
     @Override
-    public void addMessage(InMessageDTO dto){
-        messageRepository.saveAndFlush(inMessageMapper.fromDTO(dto));
+    public void addMessage(MessageDTO dto){
+        messageRepository.saveAndFlush(messageMapper.fromDTO(dto));
 
     }
 
     @Override
-    public List<OutMessageDTO> getMessages(Long id) {
-        return outMessageMapper.toDTO(messageRepository.findById(id));
+    public List<MessageDTO> getMessages(String username) {
+        return messageMapper.toDTO(messageRepository.findByUsername(username));
     }
 
 

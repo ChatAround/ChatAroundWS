@@ -1,8 +1,7 @@
 package com.chataround.chataroundws.controller;
 
 
-import com.chataround.chataroundws.model.DTO.InMessageDTO;
-import com.chataround.chataroundws.model.DTO.OutMessageDTO;
+import com.chataround.chataroundws.model.DTO.MessageDTO;
 import com.chataround.chataroundws.service.IMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,7 @@ public class MessageController implements IMessageController {
 
     @Override
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> createMessage(InMessageDTO dto, Model model) {
+    public ResponseEntity<?> createMessage(MessageDTO dto, Model model) {
         messageService.addMessage(dto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
@@ -36,8 +35,8 @@ public class MessageController implements IMessageController {
 
     @Override
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<OutMessageDTO>> getMessages(@RequestParam("id") Long id) {
-        List<OutMessageDTO> msgDTOs = messageService.getMessages(id);
+    public ResponseEntity<List<MessageDTO>> getMessages(@RequestParam("username") String username) {
+        List<MessageDTO> msgDTOs = messageService.getMessages(username);
         return ResponseEntity
                 .ok(msgDTOs);
 

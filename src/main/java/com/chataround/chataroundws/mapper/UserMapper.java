@@ -20,7 +20,6 @@ public class UserMapper implements IMapper<User, UserDTO> {
                 dto.getUsername(),
                 coordinates
         );
-        user.setId(dto.getId());
         return user;
 
     }
@@ -38,7 +37,6 @@ public class UserMapper implements IMapper<User, UserDTO> {
     @Override
     public UserDTO toDTO(User user) {
         UserDTO userDTO = new UserDTO(
-                user.getId(),
                 user.getUsername(),
                 user.getCoordinates().getLatitude(),
                 user.getCoordinates().getLongitude()

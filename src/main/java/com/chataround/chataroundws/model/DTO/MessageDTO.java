@@ -1,22 +1,26 @@
 package com.chataround.chataroundws.model.DTO;
 
-/**
- * @author Georgia Grigoriadou
- */
-public class InMessageDTO {
-    Long id;
-    String content;
-    Double radius;
-    int duration;
 
-    public InMessageDTO() {
+
+/**
+ * Created by Gewrgia on 17/12/2015.
+ */
+public class MessageDTO{
+
+    private Long id;
+    private String username;
+    private String content;
+    Double radius;
+
+
+    public MessageDTO() {
     }
 
-    public InMessageDTO(Long id, String content, Double radius, int duration) {
-        this.id = id;
+    public MessageDTO(Long id,String username, String content, Double radius) {
+        this.id=id;
+        this.username = username;
         this.content = content;
         this.radius = radius;
-        this.duration = duration;
     }
 
     public Long getId() {
@@ -25,6 +29,14 @@ public class InMessageDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getContent() {
@@ -42,12 +54,5 @@ public class InMessageDTO {
     public void setRadius(Double radius) {
         this.radius = radius;
     }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
 }
+

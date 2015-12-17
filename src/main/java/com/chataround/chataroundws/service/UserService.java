@@ -26,8 +26,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<UserDTO> getInRadius(Long id,Double radius) {
-        User user=getUserById(id);
+    public List<UserDTO> getInRadius(String username, Double radius) {
+        User user=getUserById(username);
         return userMapper.toDTO(userRepository.findInRadius(
                 user.getCoordinates().getLatitude(),
                 user.getCoordinates().getLongitude(),
@@ -35,30 +35,20 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Long addUser(UserDTO dto){
+    public String addUser(UserDTO dto){
+        if(userRepository.findOne(dto.getUsername())!=null) return "Already exists";
         User added=userMapper.fromDTO(dto);
         userRepository.saveAndFlush(added);
-        return added.getId();
+        return "OK";
     }
 
     @Override
-    public void deleteUser(Long id)  {
+    public void deleteUser(String username)  {
 
-        userRepository.delete(id);
-    }
-    @Override
-    public void update(UserDTO dto){
-
-        User user = userRepository.findOne(userMapper.fromDTO(dto).getId());
-        Coordinates coordinates= new Coordinates(dto.getLatitude(),dto.getLongitude());
-
-        user.setUsername(dto.getUsername());
-        user.setCoordinates(coordinates);
-
-        userRepository.saveAndFlush(user);
+        userRepository.delete(username);
     }
 
-    public User getUserById(Long id){
-        return userRepository.findOne(id);
+    public User getUserById(String username){
+        return userRepository.findOne(username);
     }
 }
