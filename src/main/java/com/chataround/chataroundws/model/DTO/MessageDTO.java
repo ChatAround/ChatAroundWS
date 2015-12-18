@@ -11,16 +11,18 @@ public class MessageDTO{
     private String username;
     private String content;
     Double radius;
+    int duration;
 
 
     public MessageDTO() {
     }
 
-    public MessageDTO(Long id,String username, String content, Double radius) {
+    public MessageDTO(Long id,String username, String content, Double radius,int duration) {
         this.id=id;
         this.username = username;
         this.content = content;
         this.radius = radius;
+        this.duration=duration;
     }
 
     public Long getId() {
@@ -53,6 +55,14 @@ public class MessageDTO{
 
     public void setRadius(Double radius) {
         this.radius = radius;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }
 
