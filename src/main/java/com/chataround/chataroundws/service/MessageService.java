@@ -24,19 +24,20 @@ public class MessageService implements IMessageService {
 
     @Override
     public void addMessage(MessageDTO dto){
-      //  messageRepository.saveAndFlush(messageMapper.fromDTO(dto));
         Message message=messageMapper.fromDTO(dto);
         messageRepository.saveAndFlush(message);
-        new java.util.Timer().schedule(
-                new java.util.TimerTask(){
-                    @Override
-                    public void run(){
-                        messageRepository.delete(message.getId());
-                    }
 
-                },message.getDuration()*1000
-        );
+        if(message.getDuration()!=0) {
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            messageRepository.delete(message.getId());
+                        }
 
+                    }, message.getDuration() * 1000
+            );
+        }
 
 
     }
