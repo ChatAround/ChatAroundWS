@@ -34,7 +34,7 @@ public class MessageService implements IMessageService {
                         messageRepository.delete(message.getId());
                     }
 
-                },message.getDuration()
+                },message.getDuration()*1000
         );
 
 
