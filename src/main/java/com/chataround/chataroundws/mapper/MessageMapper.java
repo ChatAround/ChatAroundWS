@@ -18,7 +18,8 @@ public class MessageMapper implements IMapper<Message,MessageDTO> {
         Message message=new Message(
                 dto.getUsername(),
                 dto.getContent(),
-                dto.getRadius()
+                dto.getRadius(),
+                dto.getDuration()
         );
         return message;
     }
@@ -40,7 +41,8 @@ public class MessageMapper implements IMapper<Message,MessageDTO> {
                 message.getId(),
                 message.getUsername(),
                 message.getContent(),
-                message.getRadius()
+                message.getRadius(),
+                message.getDuration()
         );
         return dto;
     }

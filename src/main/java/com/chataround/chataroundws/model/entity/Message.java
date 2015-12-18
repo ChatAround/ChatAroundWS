@@ -15,15 +15,17 @@ public class Message {
     private String username;
     private String content;
     Double radius;
+    int duration;
 
 
     public Message() {
     }
 
-    public Message(String username, String content, Double radius) {
+    public Message(String username, String content, Double radius, int duration) {
         this.username = username;
         this.content = content;
         this.radius = radius;
+        this.duration=duration;
     }
 
     public Long getId() {
@@ -56,5 +58,13 @@ public class Message {
 
     public void setRadius(Double radius) {
         this.radius = radius;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }
