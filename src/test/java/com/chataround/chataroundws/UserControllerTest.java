@@ -92,7 +92,7 @@ public class UserControllerTest {
 
         doReturn(userDTOs).when(userService).getInRadius(username,radius);
         mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
-                .param("id", username).param("radius", String.valueOf(radius)))
+                .param("username", username).param("radius", String.valueOf(radius)))
 
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(applicationJsonMediaType))
