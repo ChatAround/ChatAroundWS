@@ -13,15 +13,21 @@ public class User {
     @Id
     private String username;
 
+    private String password;
+
     @Embedded
     private Coordinates coordinates;
+
+    private boolean isOnline;
 
     public User() {
     }
 
-    public User(String username, Coordinates coordinates) {
+    public User(String username,String password, Coordinates coordinates, boolean isOnline) {
         this.username = username;
+        this.password=password;
         this.coordinates = coordinates;
+        this.isOnline=isOnline;
     }
 
     public Coordinates getCoordinates() {
@@ -40,4 +46,19 @@ public class User {
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
+    }
 }

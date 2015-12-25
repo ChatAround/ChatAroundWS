@@ -1,6 +1,7 @@
 package com.chataround.chataroundws.service;
 
 import com.chataround.chataroundws.model.DTO.UserDTO;
+import com.chataround.chataroundws.model.entity.User;
 
 import java.util.List;
 
@@ -15,4 +16,8 @@ public interface IUserService {
 
     String addUser(UserDTO dto);
     void deleteUser(String username);
+
+    String updateUser(UserDTO dto);
+
+    UserDTO getUser(String username);
 }

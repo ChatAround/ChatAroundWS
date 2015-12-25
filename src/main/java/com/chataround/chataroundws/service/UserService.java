@@ -2,7 +2,6 @@ package com.chataround.chataroundws.service;
 
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.UserDTO;
-import com.chataround.chataroundws.model.entity.Coordinates;
 import com.chataround.chataroundws.model.entity.User;
 import com.chataround.chataroundws.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDTO> getInRadius(String username, Double radius) {
-        User user=getUserById(username);
+        User user=userRepository.findOne(username);
         return userMapper.toDTO(userRepository.findInRadius(
                 user.getCoordinates().getLatitude(),
                 user.getCoordinates().getLongitude(),
@@ -48,7 +47,17 @@ public class UserService implements IUserService {
         userRepository.delete(username);
     }
 
-    public User getUserById(String username){
-        return userRepository.findOne(username);
+    @Override
+    public String updateUser(UserDTO dto){
+
+        if( !userRepository.exists(dto.getUsername())) return "No such User";
+        if(!userRepository.findOne(dto.getUsername()).getPassword().equals(dto.getPassword())) return "Wrong Password";
+        userRepository.save(userMapper.fromDTO(dto));
+        return "OK";
+    }
+
+    @Override
+    public UserDTO getUser(String username){
+        return userMapper.toDTO(userRepository.findOne(username));
     }
 }

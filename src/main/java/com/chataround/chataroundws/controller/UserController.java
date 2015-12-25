@@ -45,6 +45,30 @@ public class UserController implements IUserController {
 
     }
 
+    @Override
+    @RequestMapping(value="/user",method = RequestMethod.PUT )
+    public ResponseEntity<String> updateUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("isOnline") boolean isOnline) {
+
+
+
+        UserDTO dto=new UserDTO(
+                username,
+                password,
+                latitude,longitude,
+                isOnline
+        );
+        return ResponseEntity.ok(userService.updateUser(dto));
+    }
+
+
+
+
+    @Override
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ResponseEntity<UserDTO> getUser(@RequestParam("username") String username){
+        return ResponseEntity.ok(userService.getUser(username));
+    }
+
 
 
 }
