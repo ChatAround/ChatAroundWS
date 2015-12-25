@@ -15,10 +15,13 @@ import java.util.List;
 public class UserMapper implements IMapper<User, UserDTO> {
     @Override
     public User fromDTO(UserDTO dto) {
+
         Coordinates coordinates=new Coordinates(dto.getLatitude(),dto.getLongitude());
         User user=new User(
                 dto.getUsername(),
-                coordinates
+                dto.getPassword(),
+                coordinates,
+                dto.isOnline()
         );
         return user;
 
@@ -38,8 +41,10 @@ public class UserMapper implements IMapper<User, UserDTO> {
     public UserDTO toDTO(User user) {
         UserDTO userDTO = new UserDTO(
                 user.getUsername(),
+                user.getPassword(),
                 user.getCoordinates().getLatitude(),
-                user.getCoordinates().getLongitude()
+                user.getCoordinates().getLongitude(),
+                user.isOnline()
         );
 
         return userDTO;

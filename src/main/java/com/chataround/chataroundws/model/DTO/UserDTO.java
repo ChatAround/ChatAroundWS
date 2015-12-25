@@ -6,17 +6,20 @@ package com.chataround.chataroundws.model.DTO;
  */
 public class UserDTO {
     private String username;
+    private String password;
     private Double latitude;
     private Double longitude;
-
+    private boolean isOnline;
     public UserDTO() {
     }
 
-    public UserDTO( String username, Double latitude, Double longitude) {
+    public UserDTO( String username,String password,Double latitude, Double longitude,boolean isOnline) {
 
         this.username = username;
+        this.password=password;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.isOnline=isOnline;
     }
 
 
@@ -40,8 +43,24 @@ public class UserDTO {
         return longitude;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public boolean isOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
     }
 }
 

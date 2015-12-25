@@ -61,7 +61,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testGetAllUsers() throws Exception {
+    public void testInRadiusUsers() throws Exception {
 
 
         List<UserDTO> userDTOs = new ArrayList<>();
