@@ -15,7 +15,7 @@ public interface IUserService {
     List<UserDTO> getInRadius(String username, Double radius);
 
     String addUser(UserDTO dto);
-    void deleteUser(String username);
+    String deleteUser(String username);
 
     String updateUser(UserDTO dto);
 

@@ -39,9 +39,8 @@ public class UserController implements IUserController {
 
     @Override
     @RequestMapping(value="/user",method = RequestMethod.DELETE )
-    public ResponseEntity<?> deleteUser(@RequestParam("username") String username) {
-        userService.deleteUser(username);
-        return ResponseEntity.ok(HttpStatus.OK);
+    public ResponseEntity<String> deleteUser(@RequestParam("username") String username) {
+        return ResponseEntity.ok(userService.deleteUser(username));
 
     }
 
