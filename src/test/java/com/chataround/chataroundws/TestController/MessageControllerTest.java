@@ -1,4 +1,4 @@
-package com.chataround.chataroundws.TestControlller;
+package com.chataround.chataroundws.TestController;
 
 import com.chataround.chataroundws.Application;
 import com.chataround.chataroundws.controller.MessageController;

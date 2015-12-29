@@ -1,4 +1,4 @@
-package com.chataround.chataroundws.TestControlller;
+package com.chataround.chataroundws.TestController;
 
 /**
  * @author Gewrgia
