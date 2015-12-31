@@ -5,6 +5,7 @@ package com.chataround.chataroundws.model.DTO;
  * @author Georgia Grigoriadou
  */
 public class UserDTO {
+
     private String username;
     private String password;
     private Double latitude;

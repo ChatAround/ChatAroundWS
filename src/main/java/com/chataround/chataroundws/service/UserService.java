@@ -42,9 +42,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void deleteUser(String username)  {
+    public String deleteUser(String username)  {
 
         userRepository.delete(username);
+        return "OK";
     }
 
     @Override

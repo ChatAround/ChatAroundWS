@@ -39,13 +39,12 @@ public class UserMapper implements IMapper<User, UserDTO> {
 
     @Override
     public UserDTO toDTO(User user) {
-        UserDTO userDTO = new UserDTO(
-                user.getUsername(),
-                user.getPassword(),
-                user.getCoordinates().getLatitude(),
-                user.getCoordinates().getLongitude(),
-                user.isOnline()
-        );
+        UserDTO userDTO = new UserDTO();
+               userDTO.setUsername(user.getUsername());
+               userDTO.setLatitude(user.getCoordinates().getLatitude());
+               userDTO.setLongitude(user.getCoordinates().getLongitude());
+               userDTO.setOnline(user.isOnline());
+
 
         return userDTO;
     }

@@ -17,7 +17,7 @@ public interface IUserController {
     ResponseEntity<List<UserDTO>> getUsersInRadius( String username,  Double radius);
 
     ResponseEntity<String> createUser(UserDTO dto, Model model);
-    ResponseEntity<?> deleteUser(String username);
+    ResponseEntity<String> deleteUser(String username);
 
     ResponseEntity<String> updateUser(String username,  String password, Double latitude,  Double longitude, boolean isOnline);
 

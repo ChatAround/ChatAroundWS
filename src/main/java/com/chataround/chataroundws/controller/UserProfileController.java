@@ -5,6 +5,7 @@ import com.chataround.chataroundws.model.DTO.UserProfileDTO;
 import com.chataround.chataroundws.model.entity.UserProfile;
 import com.chataround.chataroundws.service.IUserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,4 +62,5 @@ public class UserProfileController implements IUserProfileController {
 
         return ResponseEntity.ok(userProfileService.deleteUserProfile(username));
     }
+
 }
