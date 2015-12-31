@@ -11,6 +11,7 @@ import com.chataround.chataroundws.service.IUserProfileService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -22,13 +23,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -111,7 +115,105 @@ public class UserProfileControllerTest {
         verify(userProfileService, times(1)).getUserProfile(username);
 
     }
+    @Test
+    public void testAddUserProfile()throws Exception {
+        String username="test";
+        String firstName="testos";
+        String surName="anagnostopoulos";
+        String gender="male";
+        String country="greece";
+        String city="Serres";
+        String about=null;
 
+        when(userProfileService.createUserProfile(isA(UserProfileDTO.class))).thenReturn("OK");
+
+        mockMvc.perform(post("/userProfile")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username",username)
+                .param("firstName",firstName)
+                .param("surName",surName)
+                .param("gender",gender)
+                .param("country",country)
+                .param("city",city)
+                .param("about", about))
+                .andExpect(status().isOk())
+                ;
+
+        ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
+        verify(userProfileService, times(1)).createUserProfile(formObjectArgument.capture());
+        verifyNoMoreInteractions(userProfileService);
+
+        UserProfileDTO formObject = formObjectArgument.getValue();
+
+        assertThat(formObject.getUsername(), is(username));
+        assertThat(formObject.getFirstName(), is(firstName));
+        assertThat(formObject.getSurName(), is(surName));
+        assertThat(formObject.getGender(), is(gender));
+        assertThat(formObject.getCountry(), is(country));
+        assertThat(formObject.getCity(), is(city));
+        assertThat(formObject.getAbout(), is(about));
+
+    }
+
+   //@Test
+   //public void testUpdateUserProfile()throws Exception {
+   //  String username="test";
+   //  String firstName="testos";
+   //  String surName="anagnostopoulos";
+   //  String gender="male";
+   //  String country="greece";
+   //  String city="Serres";
+   //  String s="2000/12/12";
+   //  SimpleDateFormat sd=new SimpleDateFormat("yyyy/MM/dd");
+   //  Date birthday=sd.parse(s);
+   //  String about=null;
+
+   //  when(userProfileService.updateUserProfile(isA(UserProfileDTO.class))).thenReturn("OK");
+
+
+   //  mockMvc.perform(put("/userProfile")
+   //          .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+   //          .param("username",username)
+   //          .param("firstName",firstName)
+   //          .param("surName",surName)
+   //          .param("gender",gender)
+   //          .param("country",country)
+   //          .param("city",city)
+   //          .param("birthday",String.valueOf(birthday))
+   //          .param("about", about))
+   //          .andExpect(status().isOk())
+   //  ;
+
+   //  ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
+   //  verify(userProfileService, times(1)).updateUserProfile(formObjectArgument.capture());
+   //  verifyNoMoreInteractions(userProfileService);
+
+   //  UserProfileDTO formObject = formObjectArgument.getValue();
+
+   //  assertThat(formObject.getUsername(), is(username));
+   //  assertThat(formObject.getFirstName(), is(firstName));
+   //  assertThat(formObject.getSurName(), is(surName));
+   //  assertThat(formObject.getGender(), is(gender));
+   //  assertThat(formObject.getCountry(), is(country));
+   //  assertThat(formObject.getCity(), is(city));
+   //  assertThat(formObject.getAbout(), is(about));
+
+   //}
+
+
+    @Test
+    public void testDeleteUserProfile() throws Exception {
+        String username="test";
+
+        doReturn("OK").when(userProfileService).deleteUserProfile(username);
+        mockMvc.perform(delete("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username))
+                .andExpect(status().isOk())
+        ;
+        verify(userProfileService, times(1)).deleteUserProfile(username);
+
+    }
 
 }
 

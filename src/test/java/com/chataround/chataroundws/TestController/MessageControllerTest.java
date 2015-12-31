@@ -7,6 +7,7 @@ import com.chataround.chataroundws.service.IMessageService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -21,12 +22,14 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -127,6 +130,39 @@ public class MessageControllerTest {
         ;
 
         verify(messageService, times(1)).getMessages(username);
+
+    }
+
+    @Test
+    public void testAddMessage() throws Exception {
+
+
+        String username="Test";
+        String content="hello";
+        Double radius=10.000;
+        int duration=60;
+
+
+
+        mockMvc.perform(post("/message")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username)
+                .param("content", content)
+                .param("radius", String.valueOf(radius))
+                .param("duration", String.valueOf(duration)))
+                .andExpect(status().isOk())
+        ;
+        ArgumentCaptor<MessageDTO> formObjectArgument = ArgumentCaptor.forClass(MessageDTO.class);
+        verify(messageService, times(1)).addMessage(formObjectArgument.capture());
+        verifyNoMoreInteractions(messageService);
+
+        MessageDTO formObject = formObjectArgument.getValue();
+
+        assertThat(formObject.getUsername(), is(username));
+        assertThat(formObject.getContent(), is(content));
+        assertThat(formObject.getRadius(), is(radius));
+        assertThat(formObject.getDuration(), is(duration));
+
 
     }
 }
