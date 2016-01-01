@@ -19,6 +19,8 @@ public class UserService implements IUserService {
 
     @Autowired
     IMapper<User,UserDTO> userMapper;
+
+
     @Override
     public List<UserDTO> getAll() {
         return userMapper.toDTO(userRepository.findAll());
@@ -26,6 +28,7 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDTO> getInRadius(String username, Double radius) {
+       if(!userRepository.exists(username)) return null;
         User user=userRepository.findOne(username);
         return userMapper.toDTO(userRepository.findInRadius(
                 user.getCoordinates().getLatitude(),
@@ -43,7 +46,7 @@ public class UserService implements IUserService {
 
     @Override
     public String deleteUser(String username)  {
-
+        if( !userRepository.exists(username)) return "No such User";
         userRepository.delete(username);
         return "OK";
     }
@@ -59,6 +62,7 @@ public class UserService implements IUserService {
 
     @Override
     public UserDTO getUser(String username){
+        if( !userRepository.exists(username)) return null;
         return userMapper.toDTO(userRepository.findOne(username));
     }
 }
