@@ -35,11 +35,13 @@ public class UserProfileService implements IUserProfileService{
 
     @Override
     public UserProfileDTO getUserProfile(String username) {
+        if(!userProfileRepository.exists(username)) return null;
         return userProfileMapper.toDTO(userProfileRepository.findOne(username));
     }
 
     @Override
     public String deleteUserProfile(String username) {
+        if(!userProfileRepository.exists(username)) return "No such Profile";
         userProfileRepository.delete(username);
         return "OK";
     }

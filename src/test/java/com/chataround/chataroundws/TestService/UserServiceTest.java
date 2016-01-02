@@ -146,7 +146,7 @@ private MockMvc mockMvc;
         assertEquals(response,"OK");
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(1)).saveAndFlush(user);
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).saveAndFlush(Mockito.any(User.class));
         Mockito.reset(userRepository);
 
     }
@@ -181,7 +181,7 @@ private MockMvc mockMvc;
         assertEquals(response,"Already exists");
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(0)).saveAndFlush(added);
+        Mockito.verify(userRepository, VerificationModeFactory.times(0)).saveAndFlush(Mockito.any(User.class));
 
         Mockito.reset(userRepository);
 
@@ -217,7 +217,7 @@ private MockMvc mockMvc;
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).findOne(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(0)).save(user);
+        Mockito.verify(userRepository, VerificationModeFactory.times(0)).save(Mockito.any(User.class));
 
         Mockito.reset(userRepository);
     }
@@ -260,7 +260,7 @@ private MockMvc mockMvc;
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(0)).save(updated);
+        Mockito.verify(userRepository, VerificationModeFactory.times(0)).save(Mockito.any(User.class));
 
         Mockito.reset(userRepository);
     }
@@ -305,7 +305,7 @@ private MockMvc mockMvc;
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(1)).save(updated);
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).save(Mockito.any(User.class));
 
         Mockito.reset(userRepository);
     }
