@@ -23,7 +23,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
