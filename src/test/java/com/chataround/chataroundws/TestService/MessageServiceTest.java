@@ -50,6 +50,59 @@ public class MessageServiceTest {
 
     }
 
-    //Grapse ta test edo
+
+    @Test
+    public void testAddMessageAndNotDeleteIt() throws Exception{
+
+        String username="test";
+        String content="hello";
+        Double radius=100.000;
+        int duration=0;
+        MessageDTO dto=new MessageDTO();
+        dto.setUsername(username);
+        dto.setContent(content);
+        dto.setRadius(radius);
+        dto.setDuration(duration);
+        Message message=new Message(username,content,radius,duration);
+        Mockito.when(messageMapper.fromDTO(dto)).thenReturn(message);
+
+
+        messageService.addMessage(dto);
+
+        Mockito.verify(messageRepository, VerificationModeFactory.times(1)).saveAndFlush(Mockito.any(Message.class));
+        Mockito.verify(messageRepository, VerificationModeFactory.times(0)).delete(Mockito.anyLong());
+        Mockito.reset(messageRepository);
+
+    }
+
+    @Test
+    public void testGetMessages() throws Exception{
+
+        String username="test";
+
+        Message message1=new Message("Maria","hello",100.000,120);
+        message1.setId(1L);
+        Message message2=new Message("Eleni","hi",50.000,60);
+        message1.setId(2L);
+        List<Message> messages=new ArrayList<>();
+        messages.add(message1);
+        messages.add(message2);
+
+        MessageDTO dto1=new MessageDTO(1L,"Maria","hello",100.000,120);
+        MessageDTO dto2=new MessageDTO(2L,"Eleni","hi",50.000,60);
+        List<MessageDTO> messageDTOs = new ArrayList<>();
+        messageDTOs.add(dto1);
+        messageDTOs.add(dto2);
+
+        Mockito.when(messageRepository.findByUsername(username)).thenReturn(messages);
+        Mockito.when(messageMapper.toDTO(messages)).thenReturn(messageDTOs);
+
+        List<MessageDTO> response=messageService.getMessages(username);
+        assertEquals(response,messageDTOs);
+
+        Mockito.verify(messageRepository, VerificationModeFactory.times(1)).findByUsername(Mockito.anyString());
+        Mockito.reset(messageRepository);
+    }
+
 
 }
