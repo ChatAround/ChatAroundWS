@@ -4,7 +4,7 @@ INSERT INTO user_table (username,password, coordinates_latitude, coordinates_lon
 INSERT INTO user_table (username,password, coordinates_latitude, coordinates_longitude,isonline) VALUES ('Giorgos','mpla', 41.0747267,23.5540053,TRUE );
 
 INSERT INTO message (username,content,radius,duration) VALUES ('Maria','hi',100.0000,60 );
-INSERT INTO message (username,content,radius,duration) VALUES ('Eleni','alex',100.0000,60 );
+INSERT INTO message (username,content,radius,duration) VALUES ('Eleni','alex',10000.0000,60 );
 INSERT INTO message (username,content,radius,duration) VALUES ('Giannis',':P',100.0000,60 );
 INSERT INTO message (username,content,radius,duration) VALUES ('Giorgos','yaaa',100.0000,60 );
 
