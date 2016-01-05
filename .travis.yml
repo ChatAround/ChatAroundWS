@@ -5,10 +5,15 @@ jdk:
 
 install: mvn install -q -DskipTests=true
 
+addons:
+  postgresql: "9.4"
 
 services:
   - postgresql
 
 before_script:
     - psql -c 'create database travis_ci_test;' -U postgres
+
+before_script:
+      - psql -U postgres -c "create extension postgis"
 
