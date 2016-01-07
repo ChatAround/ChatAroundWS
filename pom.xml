@@ -32,7 +32,7 @@
 
 		<project.version.major>0</project.version.major>
 		<project.version.minor>0</project.version.minor>
-		<project.version.patch>5</project.version.patch>
+		<project.version.patch>4</project.version.patch>
 
 		<!--API Version-->
 
