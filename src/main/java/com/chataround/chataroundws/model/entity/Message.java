@@ -1,6 +1,7 @@
 package com.chataround.chataroundws.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Georgia Grigoriadou
@@ -12,9 +13,13 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String username;
+    @NotNull
     private String content;
+    @NotNull
     Double radius;
+    @NotNull
     int duration;
 
 

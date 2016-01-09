@@ -1,6 +1,7 @@
 package com.chataround.chataroundws.model.DTO;
 
 
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Gewrgia on 17/12/2015.
@@ -8,9 +9,13 @@ package com.chataround.chataroundws.model.DTO;
 public class MessageDTO{
 
     private Long id;
+    @NotNull
     private String username;
+    @NotNull
     private String content;
+    @NotNull
     Double radius;
+    @NotNull
     int duration;
 
 

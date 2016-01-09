@@ -1,5 +1,6 @@
 package com.chataround.chataroundws.service;
 
+import com.chataround.chataroundws.exception.UserNotFoundException;
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.UserProfileDTO;
 import com.chataround.chataroundws.model.entity.UserProfile;
@@ -28,20 +29,20 @@ public class UserProfileService implements IUserProfileService{
 
     @Override
     public String updateUserProfile(UserProfileDTO dto) {
-        if(!userProfileRepository.exists(dto.getUsername())) return "No such User";
+        if(!userProfileRepository.exists(dto.getUsername())) throw new UserNotFoundException();
         userProfileRepository.save(userProfileMapper.fromDTO(dto));
         return "OK";
     }
 
     @Override
     public UserProfileDTO getUserProfile(String username) {
-        if(!userProfileRepository.exists(username)) return null;
+        if(!userProfileRepository.exists(username)) throw new UserNotFoundException();
         return userProfileMapper.toDTO(userProfileRepository.findOne(username));
     }
 
     @Override
     public String deleteUserProfile(String username) {
-        if(!userProfileRepository.exists(username)) return "No such Profile";
+        if(!userProfileRepository.exists(username))throw new UserNotFoundException();
         userProfileRepository.delete(username);
         return "OK";
     }

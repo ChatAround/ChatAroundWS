@@ -1,6 +1,7 @@
 package com.chataround.chataroundws.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Georgia Grigoriadou
@@ -11,8 +12,9 @@ import javax.persistence.*;
 @Table(name = "user_table")
 public class User {
     @Id
+    @NotNull
     private String username;
-
+    @NotNull
     private String password;
 
     @Embedded

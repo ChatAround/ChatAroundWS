@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Temporal;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -14,9 +15,13 @@ import java.util.Date;
 @Entity
 public class UserProfile {
     @Id
+    @NotNull
     private String username;
+    @NotNull
     private String firstName;
+    @NotNull
     private String surName;
+    @NotNull
     private String gender;
     private String country;
     private String city;

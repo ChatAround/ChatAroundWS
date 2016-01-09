@@ -1,5 +1,6 @@
 package com.chataround.chataroundws.service;
 
+import com.chataround.chataroundws.exception.UserNotFoundException;
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import com.chataround.chataroundws.model.entity.User;
@@ -28,7 +29,7 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDTO> getInRadius(String username, Double radius) {
-       if(!userRepository.exists(username)) return null;
+       if(!userRepository.exists(username)) throw new UserNotFoundException();
         User user=userRepository.findOne(username);
         return userMapper.toDTO(userRepository.findInRadius(
                 user.getCoordinates().getLatitude(),
@@ -46,7 +47,7 @@ public class UserService implements IUserService {
 
     @Override
     public String deleteUser(String username)  {
-        if( !userRepository.exists(username)) return "No such User";
+        if( !userRepository.exists(username)) throw new UserNotFoundException();
         userRepository.delete(username);
         return "OK";
     }
@@ -54,7 +55,7 @@ public class UserService implements IUserService {
     @Override
     public String updateUser(UserDTO dto){
 
-        if( !userRepository.exists(dto.getUsername())) return "No such User";
+        if( !userRepository.exists(dto.getUsername())) throw new UserNotFoundException();
         if(!userRepository.findOne(dto.getUsername()).getPassword().equals(dto.getPassword())) return "Wrong Password";
         userRepository.save(userMapper.fromDTO(dto));
         return "OK";
@@ -62,7 +63,7 @@ public class UserService implements IUserService {
 
     @Override
     public UserDTO getUser(String username){
-        if( !userRepository.exists(username)) return null;
+        if( !userRepository.exists(username)) throw new UserNotFoundException();
         return userMapper.toDTO(userRepository.findOne(username));
     }
 }

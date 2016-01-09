@@ -17,6 +17,11 @@ public class GlobalControllerExceptionHandler {
     public void handleNullLocationPropertiesException(NullLocationPropertiesException e) {
     }
 
+    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such User")
+    @ExceptionHandler(UserNotFoundException.class)
+    public void handleUserNotFoundException(UserNotFoundException e) {
+    }
+
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal Server Error")
     @ExceptionHandler(Exception.class)
     public void defaultErrorHandler(Exception e) throws Exception {

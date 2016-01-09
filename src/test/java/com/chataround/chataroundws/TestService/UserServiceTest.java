@@ -1,6 +1,7 @@
 package com.chataround.chataroundws.TestService;
 
 import com.chataround.chataroundws.Application;
+import com.chataround.chataroundws.exception.UserNotFoundException;
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import com.chataround.chataroundws.model.entity.Coordinates;
@@ -50,7 +51,7 @@ private MockMvc mockMvc;
         this.mockMvc = MockMvcBuilders.standaloneSetup(userService).build();
 
     }
-    @Test
+    @Test(expected = UserNotFoundException.class)
     public void testGetUserFail() throws Exception {
         String username="test";
         String password="12345";
@@ -74,8 +75,6 @@ private MockMvc mockMvc;
         Mockito.when(userMapper.toDTO(user)).thenReturn(dto);
 
         UserDTO fromRepo = userService.getUser(username);
-
-        assertEquals(fromRepo, null);
 
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
@@ -187,7 +186,7 @@ private MockMvc mockMvc;
 
     }
 
-    @Test
+    @Test(expected = UserNotFoundException.class)
     public void testUpdateUserFailToFindUser() throws Exception {
         String username = "test";
         String password = "12345";
@@ -213,7 +212,6 @@ private MockMvc mockMvc;
 
 
         String response = userService.updateUser(dto);
-        assertEquals(response, "No such User");
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).findOne(Mockito.anyString());
@@ -310,14 +308,13 @@ private MockMvc mockMvc;
         Mockito.reset(userRepository);
     }
 
-    @Test
+    @Test(expected = UserNotFoundException.class)
     public void testDeleteUserFail() throws Exception {
         String username="test";
 
         Mockito.when(userRepository.exists(username)).thenReturn(false);
 
         String response = userService.deleteUser(username);
-        assertEquals(response, "No such User");
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).delete(Mockito.anyString());
@@ -341,7 +338,7 @@ private MockMvc mockMvc;
     }
 
 
-    @Test
+    @Test(expected = UserNotFoundException.class)
     public void testGetUsersInRadiusFailNoSuchUser() throws Exception{
         String username="test";
         Double radius=20.000;
@@ -349,7 +346,6 @@ private MockMvc mockMvc;
 
         List<UserDTO> response=userService.getInRadius(username,radius);
 
-        assertEquals(response,null);
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).findOne(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).findInRadius(Mockito.anyDouble(),Mockito.anyDouble(),Mockito.anyDouble());

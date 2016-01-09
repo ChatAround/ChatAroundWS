@@ -1,6 +1,7 @@
 package com.chataround.chataroundws.TestService;
 
 import com.chataround.chataroundws.Application;
+import com.chataround.chataroundws.exception.UserNotFoundException;
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.UserProfileDTO;
 import com.chataround.chataroundws.model.entity.UserProfile;
@@ -140,7 +141,7 @@ public class UserProfileServiceTest {
 
     }
 
-    @Test
+    @Test(expected = UserNotFoundException.class)
     public void testUpdateUserProfileFail() throws Exception{
         String username="test";
         String firstName="Test";
@@ -162,7 +163,6 @@ public class UserProfileServiceTest {
         Mockito.when(userProfileMapper.fromDTO(dto)).thenReturn(userProfile);
 
         String response=userProfileService.updateUserProfile(dto);
-        assertEquals(response,"No such User");
 
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).save(Mockito.any(UserProfile.class));
@@ -207,14 +207,13 @@ public class UserProfileServiceTest {
         Mockito.reset(userProfileRepository);
     }
 
-    @Test
+    @Test(expected = UserNotFoundException.class)
     public void testGetUserProfileFail() throws Exception{
         String username="test";
 
         Mockito.when(userProfileRepository.exists(username)).thenReturn(false);
 
         UserProfileDTO response=userProfileService.getUserProfile(username);
-        assertEquals(response,null);
 
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).findOne(Mockito.anyString());
@@ -234,14 +233,14 @@ public class UserProfileServiceTest {
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).delete(Mockito.anyString());
         Mockito.reset(userProfileRepository);
     }
-    @Test
+
+    @Test(expected = UserNotFoundException.class)
     public void testDeleteUserProfileFail() throws Exception{
         String username="test";
 
         Mockito.when(userProfileRepository.exists(username)).thenReturn(false);
 
         String response=userProfileService.deleteUserProfile(username);
-        assertEquals(response,"No such Profile");
 
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).delete(Mockito.anyString());
