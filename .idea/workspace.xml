@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85016672-8c73-473e-8615-a2b6a8898e5c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/UserNotFoundException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/MessageDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/MessageDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/Coordinates.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/Coordinates.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/Message.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/UserProfile.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/UserProfile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/MessageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserProfileService.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserProfileService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/MessageServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/MessageServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserProfileServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserProfileServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserServiceTest.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -70,11 +55,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserProfileServiceTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserProfileServiceTest.java">
+      <file leaf-file-name="GlobalControllerExceptionHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59859157">
-              <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.42929292">
+              <caret line="19" column="74" selection-start-line="19" selection-start-column="74" selection-end-line="19" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -138,9 +123,7 @@
         <option value="$PROJECT_DIR$/test_data.sql" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/MessageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/Coordinates.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/User.java" />
@@ -150,9 +133,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/entity/UserProfile.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/MessageServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserProfileService.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserProfileServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/UserAlreadyExists.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java" />
       </list>
     </option>
   </component>
@@ -373,6 +359,66 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatAroundWS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatAroundWS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1034,7 +1080,7 @@
       <workItem from="1452028253294" duration="1451000" />
       <workItem from="1452084019507" duration="2461000" />
       <workItem from="1452127186116" duration="1428000" />
-      <workItem from="1452361471034" duration="2270000" />
+      <workItem from="1452361471034" duration="5545000" />
     </task>
     <task id="LOCAL-00002" summary="delete message after a specific time">
       <created>1450432468344</created>
@@ -1174,11 +1220,20 @@
       <option name="project" value="LOCAL" />
       <updated>1452005379614</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="annotated NotNull the required properties&#10;created UserNotFoundException and applied &#10;modified service tests">
+      <created>1452363910098</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1452363910098</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
     <history-entry file="MessageServiceTest - 2016.01.09 at 20h 21m 27s.xml">
+      <configuration name="MessageServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MessageServiceTest - 2016.01.09 at 21h 16m 21s.xml">
       <configuration name="MessageServiceTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="MessageServiceTest_testAddMessageAndNotDeleteItFail - 2016.01.09 at 20h 05m 41s.xml">
@@ -1202,15 +1257,12 @@
     <history-entry file="UserProfileServiceTest - 2016.01.09 at 20h 21m 17s.xml">
       <configuration name="UserProfileServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserRepositoryTest - 2016.01.04 at 17h 14m 33s.xml">
-      <configuration name="UserRepositoryTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UserServiceTest - 2016.01.09 at 20h 21m 08s.xml">
       <configuration name="UserServiceTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126811000" />
+    <option name="totallyTimeSpent" value="130086000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1223,7 +1275,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1040" height="754" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1232,11 +1284,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13826367" sideWeight="0.45306122" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17142858" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27009645" sideWeight="0.5469388" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27009645" sideWeight="0.5469388" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.670418" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.77688605" sideWeight="0.6" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.77652735" sideWeight="0.6" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33367348" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33367348" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08163265" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1301,7 +1353,8 @@
     <MESSAGE value="modified .travis.yml" />
     <MESSAGE value="modified .travis.yml and added test_data" />
     <MESSAGE value="deletet travis" />
-    <option name="LAST_COMMIT_MESSAGE" value="deletet travis" />
+    <MESSAGE value="annotated NotNull the required properties&#10;created UserNotFoundException and applied &#10;modified service tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="annotated NotNull the required properties&#10;created UserNotFoundException and applied &#10;modified service tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1314,13 +1367,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-development.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="41" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application-production.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1512,22 +1558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.543771">
-          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/MessageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14141414">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.028619528">
@@ -1597,14 +1627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5151515">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/MessageServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.0622895">
@@ -1626,9 +1648,9 @@
         <state vertical-scroll-proportion="0.57239056">
           <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1265#1266#0" expanded="true" />
-            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1265#1266#0" expanded="false" />
+            <element signature="e#1296#1297#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1638,7 +1660,7 @@
         <state vertical-scroll-proportion="0.34343433">
           <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1656,7 +1678,7 @@
         <state vertical-scroll-proportion="0.496633">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1674,17 +1696,9 @@
         <state vertical-scroll-proportion="0.45791245">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="e#1203#1204#0" expanded="true" />
-            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1203#1204#0" expanded="false" />
+            <element signature="e#1234#1235#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57239056">
-          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1714,8 +1728,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserProfileServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59859157">
+        <state vertical-scroll-proportion="1.6026936">
           <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/MessageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14141414">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8299663">
+          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25757575">
+          <caret line="33" column="72" selection-start-line="33" selection-start-column="72" selection-end-line="33" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42929292">
+          <caret line="19" column="74" selection-start-line="19" selection-start-column="74" selection-end-line="19" selection-end-column="74" />
           <folding />
         </state>
       </provider>
