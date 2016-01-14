@@ -1,17 +1,23 @@
 package com.chataround.chataroundws.model.DTO;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
  * @author Gewrgia
  */
 public class UserProfileDTO {
+    @NotNull
     private String username;
+    @NotNull
     private String firstName;
+    @NotNull
     private String surName;
+    @NotNull
     private String gender;
     private String country;
     private String city;
+    @NotNull
     private Date birthday;
     private String about;
 

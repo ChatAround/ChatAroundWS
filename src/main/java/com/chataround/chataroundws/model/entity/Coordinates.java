@@ -1,6 +1,7 @@
 package com.chataround.chataroundws.model.entity;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.geo.Point;
@@ -10,7 +11,9 @@ import org.springframework.data.geo.Point;
  */
 @Embeddable
 public class Coordinates {
+    @NotNull
     private Double latitude;
+    @NotNull
     private Double longitude;
 
     public Coordinates() {

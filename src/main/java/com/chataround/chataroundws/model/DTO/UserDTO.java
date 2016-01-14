@@ -1,14 +1,20 @@
 package com.chataround.chataroundws.model.DTO;
 
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author Georgia Grigoriadou
  */
 public class UserDTO {
 
+    @NotNull
     private String username;
+    @NotNull
     private String password;
+    @NotNull
     private Double latitude;
+    @NotNull
     private Double longitude;
     private boolean isOnline;
     public UserDTO() {

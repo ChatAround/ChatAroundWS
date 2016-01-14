@@ -1,11 +1,14 @@
 package com.chataround.chataroundws.service;
 
-import com.chataround.chataroundws.mapper.IMapper;
-import com.chataround.chataroundws.model.DTO.UserProfileDTO;
-import com.chataround.chataroundws.model.entity.UserProfile;
-import com.chataround.chataroundws.repository.UserProfileRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+        import com.chataround.chataroundws.exception.AlreadyInUseUsername;
+        import com.chataround.chataroundws.exception.OnlineUserNotFoundException;
+        import com.chataround.chataroundws.mapper.IMapper;
+        import com.chataround.chataroundws.model.DTO.UserProfileDTO;
+        import com.chataround.chataroundws.model.entity.UserProfile;
+        import com.chataround.chataroundws.repository.UserProfileRepository;
+        import com.chataround.chataroundws.repository.UserRepository;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.stereotype.Service;
 
 /**
  * @author Gewrgia
@@ -19,30 +22,32 @@ public class UserProfileService implements IUserProfileService{
     @Autowired
     IMapper<UserProfile,UserProfileDTO> userProfileMapper;
 
+    @Autowired
+    UserRepository userRepository;
+
     @Override
-    public String createUserProfile(UserProfileDTO dto) {
-        if(userProfileRepository.exists(dto.getUsername())) return "Already exists";
+    public void createUserProfile(UserProfileDTO dto) {
+        if(!userRepository.exists(dto.getUsername())) throw new OnlineUserNotFoundException();
+        if(userProfileRepository.exists(dto.getUsername())) throw new AlreadyInUseUsername();
         userProfileRepository.saveAndFlush(userProfileMapper.fromDTO(dto));
-        return "OK";
+
     }
 
     @Override
-    public String updateUserProfile(UserProfileDTO dto) {
-        if(!userProfileRepository.exists(dto.getUsername())) return "No such User";
+    public void updateUserProfile(UserProfileDTO dto) {
+        if(!userProfileRepository.exists(dto.getUsername()) || !userRepository.findOne(dto.getUsername()).isOnline()) throw new OnlineUserNotFoundException();
         userProfileRepository.save(userProfileMapper.fromDTO(dto));
-        return "OK";
     }
 
     @Override
     public UserProfileDTO getUserProfile(String username) {
-        if(!userProfileRepository.exists(username)) return null;
+        if(!userProfileRepository.exists(username)|| !userRepository.findOne(username).isOnline()) throw new OnlineUserNotFoundException();
         return userProfileMapper.toDTO(userProfileRepository.findOne(username));
     }
 
     @Override
-    public String deleteUserProfile(String username) {
-        if(!userProfileRepository.exists(username)) return "No such Profile";
+    public void deleteUserProfile(String username) {
+        if(!userProfileRepository.exists(username)|| !userRepository.findOne(username).isOnline())throw new OnlineUserNotFoundException();
         userProfileRepository.delete(username);
-        return "OK";
     }
 }
