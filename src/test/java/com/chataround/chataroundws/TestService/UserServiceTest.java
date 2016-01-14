@@ -1,7 +1,9 @@
 package com.chataround.chataroundws.TestService;
 
 import com.chataround.chataroundws.Application;
-import com.chataround.chataroundws.exception.UserNotFoundException;
+import com.chataround.chataroundws.exception.AlreadyInUseUsername;
+import com.chataround.chataroundws.exception.OnlineUserNotFoundException;
+import com.chataround.chataroundws.exception.WrongPasswordException;
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import com.chataround.chataroundws.model.entity.Coordinates;
@@ -51,8 +53,8 @@ private MockMvc mockMvc;
         this.mockMvc = MockMvcBuilders.standaloneSetup(userService).build();
 
     }
-    @Test(expected = UserNotFoundException.class)
-    public void testGetUserFail() throws Exception {
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testGetUserFailUserDoesNotExist() throws Exception {
         String username="test";
         String password="12345";
         Double latitude=40.123456;
@@ -81,6 +83,7 @@ private MockMvc mockMvc;
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).findOne(Mockito.anyString());
         Mockito.reset(userRepository);
     }
+
     @Test
     public void testGetUserSuccess() throws Exception {
         String username="test";
@@ -141,8 +144,7 @@ private MockMvc mockMvc;
         Mockito.when(userRepository.findOne(username)).thenReturn(null);
         Mockito.when(userMapper.fromDTO(dto)).thenReturn(user);
 
-        String response=userService.addUser(dto);
-        assertEquals(response,"OK");
+        userService.addUser(dto);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).saveAndFlush(Mockito.any(User.class));
@@ -150,7 +152,7 @@ private MockMvc mockMvc;
 
     }
 
-    @Test
+    @Test(expected = AlreadyInUseUsername.class)
     public void testAddUserFail() throws Exception{
         String username="test";
         String password="12345";
@@ -175,9 +177,7 @@ private MockMvc mockMvc;
         Mockito.when(userRepository.findOne(username)).thenReturn(user);
         Mockito.when(userMapper.fromDTO(dto)).thenReturn(added);
 
-
-        String response=userService.addUser(dto);
-        assertEquals(response,"Already exists");
+        userService.addUser(dto);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).saveAndFlush(Mockito.any(User.class));
@@ -186,7 +186,7 @@ private MockMvc mockMvc;
 
     }
 
-    @Test(expected = UserNotFoundException.class)
+    @Test(expected = OnlineUserNotFoundException.class)
     public void testUpdateUserFailToFindUser() throws Exception {
         String username = "test";
         String password = "12345";
@@ -211,7 +211,7 @@ private MockMvc mockMvc;
         Mockito.when(userMapper.fromDTO(dto)).thenReturn(user);
 
 
-        String response = userService.updateUser(dto);
+        userService.updateUser(dto);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).findOne(Mockito.anyString());
@@ -220,7 +220,7 @@ private MockMvc mockMvc;
         Mockito.reset(userRepository);
     }
 
-    @Test
+    @Test(expected = WrongPasswordException.class)
     public void testUpdateUserFailWrongPassword() throws Exception {
         String username = "test";
         String password = "12345";
@@ -253,8 +253,7 @@ private MockMvc mockMvc;
         Mockito.when(userMapper.fromDTO(dto)).thenReturn(updated);
 
 
-        String response = userService.updateUser(dto);
-        assertEquals(response, "Wrong Password");
+        userService.updateUser(dto);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
@@ -263,6 +262,49 @@ private MockMvc mockMvc;
         Mockito.reset(userRepository);
     }
 
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testUpdateUserFailUserIsNotOnline() throws Exception {
+        String username = "test";
+        String password = "12345";
+        Double latitude = 40.123456;
+        Double longitude = 22.123456;
+        Boolean isOnline = false;
+
+        UserDTO dto = new UserDTO(username,
+                password,
+                latitude,
+                longitude,
+                isOnline);
+
+
+        Coordinates coordinates = new Coordinates(latitude, longitude);
+        Coordinates coordinates2 = new Coordinates(40.98265, 22.098375);
+
+        User user = new User(
+                username,
+                password,
+                coordinates2,
+                isOnline);
+
+        User updated = new User(
+                username,
+                password,
+                coordinates,
+                isOnline);
+
+        Mockito.when(userRepository.exists(dto.getUsername())).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
+        Mockito.when(userMapper.fromDTO(dto)).thenReturn(updated);
+
+
+        userService.updateUser(dto);
+
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(0)).save(Mockito.any(User.class));
+
+        Mockito.reset(userRepository);
+    }
 
     @Test
     public void testUpdateUserSuccess() throws Exception {
@@ -298,23 +340,22 @@ private MockMvc mockMvc;
         Mockito.when(userMapper.fromDTO(dto)).thenReturn(updated);
 
 
-        String response = userService.updateUser(dto);
-        assertEquals(response, "OK");
+        userService.updateUser(dto);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(2)).findOne(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).save(Mockito.any(User.class));
 
         Mockito.reset(userRepository);
     }
 
-    @Test(expected = UserNotFoundException.class)
-    public void testDeleteUserFail() throws Exception {
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testDeleteUserFailUserDoesNotExists() throws Exception {
         String username="test";
 
         Mockito.when(userRepository.exists(username)).thenReturn(false);
 
-        String response = userService.deleteUser(username);
+        userService.deleteUser(username);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(0)).delete(Mockito.anyString());
@@ -322,23 +363,47 @@ private MockMvc mockMvc;
         Mockito.reset(userRepository);
     }
 
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testDeleteUserFailUserIsNotOnline() throws Exception {
+        String username="test";
+        User user=new User();
+        user.setUsername(username);
+        user.setOnline(false);
+
+        Mockito.when(userRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
+
+
+        userService.deleteUser(username);
+
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(0)).delete(Mockito.anyString());
+
+        Mockito.reset(userRepository);
+    }
     @Test
     public void testDeleteUserSuccess() throws Exception {
         String username="test";
+        User user=new User();
+        user.setUsername(username);
+        user.setOnline(true);
 
         Mockito.when(userRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
 
-        String response = userService.deleteUser(username);
-        assertEquals(response, "OK");
+
+        userService.deleteUser(username);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).delete(Mockito.anyString());
 
         Mockito.reset(userRepository);
     }
 
 
-    @Test(expected = UserNotFoundException.class)
+    @Test(expected = OnlineUserNotFoundException.class)
     public void testGetUsersInRadiusFailNoSuchUser() throws Exception{
         String username="test";
         Double radius=20.000;
@@ -354,6 +419,49 @@ private MockMvc mockMvc;
 
     }
 
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testGetUsersInRadiusFailUserIsNotOnline() throws Exception{
+        Double radius=20.000;
+
+        String username1="test1";
+        String password1="12345";
+        Double latitude1=40.123455;
+        Double longitude1=20.1242232;
+        String username2="test2";
+        String password2="09876";
+        Double latitude2=40.123450;
+        Double longitude2=20.1245533;
+
+        Coordinates coordinates1=new Coordinates(latitude1,longitude1);
+        User user1=new User(username1,password1,coordinates1,false);
+        Coordinates coordinates2=new Coordinates(latitude2,longitude2);
+        User user2=new User(username2,password2,coordinates2,true);
+
+        List<User> users= new ArrayList<>();
+        users.add(user1);
+
+        UserDTO dto1=new UserDTO(username1,password1,latitude1,longitude1,true);
+        UserDTO dto2=new UserDTO(username2,password2,latitude2,longitude2,true);
+        List<UserDTO> userDTOs = new ArrayList<>();
+        userDTOs.add(dto1);
+        userDTOs.add(dto2);
+
+        Mockito.when(userRepository.exists(username1)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username1)).thenReturn(user1);
+        Mockito.when(userRepository.findInRadius(latitude1,longitude1,radius)).thenReturn(users);
+        Mockito.when(userMapper.toDTO(users)).thenReturn(userDTOs);
+
+        List<UserDTO> response=userService.getInRadius(username1,radius);
+
+        assertEquals(response,userDTOs);
+
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(0)).findInRadius(Mockito.anyDouble(),Mockito.anyDouble(),Mockito.anyDouble());
+
+        Mockito.reset(userRepository);
+
+    }
     @Test
     public void testGetUsersInRadiusSuccess() throws Exception{
         Double radius=20.000;
@@ -391,7 +499,7 @@ private MockMvc mockMvc;
         assertEquals(response,userDTOs);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(2)).findOne(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).findInRadius(Mockito.anyDouble(),Mockito.anyDouble(),Mockito.anyDouble());
 
         Mockito.reset(userRepository);

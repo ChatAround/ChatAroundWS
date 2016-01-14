@@ -1,6 +1,8 @@
 package com.chataround.chataroundws.service;
 
-import com.chataround.chataroundws.exception.UserNotFoundException;
+import com.chataround.chataroundws.exception.AlreadyInUseUsername;
+import com.chataround.chataroundws.exception.OnlineUserNotFoundException;
+import com.chataround.chataroundws.exception.WrongPasswordException;
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import com.chataround.chataroundws.model.entity.User;
@@ -29,7 +31,8 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDTO> getInRadius(String username, Double radius) {
-       if(!userRepository.exists(username)) throw new UserNotFoundException();
+       if(!userRepository.exists(username) || !userRepository.findOne(username).isOnline()) throw new OnlineUserNotFoundException();
+        if(radius==null) return getAll();
         User user=userRepository.findOne(username);
         return userMapper.toDTO(userRepository.findInRadius(
                 user.getCoordinates().getLatitude(),
@@ -38,32 +41,30 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String addUser(UserDTO dto){
-        if(userRepository.findOne(dto.getUsername())!=null) return "Already exists";
+    public void addUser(UserDTO dto){
+        if(userRepository.findOne(dto.getUsername())!=null) throw new AlreadyInUseUsername();
         User added=userMapper.fromDTO(dto);
         userRepository.saveAndFlush(added);
-        return "OK";
+
     }
 
     @Override
-    public String deleteUser(String username)  {
-        if( !userRepository.exists(username)) throw new UserNotFoundException();
+    public void deleteUser(String username)  {
+        if( !userRepository.exists(username)|| !userRepository.findOne(username).isOnline()) throw new OnlineUserNotFoundException();
         userRepository.delete(username);
-        return "OK";
     }
 
     @Override
-    public String updateUser(UserDTO dto){
+    public void updateUser(UserDTO dto){
 
-        if( !userRepository.exists(dto.getUsername())) throw new UserNotFoundException();
-        if(!userRepository.findOne(dto.getUsername()).getPassword().equals(dto.getPassword())) return "Wrong Password";
+        if( !userRepository.exists(dto.getUsername()) ) throw new OnlineUserNotFoundException();
+        if(!userRepository.findOne(dto.getUsername()).getPassword().equals(dto.getPassword())) throw new WrongPasswordException();
         userRepository.save(userMapper.fromDTO(dto));
-        return "OK";
     }
 
     @Override
     public UserDTO getUser(String username){
-        if( !userRepository.exists(username)) throw new UserNotFoundException();
+        if( !userRepository.exists(username)) throw new OnlineUserNotFoundException();
         return userMapper.toDTO(userRepository.findOne(username));
     }
 }

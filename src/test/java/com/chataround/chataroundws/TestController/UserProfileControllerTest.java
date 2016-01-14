@@ -125,7 +125,6 @@ public class UserProfileControllerTest {
         String city="Serres";
         String about=null;
 
-        when(userProfileService.createUserProfile(isA(UserProfileDTO.class))).thenReturn("OK");
 
         mockMvc.perform(post("/userProfile")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -169,7 +168,6 @@ public class UserProfileControllerTest {
 
      String about=null;
 
-     when(userProfileService.updateUserProfile(isA(UserProfileDTO.class))).thenReturn("OK");
 
 
      mockMvc.perform(put("/userProfile")
@@ -211,7 +209,6 @@ public class UserProfileControllerTest {
     public void testDeleteUserProfile() throws Exception {
         String username="test";
 
-        doReturn("OK").when(userProfileService).deleteUserProfile(username);
         mockMvc.perform(delete("/userProfile")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("username", username))

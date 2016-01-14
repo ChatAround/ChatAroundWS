@@ -1,7 +1,6 @@
 package com.chataround.chataroundws.service;
 
 import com.chataround.chataroundws.model.DTO.UserDTO;
-import com.chataround.chataroundws.model.entity.User;
 
 import java.util.List;
 
@@ -14,10 +13,10 @@ public interface IUserService {
 
     List<UserDTO> getInRadius(String username, Double radius);
 
-    String addUser(UserDTO dto);
-    String deleteUser(String username);
+    void addUser(UserDTO dto);
+    void deleteUser(String username);
 
-    String updateUser(UserDTO dto);
+    void updateUser(UserDTO dto);
 
     UserDTO getUser(String username);
 }

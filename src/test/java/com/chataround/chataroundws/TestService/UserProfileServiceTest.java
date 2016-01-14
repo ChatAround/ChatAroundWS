@@ -1,11 +1,14 @@
 package com.chataround.chataroundws.TestService;
 
 import com.chataround.chataroundws.Application;
-import com.chataround.chataroundws.exception.UserNotFoundException;
+import com.chataround.chataroundws.exception.AlreadyInUseUsername;
+import com.chataround.chataroundws.exception.OnlineUserNotFoundException;
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.UserProfileDTO;
+import com.chataround.chataroundws.model.entity.User;
 import com.chataround.chataroundws.model.entity.UserProfile;
 import com.chataround.chataroundws.repository.UserProfileRepository;
+import com.chataround.chataroundws.repository.UserRepository;
 import com.chataround.chataroundws.service.UserProfileService;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,6 +47,10 @@ public class UserProfileServiceTest {
     @Mock
     private IMapper<UserProfile,UserProfileDTO> userProfileMapper;
 
+
+    @Mock
+    private UserRepository userRepository;
+
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
@@ -69,20 +76,21 @@ public class UserProfileServiceTest {
         UserProfileDTO dto=new UserProfileDTO(username,firstName,surName,gender,
                 country,city,birthday,about);
 
+        Mockito.when(userRepository.exists(username)).thenReturn(true);
         Mockito.when(userProfileRepository.exists(username)).thenReturn(false);
         Mockito.when(userProfileMapper.fromDTO(dto)).thenReturn(userProfile);
 
-        String response=userProfileService.createUserProfile(dto);
-        assertEquals(response,"OK");
+       userProfileService.createUserProfile(dto);
 
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).saveAndFlush(Mockito.any(UserProfile.class));
         Mockito.reset(userProfileRepository);
 
     }
 
-    @Test
-    public void testCreateUserProfileFail() throws Exception{
+    @Test(expected = AlreadyInUseUsername.class)
+    public void testCreateUserProfileFailUserProfileAlreadyExists() throws Exception{
         String username="test";
         String firstName="Test";
         String surName="Tester";
@@ -99,13 +107,41 @@ public class UserProfileServiceTest {
         UserProfileDTO dto=new UserProfileDTO(username,firstName,surName,gender,
                 country,city,birthday,about);
 
+        Mockito.when(userRepository.exists(username)).thenReturn(true);
         Mockito.when(userProfileRepository.exists(username)).thenReturn(true);
         Mockito.when(userProfileMapper.fromDTO(dto)).thenReturn(userProfile);
 
-        String response=userProfileService.createUserProfile(dto);
-        assertEquals(response,"Already exists");
+        userProfileService.createUserProfile(dto);
 
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).saveAndFlush(Mockito.any(UserProfile.class));
+        Mockito.reset(userProfileRepository);
+
+    }
+
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testCreateUserProfileFailUserDoesNotExists() throws Exception{
+        String username="test";
+        String firstName="Test";
+        String surName="Tester";
+        String gender="male";
+        String country="Greece";
+        String city="Serres";
+        String s = "1993/09/22";
+        SimpleDateFormat sd = new SimpleDateFormat("yyy/MM/dd");
+        Date birthday = sd.parse(s);
+        String about= "mplampla";
+
+        UserProfileDTO dto=new UserProfileDTO(username,firstName,surName,gender,
+                country,city,birthday,about);
+
+        Mockito.when(userRepository.exists(username)).thenReturn(false);
+
+        userProfileService.createUserProfile(dto);
+
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).exists(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).saveAndFlush(Mockito.any(UserProfile.class));
         Mockito.reset(userProfileRepository);
 
@@ -123,6 +159,9 @@ public class UserProfileServiceTest {
         SimpleDateFormat sd = new SimpleDateFormat("yyy/MM/dd");
         Date birthday = sd.parse(s);
         String about= "mplamplaa";
+        User user = new User();
+        user.setUsername(username);
+        user.setOnline(true);
 
         UserProfile userProfile=new UserProfile(username,firstName,surName,gender,
                 country,city,birthday,about);
@@ -130,19 +169,20 @@ public class UserProfileServiceTest {
                 country,city,birthday,about);
 
         Mockito.when(userProfileRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
         Mockito.when(userProfileMapper.fromDTO(dto)).thenReturn(userProfile);
 
-        String response=userProfileService.updateUserProfile(dto);
-        assertEquals(response,"OK");
+        userProfileService.updateUserProfile(dto);
 
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).save(Mockito.any(UserProfile.class));
         Mockito.reset(userProfileRepository);
 
     }
 
-    @Test(expected = UserNotFoundException.class)
-    public void testUpdateUserProfileFail() throws Exception{
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testUpdateUserProfileFailUserProfileDoesNotExists() throws Exception{
         String username="test";
         String firstName="Test";
         String surName="Tester";
@@ -162,9 +202,42 @@ public class UserProfileServiceTest {
         Mockito.when(userProfileRepository.exists(username)).thenReturn(false);
         Mockito.when(userProfileMapper.fromDTO(dto)).thenReturn(userProfile);
 
-        String response=userProfileService.updateUserProfile(dto);
+        userProfileService.updateUserProfile(dto);
 
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).save(Mockito.any(UserProfile.class));
+        Mockito.reset(userProfileRepository);
+
+    }
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testUpdateUserProfileFailUserIsNotOnlne() throws Exception{
+        String username="test";
+        String firstName="Test";
+        String surName="Tester";
+        String gender="male";
+        String country="Greece";
+        String city="Serres";
+        String s = "1993/09/22";
+        SimpleDateFormat sd = new SimpleDateFormat("yyy/MM/dd");
+        Date birthday = sd.parse(s);
+        String about= "mplamplaa";
+        User user = new User();
+        user.setUsername(username);
+        user.setOnline(false);
+
+        UserProfile userProfile=new UserProfile(username,firstName,surName,gender,
+                country,city,birthday,about);
+        UserProfileDTO dto=new UserProfileDTO(username,firstName,surName,gender,
+                country,city,birthday,about);
+
+        Mockito.when(userProfileRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
+        Mockito.when(userProfileMapper.fromDTO(dto)).thenReturn(userProfile);
+
+        userProfileService.updateUserProfile(dto);
+
+        Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).save(Mockito.any(UserProfile.class));
         Mockito.reset(userProfileRepository);
 
@@ -183,12 +256,16 @@ public class UserProfileServiceTest {
         Date birthday = sd.parse(s);
         String about= "mplampla";
 
+        User user=new User();
+        user.setUsername(username);
+        user.setOnline(true);
         UserProfile userProfile=new UserProfile(username,firstName,surName,gender,
                 country,city,birthday,about);
         UserProfileDTO dto=new UserProfileDTO(username,firstName,surName,gender,
                 country,city,birthday,about);
 
         Mockito.when(userProfileRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
         Mockito.when(userProfileRepository.findOne(username)).thenReturn(userProfile);
         Mockito.when(userProfileMapper.toDTO(userProfile)).thenReturn(dto);
 
@@ -203,12 +280,13 @@ public class UserProfileServiceTest {
         assertEquals(response.getAbout(),about);
 
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.reset(userProfileRepository);
     }
 
-    @Test(expected = UserNotFoundException.class)
-    public void testGetUserProfileFail() throws Exception{
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testGetUserProfileFailUserProfileDoesNotExists() throws Exception{
         String username="test";
 
         Mockito.when(userProfileRepository.exists(username)).thenReturn(false);
@@ -219,28 +297,72 @@ public class UserProfileServiceTest {
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).findOne(Mockito.anyString());
         Mockito.reset(userProfileRepository);
     }
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testGetUserProfileFailUserIsNotOnline() throws Exception{
+        String username="test";
 
+        User user=new User();
+        user.setUsername(username);
+        user.setOnline(false);
+
+
+        Mockito.when(userProfileRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
+
+
+        UserProfileDTO response=userProfileService.getUserProfile(username);
+
+
+        Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.reset(userProfileRepository);
+    }
     @Test
     public void testDeleteUserProfileSuccess() throws Exception{
         String username="test";
+        User user=new User();
+        user.setUsername(username);
+        user.setOnline(true);
 
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
         Mockito.when(userProfileRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
 
-        String response=userProfileService.deleteUserProfile(username);
-        assertEquals(response,"OK");
+        userProfileService.deleteUserProfile(username);
 
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).delete(Mockito.anyString());
         Mockito.reset(userProfileRepository);
     }
 
-    @Test(expected = UserNotFoundException.class)
-    public void testDeleteUserProfileFail() throws Exception{
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testDeleteUserProfileFailUserIsNotOnline() throws Exception{
+        String username="test";
+        User user=new User();
+        user.setUsername(username);
+        user.setOnline(false);
+
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
+        Mockito.when(userProfileRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
+
+        userProfileService.deleteUserProfile(username);
+
+        Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).delete(Mockito.anyString());
+        Mockito.reset(userProfileRepository);
+    }
+
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testDeleteUserProfileFailUserProfileDoesNotExists() throws Exception{
         String username="test";
 
         Mockito.when(userProfileRepository.exists(username)).thenReturn(false);
 
-        String response=userProfileService.deleteUserProfile(username);
+        userProfileService.deleteUserProfile(username);
 
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
         Mockito.verify(userProfileRepository, VerificationModeFactory.times(0)).delete(Mockito.anyString());

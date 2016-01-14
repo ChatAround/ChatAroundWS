@@ -1,11 +1,9 @@
 package com.chataround.chataroundws.controller;
 
-import com.chataround.chataroundws.exception.NullLocationPropertiesException;
 import com.chataround.chataroundws.model.DTO.UserProfileDTO;
-import com.chataround.chataroundws.model.entity.UserProfile;
 import com.chataround.chataroundws.service.IUserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,14 +25,15 @@ public class UserProfileController implements IUserProfileController {
 
     @Override
     @RequestMapping(value = "/userProfile", method = RequestMethod.POST)
-    public ResponseEntity<String> createUserProfile(UserProfileDTO dto, Model model) {
-        return ResponseEntity.ok(userProfileService.createUserProfile(dto));
+    public ResponseEntity<?> createUserProfile(UserProfileDTO dto, Model model) {
+        userProfileService.createUserProfile(dto);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
 
     @Override
     @RequestMapping(value = "/userProfile", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateUserProfile(
+    public ResponseEntity<?> updateUserProfile(
             @RequestParam("username") String username,
             @RequestParam("firstName") String firstName,
             @RequestParam("surName") String surName,
@@ -46,7 +45,8 @@ public class UserProfileController implements IUserProfileController {
         UserProfileDTO dto=new UserProfileDTO(
           username,firstName,surName,gender,country,city,birthday,about
         );
-        return ResponseEntity.ok(userProfileService.updateUserProfile(dto));
+        userProfileService.updateUserProfile(dto);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @Override
@@ -58,9 +58,10 @@ public class UserProfileController implements IUserProfileController {
 
     @Override
     @RequestMapping(value = "/userProfile", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteUserProfile(@RequestParam("username") String username) {
+    public ResponseEntity<?> deleteUserProfile(@RequestParam("username") String username) {
 
-        return ResponseEntity.ok(userProfileService.deleteUserProfile(username));
+        userProfileService.deleteUserProfile(username);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
 }

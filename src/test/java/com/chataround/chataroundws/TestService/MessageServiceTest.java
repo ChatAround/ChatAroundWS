@@ -1,10 +1,11 @@
 package com.chataround.chataroundws.TestService;
 
 import com.chataround.chataroundws.Application;
-import com.chataround.chataroundws.exception.UserNotFoundException;
+import com.chataround.chataroundws.exception.OnlineUserNotFoundException;
 import com.chataround.chataroundws.mapper.IMapper;
 import com.chataround.chataroundws.model.DTO.MessageDTO;
 import com.chataround.chataroundws.model.entity.Message;
+import com.chataround.chataroundws.model.entity.User;
 import com.chataround.chataroundws.repository.MessageRepository;
 import com.chataround.chataroundws.repository.UserRepository;
 import com.chataround.chataroundws.service.MessageService;
@@ -59,6 +60,9 @@ public class MessageServiceTest {
     public void testAddMessageAndNotDeleteItSuccess() throws Exception{
 
         String username="test";
+        User user =new User();
+        user.setUsername(username);
+        user.setOnline(true);
         String content="hello";
         Double radius=100.000;
         int duration=0;
@@ -68,6 +72,8 @@ public class MessageServiceTest {
         dto.setRadius(radius);
         dto.setDuration(duration);
         Message message=new Message(username,content,radius,duration);
+
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
         Mockito.when(userRepository.exists(username)).thenReturn(true);
         Mockito.when(messageMapper.fromDTO(dto)).thenReturn(message);
 
@@ -75,13 +81,14 @@ public class MessageServiceTest {
         messageService.addMessage(dto);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(messageRepository, VerificationModeFactory.times(1)).saveAndFlush(Mockito.any(Message.class));
         Mockito.verify(messageRepository, VerificationModeFactory.times(0)).delete(Mockito.anyLong());
         Mockito.reset(messageRepository);
 
     }
-    @Test(expected = UserNotFoundException.class)
-    public void testAddMessageAndNotDeleteItFail() throws Exception{
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testAddMessageAndNotDeleteItFailUserDoesNotExist() throws Exception{
 
         String username="test";
         String content="hello";
@@ -105,12 +112,43 @@ public class MessageServiceTest {
         Mockito.reset(messageRepository);
 
     }
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testAddMessagetFailUserNotOnline() throws Exception{
 
+        String username="test";
+        User user =new User();
+        user.setUsername(username);
+        user.setOnline(false);
+        String content="hello";
+        Double radius=100.000;
+        int duration=0;
+        MessageDTO dto=new MessageDTO();
+        dto.setUsername(username);
+        dto.setContent(content);
+        dto.setRadius(radius);
+        dto.setDuration(duration);
+        Message message=new Message(username,content,radius,duration);
+        Mockito.when(userRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
+        Mockito.when(messageMapper.fromDTO(dto)).thenReturn(message);
+
+
+        messageService.addMessage(dto);
+
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
+        Mockito.verify(messageRepository, VerificationModeFactory.times(0)).saveAndFlush(Mockito.any(Message.class));
+        Mockito.verify(messageRepository, VerificationModeFactory.times(0)).delete(Mockito.anyLong());
+        Mockito.reset(messageRepository);
+
+    }
     @Test
     public void testGetMessagesSuccess() throws Exception{
 
         String username="test";
-
+        User user =new User();
+        user.setUsername(username);
+        user.setOnline(true);
         Message message1=new Message("Maria","hello",100.000,120);
         message1.setId(1L);
         Message message2=new Message("Eleni","hi",50.000,60);
@@ -126,6 +164,7 @@ public class MessageServiceTest {
         messageDTOs.add(dto2);
 
         Mockito.when(userRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
         Mockito.when(messageRepository.findByUsername(username)).thenReturn(messages);
         Mockito.when(messageMapper.toDTO(messages)).thenReturn(messageDTOs);
 
@@ -133,12 +172,13 @@ public class MessageServiceTest {
         assertEquals(response,messageDTOs);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(messageRepository, VerificationModeFactory.times(1)).findByUsername(Mockito.anyString());
         Mockito.reset(messageRepository);
     }
 
-    @Test(expected = UserNotFoundException.class)
-    public void testGetMessagesFail() throws Exception{
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testGetMessagesFailUserDoesNotexists() throws Exception{
 
         String username="test";
 
@@ -163,6 +203,41 @@ public class MessageServiceTest {
         List<MessageDTO> response=messageService.getMessages(username);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(messageRepository, VerificationModeFactory.times(0)).findByUsername(Mockito.anyString());
+        Mockito.reset(messageRepository);
+    }
+
+    @Test(expected = OnlineUserNotFoundException.class)
+    public void testGetMessagesFailUserIsNotOnline() throws Exception{
+
+        String username="test";
+        User user =new User();
+        user.setUsername(username);
+        user.setOnline(false);
+        Message message1=new Message("Maria","hello",100.000,120);
+        message1.setId(1L);
+        Message message2=new Message("Eleni","hi",50.000,60);
+        message1.setId(2L);
+        List<Message> messages=new ArrayList<>();
+        messages.add(message1);
+        messages.add(message2);
+
+        MessageDTO dto1=new MessageDTO(1L,"Maria","hello",100.000,120);
+        MessageDTO dto2=new MessageDTO(2L,"Eleni","hi",50.000,60);
+        List<MessageDTO> messageDTOs = new ArrayList<>();
+        messageDTOs.add(dto1);
+        messageDTOs.add(dto2);
+
+        Mockito.when(userRepository.exists(username)).thenReturn(true);
+        Mockito.when(userRepository.findOne(username)).thenReturn(user);
+
+        Mockito.when(messageRepository.findByUsername(username)).thenReturn(messages);
+        Mockito.when(messageMapper.toDTO(messages)).thenReturn(messageDTOs);
+
+        List<MessageDTO> response=messageService.getMessages(username);
+
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(messageRepository, VerificationModeFactory.times(0)).findByUsername(Mockito.anyString());
         Mockito.reset(messageRepository);
     }

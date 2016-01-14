@@ -26,7 +26,6 @@ package com.chataround.chataroundws.TestController;
         import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
         import static org.hamcrest.MatcherAssert.assertThat;
-        import static org.mockito.Matchers.isA;
         import static org.mockito.Mockito.*;
         import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
         import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -162,7 +161,6 @@ public class UserControllerTest {
         Double longitude=22.122345;
         Boolean isOnline=true;
 
-        when(userService.addUser(isA(UserDTO.class))).thenReturn("OK");
         mockMvc.perform(post("/user")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("username", username)
@@ -194,7 +192,6 @@ public class UserControllerTest {
         Double longitude=22.8765432;
         Boolean isOnline=true;
 
-        when(userService.updateUser(isA(UserDTO.class))).thenReturn("OK");
         mockMvc.perform(put("/user")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("username", username)
@@ -220,7 +217,6 @@ public class UserControllerTest {
     public void testDeleteUser() throws Exception {
         String username="test";
 
-        doReturn("OK").when(userService).deleteUser(username);
         mockMvc.perform(delete("/user")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("username", username))

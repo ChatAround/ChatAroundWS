@@ -18,8 +18,18 @@ public class GlobalControllerExceptionHandler {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "User Not Found")
-    @ExceptionHandler(UserNotFoundException.class)
-    public void handleUserNotFoundException(UserNotFoundException e) {
+    @ExceptionHandler(OnlineUserNotFoundException.class)
+    public void handleUserNotFoundException(OnlineUserNotFoundException e) {
+    }
+
+    @ResponseStatus(value = HttpStatus.UNAUTHORIZED, reason = "Wrong Password")
+    @ExceptionHandler(WrongPasswordException.class)
+    public void handleWrongPasswordException(WrongPasswordException e) {
+    }
+
+    @ResponseStatus(value = HttpStatus.CONFLICT, reason = "Username Already exists")
+    @ExceptionHandler(AlreadyInUseUsername.class)
+    public void handleAlreadyInUseUsernameException(AlreadyInUseUsername e) {
     }
 
 

@@ -1,9 +1,7 @@
 package com.chataround.chataroundws.exception;
 
-
 /**
  * @author Gewrgia
  */
-
-public class UserNotFoundException extends RuntimeException {
+public class AlreadyInUseUsername extends RuntimeException {
 }
