@@ -8,9 +8,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationContextLoader;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.TransactionSystemException;
 
+import javax.validation.ConstraintViolationException;
 import java.util.Date;
 
 /**
@@ -34,11 +38,17 @@ public class UserProfileRepositoryTest {
 
 
     @Test
-    public void testUserProfileExistsFail() throws Exception{
+    public void testUserProfileExistsFailProfileDoesNotExists() throws Exception{
 
         Boolean exists=userProfileRepository.exists("test");
         Assert.assertNotNull(exists);
         Assert.assertFalse(exists);
+    }
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void testUserProfileExistsFailNullUsername() throws Exception{
+        String username=null;
+        Boolean exists=userProfileRepository.exists(username);
+
     }
 
     @Test
@@ -67,15 +77,21 @@ public class UserProfileRepositoryTest {
 
     }
 
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void testFindOneUserProfileFailUseProfilerDoesNotExists() throws Exception{
+        String username=null;
+        UserProfile userProfile=userProfileRepository.findOne(username);
+
+    }
+
     @Test
-    public void testFindOneUserProfileFail() throws Exception{
+    public void testFindOneUserProfileFailNullUsername() throws Exception{
 
         UserProfile userProfile=userProfileRepository.findOne("test");
         Assert.assertNull(userProfile);
     }
-
     @Test
-    public void testAssUserProfile() throws Exception{
+    public void testAddUserProfileSuccess() throws Exception{
 
         String username="test";
         String firstName="Test";
@@ -118,9 +134,53 @@ public class UserProfileRepositoryTest {
 
         userProfileRepository.delete(username);
     }
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void testAddUserProfileFailNullUsername() throws Exception{
+
+        String username=null;
+        String firstName="Test";
+        String surName="Testos";
+        String gender="male";
+        String country="Greece";
+        String city="Serres";
+        Date birthday=null;
+        String about="mplampa";
+
+        UserProfile find=userProfileRepository.findOne(username);
+        Assert.assertNull(find);
+
+        UserProfile userProfile=new UserProfile(
+                username, firstName, surName, gender, country,
+                city, birthday, about);
+
+        userProfileRepository.saveAndFlush(userProfile);
+
+    }
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddUserProfileFailNullProperties() throws Exception{
+
+        String username="test";
+        String firstName=null;
+        String surName="Testos";
+        String gender="male";
+        String country="Greece";
+        String city="Serres";
+        Date birthday=null;
+        String about="mplampa";
+
+        UserProfile find=userProfileRepository.findOne(username);
+        Assert.assertNull(find);
+
+        UserProfile userProfile=new UserProfile(
+                username, firstName, surName, gender, country,
+                city, birthday, about);
+
+        userProfileRepository.saveAndFlush(userProfile);
+
+    }
 
     @Test
-    public void testUpdateUserProfile() throws Exception{
+    public void testUpdateUserProfileSuccess() throws Exception{
         String username="Maria";
         String firstName="Maria";
         String surName="Papadopoulou";
@@ -179,6 +239,53 @@ public class UserProfileRepositoryTest {
 
     }
 
+    @Test(expected = TransactionSystemException.class)
+    public void testUpdateUserProfileFailNullProperties() throws Exception{
+        String username="Maria";
+        String up_firstName=null;
+        String up_surName="Nikolaidis";
+        String up_gender="male";
+        String up_country="Agglia";
+        String up_city="Londino";
+        Date   up_birthday=null;
+        String up_about="alalalla";
+
+
+        UserProfile up_userProfile=new UserProfile(
+                username,
+                up_firstName,
+                up_surName,
+                up_gender,
+                up_country,
+                up_city,
+                up_birthday,
+                up_about
+
+        );
+        userProfileRepository.save(up_userProfile);
+    }
+    @Test(expected = JpaSystemException.class)
+    public void testUpdateUserProfileFailNullUsername() throws Exception{
+        String username=null;
+        String up_firstName="Mrios";
+        String up_surName="Nikolaidis";
+        String up_gender="male";
+        String up_country="Agglia";
+        String up_city="Londino";
+        Date   up_birthday=null;
+        String up_about="alalalla";
+
+
+        UserProfile up_userProfile=new UserProfile(
+                username, up_firstName, up_surName, up_gender,
+                up_country, up_city, up_birthday, up_about
+
+        );
+        userProfileRepository.save(up_userProfile);
+    }
+
+
+
     @Test
     public void testDeleteUserProfile() throws Exception{
 
@@ -226,7 +333,12 @@ public class UserProfileRepositoryTest {
         UserProfile deleted=userProfileRepository.findOne(username);
         Assert.assertNull(deleted);
 
+    }
 
 
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void testDeleteUserProfileFailNullUsername() throws Exception {
+        String username=null;
+        userProfileRepository.delete(username);
     }
 }

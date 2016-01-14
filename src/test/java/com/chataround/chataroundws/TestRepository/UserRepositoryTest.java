@@ -10,10 +10,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationContextLoader;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 /**
@@ -32,7 +36,7 @@ public class UserRepositoryTest {
 
     @Test
     @Transactional
-    public void testInsertUser() throws Exception{
+    public void testInsertUserSuccess() throws Exception{
         String username="test";
         String password="12345";
         Double latitude=40.12345;
@@ -53,6 +57,33 @@ public class UserRepositoryTest {
         Assert.assertEquals(isOnline,dbUser.isOnline());
 
         userRepository.delete(username);
+    }
+
+    @Test(expected = JpaSystemException.class)
+    @Transactional
+    public void testInsertUserFailNullUsername() throws Exception{
+        String username=null;
+        String password="1234";
+        Double latitude=44.123456;
+        Double longitude=22.123455;
+        Coordinates coordinates=new Coordinates(latitude,longitude);
+        boolean isOnline=true;
+        User user=new User(username,password,coordinates,isOnline);
+        userRepository.saveAndFlush(user);
+
+    }
+    @Test(expected = ConstraintViolationException.class)
+    @Transactional
+    public void testInsertUserFailNullPassword() throws Exception{
+        String username="test";
+        String password=null;
+        Double latitude=44.123456;
+        Double longitude=22.123455;
+        Coordinates coordinates=new Coordinates(latitude,longitude);
+        boolean isOnline=true;
+        User user=new User(username,password,coordinates,isOnline);
+        userRepository.saveAndFlush(user);
+
     }
 
     @Test
@@ -73,13 +104,19 @@ public class UserRepositoryTest {
 
 
     @Test
-    public void testFindOneFail() throws Exception{
+    public void testFindOneFailNoSuchUser() throws Exception{
         String username="test";
 
         User dbUser=userRepository.findOne(username);
-
         Assert.assertNull(dbUser);
 
+    }
+
+
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void testFindOneFailNullUsername() throws Exception{
+        String username=null;
+        User dbUser=userRepository.findOne(username);
     }
 
     @Test
@@ -90,11 +127,10 @@ public class UserRepositoryTest {
 
         Assert.assertNotNull(exists);
         Assert.assertEquals(true,exists);
-
     }
 
     @Test
-    public void testExistsFail() throws Exception{
+    public void testExistsFailUserDoesNotExists() throws Exception{
         String username="test";
 
         Boolean exists=userRepository.exists(username);
@@ -103,57 +139,59 @@ public class UserRepositoryTest {
         Assert.assertEquals(false,exists);
 
     }
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void testExistsFailNullUsername() throws Exception{
+        String username=null;
 
-    @Test
-    @Transactional
-    public void testDeleteUser() throws Exception{
-        String username="test";
-        String password="12345";
-        Double latitude=40.12345;
-        Double longitude=22.098765;
-        Coordinates coordinates=new Coordinates(latitude,longitude);
-        boolean isOnline=true;
-        User user=new User(username,password,coordinates,isOnline);
-        userRepository.saveAndFlush(user);
-
-        User dbUser=userRepository.findOne(username);
-
-        Assert.assertNotNull(dbUser);
-        Assert.assertEquals(username, dbUser.getUsername());
-        Assert.assertEquals(password,dbUser.getPassword());
-        Assert.assertEquals(latitude,dbUser.getCoordinates().getLatitude());
-        Assert.assertEquals(longitude,dbUser.getCoordinates().getLongitude());
-        Assert.assertEquals(isOnline,dbUser.isOnline());
-
-        userRepository.delete(username);
-        User dbUser2=userRepository.findOne(username);
-        Assert.assertNull(dbUser2);
+        Boolean exists=userRepository.exists(username);
 
     }
 
     @Test
     @Transactional
-    public void testUpdateUser() throws Exception{
-        String username="Maria";
-        String password="mpla";
-        Double latitude=41.089438;
-        Double longitude=23.544533;
+    public void testDeleteUserSuccess() throws Exception {
+        String username = "test";
+        String password = "12345";
+        Double latitude = 40.12345;
+        Double longitude = 22.098765;
+        Coordinates coordinates = new Coordinates(latitude, longitude);
+        boolean isOnline = true;
+        User user = new User(username, password, coordinates, isOnline);
+        userRepository.saveAndFlush(user);
 
-        User dbUser=userRepository.findOne(username);
+        User dbUser = userRepository.findOne(username);
 
         Assert.assertNotNull(dbUser);
         Assert.assertEquals(username, dbUser.getUsername());
-        Assert.assertEquals(password,dbUser.getPassword());
-        Assert.assertEquals(latitude ,dbUser.getCoordinates().getLatitude());
-        Assert.assertEquals(longitude,dbUser.getCoordinates().getLongitude());
-        Assert.assertEquals(true,dbUser.isOnline());
+        Assert.assertEquals(password, dbUser.getPassword());
+        Assert.assertEquals(latitude, dbUser.getCoordinates().getLatitude());
+        Assert.assertEquals(longitude, dbUser.getCoordinates().getLongitude());
+        Assert.assertEquals(isOnline, dbUser.isOnline());
 
-        String password2="12345";
-        Double latitude2=40.12345;
-        Double longitude2=22.098765;
+        userRepository.delete(username);
+        User dbUser2 = userRepository.findOne(username);
+        Assert.assertNull(dbUser2);
+    }
+
+
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    @Transactional
+    public void testDeleteUserFailNulUsername() throws Exception {
+        String username = null;
+        userRepository.delete(username);
+
+    }
+
+    @Test
+    @Transactional
+    public void testUpdateUserSuccess() throws Exception{
+        String username="Maria";
+        String password="12345";
+        Double latitude=41.089438;
+        Double longitude=23.544533;
         Coordinates coordinates=new Coordinates(latitude,longitude);
         boolean isOnline=true;
-        User user=new User(username,password2,coordinates,isOnline);
+        User user=new User(username,password,coordinates,isOnline);
         userRepository.save(user);
 
         User updated=userRepository.findOne(username);
@@ -161,10 +199,24 @@ public class UserRepositoryTest {
 
         Assert.assertNotNull(updated);
         Assert.assertEquals(username, updated.getUsername());
-        Assert.assertEquals(password2,updated.getPassword());
+        Assert.assertEquals(password,updated.getPassword());
         Assert.assertEquals(latitude,updated.getCoordinates().getLatitude());
         Assert.assertEquals(longitude,updated.getCoordinates().getLongitude());
         Assert.assertEquals(isOnline,updated.isOnline());
+    }
+
+    @Test(expected = JpaSystemException.class)
+    @Transactional
+    public void testUpdateUserFailNullUsername() throws Exception{
+        String username=null;
+        String password="1234";
+        Double latitude=41.089438;
+        Double longitude=23.544533;
+        Coordinates coordinates=new Coordinates(latitude,longitude);
+        boolean isOnline=true;
+        User user=new User(username,password,coordinates,isOnline);
+        userRepository.save(user);
+
     }
 
     @Test
@@ -177,6 +229,7 @@ public class UserRepositoryTest {
         Double longitude1=23.5520611;
         Double longitude2=23.5420477;
         Double longitude3=23.5540053;
+
 
         List<User> users= userRepository.findAll();
 
@@ -204,12 +257,15 @@ public class UserRepositoryTest {
         Assert.assertEquals(true,users.get(3).isOnline());
     }
 
+
     @Test
-    public void testGetUsersInRadius() throws  Exception{
+    public void testGetUsersInRadiusSuccess() throws  Exception{
         Double latitude=41.089438;
         Double latitude1=41.0839519;
         Double longitude=23.544533;
         Double longitude1=23.5520611;
+
+
 
         List<User> users= userRepository.findInRadius(41.089438,23.544533,1000.000);
         Assert.assertNotNull(users);
@@ -224,6 +280,22 @@ public class UserRepositoryTest {
         Assert.assertEquals(longitude1,users.get(1).getCoordinates().getLongitude());
         Assert.assertEquals(true,users.get(0).isOnline());
         Assert.assertEquals(true,users.get(1).isOnline());
+    }
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void testGetUsersInRadiusFailNullLocation() throws  Exception{
+
+
+        List<User> users= userRepository.findInRadius(null,null,1000.000);
+        Assert.assertNull(users);
+
+    }
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void testGetUsersInRadiusFailNullRadius() throws  Exception{
+
+
+        List<User> users= userRepository.findInRadius(41.000,22.123,null);
+        Assert.assertNull(users);
+
     }
 
 
