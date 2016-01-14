@@ -262,49 +262,6 @@ private MockMvc mockMvc;
         Mockito.reset(userRepository);
     }
 
-    @Test(expected = OnlineUserNotFoundException.class)
-    public void testUpdateUserFailUserIsNotOnline() throws Exception {
-        String username = "test";
-        String password = "12345";
-        Double latitude = 40.123456;
-        Double longitude = 22.123456;
-        Boolean isOnline = false;
-
-        UserDTO dto = new UserDTO(username,
-                password,
-                latitude,
-                longitude,
-                isOnline);
-
-
-        Coordinates coordinates = new Coordinates(latitude, longitude);
-        Coordinates coordinates2 = new Coordinates(40.98265, 22.098375);
-
-        User user = new User(
-                username,
-                password,
-                coordinates2,
-                isOnline);
-
-        User updated = new User(
-                username,
-                password,
-                coordinates,
-                isOnline);
-
-        Mockito.when(userRepository.exists(dto.getUsername())).thenReturn(true);
-        Mockito.when(userRepository.findOne(username)).thenReturn(user);
-        Mockito.when(userMapper.fromDTO(dto)).thenReturn(updated);
-
-
-        userService.updateUser(dto);
-
-        Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(0)).save(Mockito.any(User.class));
-
-        Mockito.reset(userRepository);
-    }
 
     @Test
     public void testUpdateUserSuccess() throws Exception {
@@ -343,7 +300,7 @@ private MockMvc mockMvc;
         userService.updateUser(dto);
 
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).exists(Mockito.anyString());
-        Mockito.verify(userRepository, VerificationModeFactory.times(2)).findOne(Mockito.anyString());
+        Mockito.verify(userRepository, VerificationModeFactory.times(1)).findOne(Mockito.anyString());
         Mockito.verify(userRepository, VerificationModeFactory.times(1)).save(Mockito.any(User.class));
 
         Mockito.reset(userRepository);
