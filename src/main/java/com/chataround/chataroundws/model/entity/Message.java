@@ -1,7 +1,10 @@
 package com.chataround.chataroundws.model.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author Georgia Grigoriadou
@@ -14,8 +17,10 @@ public class Message {
     private Long id;
 
     @NotNull
+    @Size(min=4, max = 16)
     private String username;
     @NotNull
+    @Size(min=1, max = 150)
     private String content;
     @NotNull
     Double radius;

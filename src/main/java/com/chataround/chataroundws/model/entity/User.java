@@ -2,6 +2,7 @@ package com.chataround.chataroundws.model.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author Georgia Grigoriadou
@@ -13,10 +14,14 @@ import javax.validation.constraints.NotNull;
 public class User {
     @Id
     @NotNull
+    @Size(min=4, max = 16)
     private String username;
+
     @NotNull
+    @Size(min=4, max = 16)
     private String password;
 
+    @NotNull
     @Embedded
     private Coordinates coordinates;
 

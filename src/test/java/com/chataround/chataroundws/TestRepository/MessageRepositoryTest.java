@@ -3,16 +3,18 @@ package com.chataround.chataroundws.TestRepository;
 import com.chataround.chataroundws.Application;
 import com.chataround.chataroundws.model.entity.Message;
 import com.chataround.chataroundws.repository.MessageRepository;
-import com.chataround.chataroundws.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationContextLoader;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 /**
@@ -25,11 +27,9 @@ public class MessageRepositoryTest {
     @Autowired
     private MessageRepository messageRepository;
 
-    @Autowired
-    private UserRepository userRepository;
     @Test
     public void testFindOneSuccess() throws Exception{
-        Long id=1l;
+        Long id=1L;
         Double radius=100.000;
         Message message=messageRepository.findOne(id);
 
@@ -43,14 +43,21 @@ public class MessageRepositoryTest {
     }
 
     @Test
-    public void testFindOneFail() throws Exception{
+    public void testFindOneFailNoSuchMessage() throws Exception{
         Message message=messageRepository.findOne(5L);
+        Assert.assertNull(message);
+    }
+
+    @Test(expected = InvalidDataAccessApiUsageException.class)
+    public void testFindOneFailNullId() throws Exception{
+        Long id=null;
+        Message message=messageRepository.findOne(id);
         Assert.assertNull(message);
     }
 
     @Transactional
     @Test
-    public void testAddMessage() throws Exception{
+    public void testAddMessageSuccess() throws Exception{
         Long id=5L;
 
         String username="Maria";
@@ -73,8 +80,75 @@ public class MessageRepositoryTest {
     }
 
     @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailNullParameters() throws Exception{
+        String content="hello world";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(null,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+
+    }
+
+    @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailUsernameSizeSmallerThanMin() throws Exception{
+        Long id=5L;
+
+        String username="tes";
+        String content="Hello World";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(username,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+    }
+    @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailUsernameSizeExceedsMax() throws Exception{
+        Long id=5L;
+
+        String username="Test1234567891234567";
+        String content="Hello World";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(username,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+    }
+
+    @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailContentSizeSmallerThanMin() throws Exception{
+        Long id=5L;
+
+        String username="Maria";
+        String content="";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(username,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+    }
+    @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailContentSizeExceedsMax() throws Exception{
+        Long id=5L;
+
+        String username="Maria";
+        String content="hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello" +
+                "hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello ";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(username,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+    }
+
+    @Transactional
     @Test
-    public void testDeleteMessage() throws Exception{
+    public void testDeleteMessageDuccess() throws Exception{
 
         Long id=6L;
 
@@ -102,6 +176,13 @@ public class MessageRepositoryTest {
 
     }
 
+    @Transactional
+    @Test(expected = InvalidDataAccessApiUsageException.class)
+    public void testDeleteMessageFailNullId() throws Exception{
+
+        Long id=null;
+        messageRepository.delete(id);
+    }
     @Test
     public void testGetMessagesByUserName() throws Exception {
 
@@ -126,7 +207,12 @@ public class MessageRepositoryTest {
         Assert.assertEquals(duration,messages.get(0).getDuration());
         Assert.assertEquals(duration,messages.get(1).getDuration());
 
+    }
 
+    @Test(expected= InvalidDataAccessResourceUsageException.class)
+    public void testGetMessagesByUserNameFailNullUserName() throws Exception {
+
+        List<Message> messages=messageRepository.findByUsername(null);
 
 
     }
