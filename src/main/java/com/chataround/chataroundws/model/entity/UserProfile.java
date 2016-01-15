@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -16,17 +17,29 @@ import java.util.Date;
 public class UserProfile {
     @Id
     @NotNull
+    @Size(min=4, max = 16)
     private String username;
+
     @NotNull
+    @Size(min=4, max = 16)
     private String firstName;
+
     @NotNull
+    @Size(min=4, max = 16)
     private String surName;
+
     @NotNull
     private String gender;
+
+    @Size(max = 16)
     private String country;
+
+    @Size( max = 16)
     private String city;
     @javax.persistence.Temporal(TemporalType.DATE)
     private Date birthday;
+
+    @Size(max = 2000)
     private String about;
 
     public UserProfile() {
