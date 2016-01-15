@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationContextLoader;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.test.context.ContextConfiguration;
@@ -79,6 +78,62 @@ public class UserRepositoryTest {
         String password=null;
         Double latitude=44.123456;
         Double longitude=22.123455;
+        Coordinates coordinates=new Coordinates(latitude,longitude);
+        boolean isOnline=true;
+        User user=new User(username,password,coordinates,isOnline);
+        userRepository.saveAndFlush(user);
+
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    @Transactional
+    public void testInsertUserFailUsernameSmallerThanMin() throws Exception{
+        String username="tes";
+        String password="12345";
+        Double latitude=40.12345;
+        Double longitude=22.098765;
+        Coordinates coordinates=new Coordinates(latitude,longitude);
+        boolean isOnline=true;
+        User user=new User(username,password,coordinates,isOnline);
+        userRepository.saveAndFlush(user);
+
+    }
+
+    @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testInsertUserFailUsernameExceedsMax() throws Exception{
+        String username="test123456789123456";
+        String password="12345";
+        Double latitude=40.12345;
+        Double longitude=22.098765;
+        Coordinates coordinates=new Coordinates(latitude,longitude);
+        boolean isOnline=true;
+        User user=new User(username,password,coordinates,isOnline);
+        userRepository.saveAndFlush(user);
+
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    @Transactional
+    public void testInsertUserFailPasswordSmallerThanMin() throws Exception{
+        String username="test";
+        String password="123";
+        Double latitude=40.12345;
+        Double longitude=22.098765;
+        Coordinates coordinates=new Coordinates(latitude,longitude);
+        boolean isOnline=true;
+        User user=new User(username,password,coordinates,isOnline);
+        userRepository.saveAndFlush(user);
+
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    @Transactional
+    public void testInsertUserFailPasswordExceedsMax() throws Exception{
+        String username="test";
+        String password="12345678912345678";
+        Double latitude=40.12345;
+        Double longitude=22.098765;
         Coordinates coordinates=new Coordinates(latitude,longitude);
         boolean isOnline=true;
         User user=new User(username,password,coordinates,isOnline);
@@ -218,6 +273,7 @@ public class UserRepositoryTest {
         userRepository.save(user);
 
     }
+
 
     @Test
     public void testGetAllUsers() throws Exception{

@@ -92,6 +92,61 @@ public class MessageRepositoryTest {
     }
 
     @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailUsernameSizeSmallerThanMin() throws Exception{
+        Long id=5L;
+
+        String username="tes";
+        String content="Hello World";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(username,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+    }
+    @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailUsernameSizeExceedsMax() throws Exception{
+        Long id=5L;
+
+        String username="Test1234567891234567";
+        String content="Hello World";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(username,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+    }
+
+    @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailContentSizeSmallerThanMin() throws Exception{
+        Long id=5L;
+
+        String username="Maria";
+        String content="";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(username,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+    }
+    @Transactional
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddMessageFailContentSizeExceedsMax() throws Exception{
+        Long id=5L;
+
+        String username="Maria";
+        String content="hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello" +
+                "hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello ";
+        Double radius= 50.000;
+        int duration=120;
+
+        Message message=new Message(username,content,radius,duration);
+        messageRepository.saveAndFlush(message);
+    }
+
+    @Transactional
     @Test
     public void testDeleteMessageDuccess() throws Exception{
 

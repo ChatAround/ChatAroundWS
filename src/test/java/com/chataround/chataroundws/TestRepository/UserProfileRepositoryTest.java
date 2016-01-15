@@ -178,7 +178,45 @@ public class UserProfileRepositoryTest {
         userProfileRepository.saveAndFlush(userProfile);
 
     }
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddUserProfileFailUsernameSmallerThanMin() throws Exception{
 
+        String username="tes";
+        String firstName="Test";
+        String surName="Testos";
+        String gender="male";
+        String country="Greece";
+        String city="Serres";
+        Date birthday=null;
+        String about="mplampa";
+
+        UserProfile userProfile=new UserProfile(
+                username, firstName, surName, gender, country,
+                city, birthday, about);
+
+        userProfileRepository.saveAndFlush(userProfile);
+
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddUserProfileFailUsernameExceedsMax() throws Exception{
+
+        String username="test123456789123456";
+        String firstName="Test";
+        String surName="Testos";
+        String gender="male";
+        String country="Greece";
+        String city="Serres";
+        Date birthday=null;
+        String about="mplampa";
+
+        UserProfile userProfile=new UserProfile(
+                username, firstName, surName, gender, country,
+                city, birthday, about);
+
+        userProfileRepository.saveAndFlush(userProfile);
+
+    }
     @Test
     public void testUpdateUserProfileSuccess() throws Exception{
         String username="Maria";
