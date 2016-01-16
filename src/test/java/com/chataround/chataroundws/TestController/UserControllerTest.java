@@ -461,6 +461,26 @@ public class UserControllerTest {
     }
 
     @Test
+    public void testUpdateUserFailWrongTypeofParam() throws Exception {
+        String username="test";
+        String password="12345";
+        String latitude="testis";
+        Double longitude=22.8765432;
+        Boolean isOnline=true;
+
+        mockMvc.perform(put("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username)
+                .param("password", password)
+                .param("latitude", latitude)
+                .param("longitude", String.valueOf(longitude))
+                .param("isOnline", String.valueOf(isOnline)))
+                .andExpect(status().is(400))
+        ;
+
+    }
+
+    @Test
     public void testDeleteUserSuccess() throws Exception {
         String username="test";
 
