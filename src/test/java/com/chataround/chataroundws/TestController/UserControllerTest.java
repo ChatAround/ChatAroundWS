@@ -7,36 +7,30 @@ package com.chataround.chataroundws.TestController;
 
 
         import com.chataround.chataroundws.Application;
-        import com.chataround.chataroundws.controller.UserController;
-        import com.chataround.chataroundws.model.DTO.UserDTO;
-        import com.chataround.chataroundws.service.IUserService;
+import com.chataround.chataroundws.controller.UserController;
+import com.chataround.chataroundws.model.DTO.UserDTO;
+import com.chataround.chataroundws.service.IUserService;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.*;
+import org.mockito.exceptions.misusing.InvalidUseOfMatchersException;
+import org.springframework.boot.test.SpringApplicationContextLoader;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-        import org.junit.Before;
-        import org.junit.Test;
-        import org.junit.runner.RunWith;
-        import org.mockito.*;
-        import org.mockito.exceptions.misusing.InvalidUseOfMatchersException;
-        import org.springframework.boot.test.SpringApplicationContextLoader;
-        import org.springframework.http.MediaType;
-        import org.springframework.test.context.ContextConfiguration;
-        import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-        import org.springframework.test.web.servlet.MockMvc;
-        import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-        import org.springframework.validation.BindException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
-        import static org.hamcrest.MatcherAssert.assertThat;
-        import static org.mockito.Mockito.*;
-        import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-        import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-
-        import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-        import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-        import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-        import static org.hamcrest.Matchers.*;
-
-        import java.nio.charset.Charset;
-        import java.util.ArrayList;
-        import java.util.List;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class,  loader = SpringApplicationContextLoader.class)
