@@ -64,7 +64,7 @@ public class UserProfileControllerTest {
     }
 
     @Test
-    public void testGetUserProfile() throws Exception {
+    public void testGetUserProfileSuccess() throws Exception {
 
         String username="testUser";
         String firstName="Testa";
@@ -115,8 +115,38 @@ public class UserProfileControllerTest {
         verify(userProfileService, times(1)).getUserProfile(username);
 
     }
+
     @Test
-    public void testAddUserProfile()throws Exception {
+    public void testGetUserProfileFailNullParam() throws Exception {
+
+        String username=null;
+
+        mockMvc.perform(get("/userProfile").accept(MediaType.APPLICATION_JSON)
+                .param("username", username))
+
+                .andExpect(status().is(400))
+
+        ;
+        verify(userProfileService, times(0)).getUserProfile(username);
+
+    }
+
+    @Test
+    public void testGetUserProfileFailMissingParam() throws Exception {
+        String username="test";
+
+        mockMvc.perform(get("/userProfile").accept(MediaType.APPLICATION_JSON))
+
+                .andExpect(status().is(400))
+
+        ;
+        verify(userProfileService, times(0)).getUserProfile(username);
+
+    }
+
+
+    @Test
+    public void testAddUserProfileSuccess()throws Exception {
         String username="test";
         String firstName="testos";
         String surName="anagnostopoulos";
@@ -154,9 +184,117 @@ public class UserProfileControllerTest {
 
     }
 
+    @Test
+    public void testAddUserProfileFailNullParam()throws Exception {
+        String username=null;
+        String firstName="testos";
+        String surName="anagnostopoulos";
+        String gender="male";
+        String country="greece";
+        String city="Serres";
+        String about=null;
+
+
+        mockMvc.perform(post("/userProfile")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username",username)
+                .param("firstName",firstName)
+                .param("surName",surName)
+                .param("gender",gender)
+                .param("country",country)
+                .param("city",city)
+                .param("about", about))
+                .andExpect(status().is(400))
+        ;
+
+        ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
+        verify(userProfileService, times(0)).createUserProfile(formObjectArgument.capture());
+    }
+
+    @Test
+    public void testAddUserProfileFailMissingParam()throws Exception {
+        String firstName="testos";
+        String surName="anagnostopoulos";
+        String gender="male";
+        String country="greece";
+        String city="Serres";
+        String about=null;
+
+
+        mockMvc.perform(post("/userProfile")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("firstName",firstName)
+                .param("surName",surName)
+                .param("gender",gender)
+                .param("country",country)
+                .param("city",city)
+                .param("about", about))
+                .andExpect(status().is(400))
+        ;
+
+        ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
+        verify(userProfileService, times(0)).createUserProfile(formObjectArgument.capture());
+    }
+
+    @Test
+    public void testAddUserProfileFailParamSmallerThanMin()throws Exception {
+        String username="test";
+        String firstName="tes";
+        String surName="anagnostopoulos";
+        String gender="male";
+        String country="greece";
+        String city="Serres";
+        String about=null;
+
+
+        mockMvc.perform(post("/userProfile")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username",username)
+                .param("firstName",firstName)
+                .param("surName",surName)
+                .param("gender",gender)
+                .param("country",country)
+                .param("city",city)
+                .param("about", about))
+                .andExpect(status().is(400))
+        ;
+
+
+        ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
+        verify(userProfileService, times(0)).createUserProfile(formObjectArgument.capture());
+    }
+
+    @Test
+    public void testAddUserProfileFailParamLargerThanMax()throws Exception {
+        String username="test";
+        String firstName="tesjgfjfjfjhjhgjgjhghjgkgk";
+        String surName="anagnostopoulos";
+        String gender="male";
+        String country="greece";
+        String city="Serres";
+        String about=null;
+
+
+        mockMvc.perform(post("/userProfile")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username",username)
+                .param("firstName",firstName)
+                .param("surName",surName)
+                .param("gender",gender)
+                .param("country",country)
+                .param("city",city)
+                .param("about", about))
+                .andExpect(status().is(400))
+        ;
+
+        ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
+        verify(userProfileService, times(0)).createUserProfile(formObjectArgument.capture());
+
+    }
+
+
    @Test
-   public void testUpdateUserProfile()throws Exception {
-     String username="test";
+   public void testUpdateUserProfileFailMissingParam()throws Exception {
      String firstName="testos";
      String surName="anagnostopoulos";
      String gender="male";
@@ -172,7 +310,6 @@ public class UserProfileControllerTest {
 
      mockMvc.perform(put("/userProfile")
              .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-             .param("username",username)
              .param("firstName",firstName)
              .param("surName",surName)
              .param("gender",gender)
@@ -180,33 +317,53 @@ public class UserProfileControllerTest {
              .param("city",city)
              .param("birthday", String.valueOf(birthday))
              .param("about", about))
-             //.andExpect(status().isOk())
              .andExpect(status().is(400))
 
      ;
 
-     ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
-     //verify(userProfileService, times(1)).updateUserProfile(formObjectArgument.capture());
-       verify(userProfileService, times(0)).updateUserProfile(formObjectArgument.capture());
+       ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
+       verify(userProfileService, times(0)).createUserProfile(formObjectArgument.capture());
 
-       verifyNoMoreInteractions(userProfileService);
-
-    // UserProfileDTO formObject = formObjectArgument.getValue();
-//
-    // assertThat(formObject.getUsername(), is(username));
-    // assertThat(formObject.getFirstName(), is(firstName));
-    // assertThat(formObject.getSurName(), is(surName));
-    // assertThat(formObject.getGender(), is(gender));
-    // assertThat(formObject.getCountry(), is(country));
-    // assertThat(formObject.getCity(), is(city));
-    // assertThat(formObject.getAbout(), is(about));
-//Test should work properly by the comments code but due to a date parsing problem
- // that seems to appear only by hardcoding the date value i modified the expected results
    }
+
+    @Test
+    public void testUpdateUserProfileNullParam()throws Exception {
+        String username=null;
+        String firstName="testos";
+        String surName="anagnostopoulos";
+        String gender="male";
+        String country="greece";
+        String city="Serres";
+        Calendar c = Calendar.getInstance();
+        c.set(2006, 8, 22); //month is zero based
+        Date birthday = c.getTime();
+
+        String about=null;
+
+
+
+        mockMvc.perform(put("/userProfile")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username",username)
+                .param("firstName",firstName)
+                .param("surName",surName)
+                .param("gender",gender)
+                .param("country",country)
+                .param("city",city)
+                .param("birthday", String.valueOf(birthday))
+                .param("about", about))
+                .andExpect(status().is(400))
+
+        ;
+
+        ArgumentCaptor<UserProfileDTO> formObjectArgument = ArgumentCaptor.forClass(UserProfileDTO.class);
+        verify(userProfileService, times(0)).createUserProfile(formObjectArgument.capture());
+
+    }
 
 
     @Test
-    public void testDeleteUserProfile() throws Exception {
+    public void testDeleteUserProfileSuccess() throws Exception {
         String username="test";
 
         mockMvc.perform(delete("/userProfile")
@@ -215,6 +372,31 @@ public class UserProfileControllerTest {
                 .andExpect(status().isOk())
         ;
         verify(userProfileService, times(1)).deleteUserProfile(username);
+
+    }
+
+    @Test
+    public void testDeleteUserProfileFailNullParam() throws Exception {
+        String username=null;
+
+        mockMvc.perform(delete("/userProfile")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username))
+                .andExpect(status().is(400))
+        ;
+        verify(userProfileService, times(0)).deleteUserProfile(username);
+
+
+    }
+
+    @Test
+    public void testDeleteUserProfileFailMissingParam() throws Exception {
+       String username="username";
+        mockMvc.perform(delete("/userProfile")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED))
+               .andExpect(status().is(400))
+        ;
+        verify(userProfileService, times(0)).deleteUserProfile(username);
 
     }
 

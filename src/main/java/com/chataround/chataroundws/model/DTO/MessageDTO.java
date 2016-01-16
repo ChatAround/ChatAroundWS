@@ -15,6 +15,7 @@ public class MessageDTO{
     @NotNull
     private String username;
     @NotNull
+    @Size (min=1,max=150)
     private String content;
     @NotNull
     Double radius;

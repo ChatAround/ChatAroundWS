@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class GlobalControllerExceptionHandler {
 
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Error in passing null properties")
-    @ExceptionHandler(NullLocationPropertiesException.class)
-    public void handleNullLocationPropertiesException(NullLocationPropertiesException e) {
-    }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "User Not Found")
     @ExceptionHandler(OnlineUserNotFoundException.class)
