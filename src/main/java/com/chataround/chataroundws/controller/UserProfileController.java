@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 /**
@@ -25,7 +26,7 @@ public class UserProfileController implements IUserProfileController {
 
     @Override
     @RequestMapping(value = "/userProfile", method = RequestMethod.POST)
-    public ResponseEntity<?> createUserProfile(UserProfileDTO dto, Model model) {
+    public ResponseEntity<?> createUserProfile(@Valid UserProfileDTO dto, Model model) {
         userProfileService.createUserProfile(dto);
         return ResponseEntity.ok(HttpStatus.OK);
     }

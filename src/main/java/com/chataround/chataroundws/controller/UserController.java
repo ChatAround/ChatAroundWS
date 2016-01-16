@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -30,7 +32,7 @@ public class UserController implements IUserController {
 
     @Override
     @RequestMapping(value="/user",method = RequestMethod.POST )
-    public ResponseEntity<?> createUser(UserDTO dto, Model model) {
+    public ResponseEntity<?> createUser(@Valid UserDTO dto, Model model) {
         if(dto.getLatitude()==null || dto.getLongitude()==null) throw new NullLocationPropertiesException();
         userService.addUser(dto);
         return ResponseEntity.ok(HttpStatus.OK);

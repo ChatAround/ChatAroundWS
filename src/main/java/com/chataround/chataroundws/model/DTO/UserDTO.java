@@ -10,8 +10,10 @@ import javax.validation.constraints.Size;
 public class UserDTO {
 
     @NotNull
+    @Size (min=4,max=16)
     private String username;
     @NotNull
+    @Size (min=4,max=16)
     private String password;
     @NotNull
     private Double latitude;

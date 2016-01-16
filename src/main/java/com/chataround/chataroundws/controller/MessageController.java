@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class MessageController implements IMessageController {
 
     @Override
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> createMessage(MessageDTO dto, Model model) {
+    public ResponseEntity<?> createMessage(@Valid MessageDTO dto, Model model) {
         messageService.addMessage(dto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
