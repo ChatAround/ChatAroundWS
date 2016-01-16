@@ -62,7 +62,7 @@ public class MessageControllerTest {
     }
 
     @Test
-    public void testGetMessages() throws Exception {
+    public void testGetMessagesSuccess() throws Exception {
 
 
         List<MessageDTO> messageDTOs = new ArrayList<>();
@@ -134,7 +134,32 @@ public class MessageControllerTest {
     }
 
     @Test
-    public void testAddMessage() throws Exception {
+    public void testGetMessagesFailNullUsername() throws Exception {
+
+        String username =null;
+
+        mockMvc.perform(get("/message").accept(MediaType.APPLICATION_JSON)
+                .param("username", username))
+
+                .andExpect(status().is(400))
+
+
+        ;
+    }
+
+    @Test
+    public void testGetMessagesFailMissingParam() throws Exception {
+
+                mockMvc.perform(get("/message").accept(MediaType.APPLICATION_JSON))
+
+                .andExpect(status().is(400))
+
+        ;
+    }
+
+
+    @Test
+    public void testAddMessageSuccees() throws Exception {
 
 
         String username="Test";
@@ -163,6 +188,124 @@ public class MessageControllerTest {
         assertThat(formObject.getRadius(), is(radius));
         assertThat(formObject.getDuration(), is(duration));
 
+
+    }
+
+    @Test
+    public void testAddMessageFailNullParam() throws Exception {
+
+
+        String username=null;
+        String content="hello";
+        Double radius=10.000;
+        int duration=60;
+
+
+
+        mockMvc.perform(post("/message")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username)
+                .param("content", content)
+                .param("radius", String.valueOf(radius))
+                .param("duration", String.valueOf(duration)))
+                .andExpect(status().is(400))
+        ;
+
+    }
+
+    @Test
+    public void testAddMessageFailMissingParam() throws Exception {
+
+        String content="hello";
+        Double radius=10.000;
+        int duration=60;
+
+
+
+        mockMvc.perform(post("/message")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("content", content)
+                .param("radius", String.valueOf(radius))
+                .param("duration", String.valueOf(duration)))
+                .andExpect(status().is(400))
+        ;
+
+    }
+
+    @Test
+    public void testAddMessageFailWrongTypeofParam() throws Exception {
+
+
+        String username=null;
+        String content="hello";
+        String radius="testoso";
+        int duration=60;
+
+
+
+        mockMvc.perform(post("/message")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username)
+                .param("content", content)
+                .param("radius", radius)
+                .param("duration", String.valueOf(duration)))
+                .andExpect(status().is(400))
+        ;
+
+    }
+
+    @Test
+    public void testAddMessageFailContentTooSmall() throws Exception {
+
+
+        String username="test";
+        String content="";
+        Double radius=10.000;
+        int duration=60;
+
+
+
+        mockMvc.perform(post("/message")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username)
+                .param("content", content)
+                .param("radius", String.valueOf(radius))
+                .param("duration", String.valueOf(duration)))
+                .andExpect(status().is(400))
+        ;
+
+    }
+
+    @Test
+    public void testAddMessageFailContentTooLarge() throws Exception {
+
+
+        String username=null;
+        String content="df6gdf5g4df5g4df56g4df56g4df65" +
+                "g4df65g4df65g4df65g4df6gdf6gdf5g4df5g4df56g" +
+                "4df56g4df65g4df65g4df65g4df65g4df6gdf6gdf5g4" +
+                "df5g4df56g4df56g4df65g4df65g4df65g4df65g4df6g" +
+                "df6gdf5g4df5g4df56g4df56g4df65g4df65g4df65g4df" +
+                "65g4df6gdf6gdf5g4df5g4df56g4df56g4df65g4df65g4d" +
+                "65g4df65g4df6gdf6gdf5g4df5g4df56g4df56g4df65g4df" +
+                "65g4df65g4df65g4df6gdf6gdf5g4df5g4df56g4df56g4df6" +
+                "5g4df65g4df65g4df65g4df6gdf6gdf5g4df5g4df56g4df56g4d" +
+                "f65g4df65g4df65g4df65g4df6gdf6gdf5g4df5g4df56g4df56g4" +
+                "df65g4df65g4df65g4df65g4df6gdf6gdf5g4df5g4df56g4df56g" +
+                "4df65g4df65g4df65g4df65g4df6g" ;
+        Double radius=10.000;
+        int duration=60;
+
+
+
+        mockMvc.perform(post("/message")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username)
+                .param("content", content)
+                .param("radius", String.valueOf(radius))
+                .param("duration", String.valueOf(duration)))
+                .andExpect(status().is(400))
+        ;
 
     }
 }
