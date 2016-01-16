@@ -22,7 +22,6 @@ public class UserProfileDTO {
     private String country;
     @Size (max=16)
     private String city;
-    @NotNull
     private Date birthday;
     @Size (max=2000)
     private String about;

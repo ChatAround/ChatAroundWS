@@ -7,10 +7,7 @@ import com.chataround.chataroundws.service.IMessageService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -145,6 +142,8 @@ public class MessageControllerTest {
 
 
         ;
+        verify(messageService, times(0)).getMessages(username);
+
     }
 
     @Test
@@ -155,11 +154,13 @@ public class MessageControllerTest {
                 .andExpect(status().is(400))
 
         ;
+        verify(messageService, times(0)).getMessages(anyString());
+
     }
 
 
     @Test
-    public void testAddMessageSuccees() throws Exception {
+    public void testAddMessageSuccess() throws Exception {
 
 
         String username="Test";
@@ -210,6 +211,7 @@ public class MessageControllerTest {
                 .param("duration", String.valueOf(duration)))
                 .andExpect(status().is(400))
         ;
+        verify(messageService, times(0)).addMessage(Mockito.any(MessageDTO.class));
 
     }
 
@@ -229,7 +231,7 @@ public class MessageControllerTest {
                 .param("duration", String.valueOf(duration)))
                 .andExpect(status().is(400))
         ;
-
+        verify(messageService, times(0)).addMessage(Mockito.any(MessageDTO.class));
     }
 
     @Test
@@ -251,6 +253,7 @@ public class MessageControllerTest {
                 .param("duration", String.valueOf(duration)))
                 .andExpect(status().is(400))
         ;
+        verify(messageService, times(0)).addMessage(Mockito.any(MessageDTO.class));
 
     }
 
@@ -273,6 +276,7 @@ public class MessageControllerTest {
                 .param("duration", String.valueOf(duration)))
                 .andExpect(status().is(400))
         ;
+        verify(messageService, times(0)).addMessage(Mockito.any(MessageDTO.class));
 
     }
 
@@ -306,6 +310,7 @@ public class MessageControllerTest {
                 .param("duration", String.valueOf(duration)))
                 .andExpect(status().is(400))
         ;
+        verify(messageService, times(0)).addMessage(Mockito.any(MessageDTO.class));
 
     }
 }

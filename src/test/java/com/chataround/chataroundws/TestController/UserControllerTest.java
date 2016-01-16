@@ -14,10 +14,8 @@ package com.chataround.chataroundws.TestController;
         import org.junit.Before;
         import org.junit.Test;
         import org.junit.runner.RunWith;
-        import org.mockito.ArgumentCaptor;
-        import org.mockito.InjectMocks;
-        import org.mockito.Mock;
-        import org.mockito.MockitoAnnotations;
+        import org.mockito.*;
+        import org.mockito.exceptions.misusing.InvalidUseOfMatchersException;
         import org.springframework.boot.test.SpringApplicationContextLoader;
         import org.springframework.http.MediaType;
         import org.springframework.test.context.ContextConfiguration;
@@ -167,6 +165,7 @@ public class UserControllerTest {
     @Test(expected= AssertionError.class)
     public void testGetUsersInRadiusFailMissingUsername() throws Exception {
 
+        String username="test";
 
         Double radius=20.000;
 
@@ -177,6 +176,8 @@ public class UserControllerTest {
                 .andExpect(status().is(500))
 
         ;
+        verify(userService, times(0)).getInRadius(username,radius);
+
 
     }
 
@@ -185,16 +186,16 @@ public class UserControllerTest {
 
         String username=null;
 
-
         mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
                 .param("username", username))
                 .andExpect(status().is(500))
 
         ;
+        verify(userService, times(0)).getInRadius(username,Mockito.anyDouble());
 
     }
 
-    @Test(expected= AssertionError.class)
+    @Test(expected= InvalidUseOfMatchersException.class)
     public void testGetUsersInRadiusFailWrongTypeofRadius() throws Exception {
 
         String username="test";
@@ -205,6 +206,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
 
         ;
+        verify(userService, times(0)).getInRadius(username, Mockito.anyDouble());
 
     }
 
@@ -249,6 +251,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
 
         ;
+        verify(userService, times(0)).getUser(username);
 
     }
 
@@ -259,6 +262,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
 
         ;
+        verify(userService, times(0)).getUser(anyString());
 
     }
 
@@ -311,6 +315,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
         ;
 
+        verify(userService, times(0)).addUser(Mockito.any(UserDTO.class));
 
     }
 
@@ -330,6 +335,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
         ;
 
+        verify(userService, times(0)).addUser(Mockito.any(UserDTO.class));
 
     }
 
@@ -351,6 +357,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
         ;
 
+        verify(userService, times(0)).addUser(Mockito.any(UserDTO.class));
 
     }
 
@@ -371,6 +378,7 @@ public class UserControllerTest {
                 .param("isOnline", String.valueOf(isOnline)))
                 .andExpect(status().is(400))
         ;
+        verify(userService, times(0)).addUser(Mockito.any(UserDTO.class));
 
     }
 
@@ -391,6 +399,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
         ;
 
+        verify(userService, times(0)).addUser(Mockito.any(UserDTO.class));
 
     }
     @Test
@@ -439,6 +448,7 @@ public class UserControllerTest {
                 .param("isOnline", String.valueOf(isOnline)))
                 .andExpect(status().is(400))
         ;
+        verify(userService, times(0)).updateUser(Mockito.any(UserDTO.class));
 
     }
 
@@ -457,6 +467,7 @@ public class UserControllerTest {
                 .param("isOnline", String.valueOf(isOnline)))
                 .andExpect(status().is(400))
         ;
+        verify(userService, times(0)).updateUser(Mockito.any(UserDTO.class));
 
     }
 
@@ -477,6 +488,7 @@ public class UserControllerTest {
                 .param("isOnline", String.valueOf(isOnline)))
                 .andExpect(status().is(400))
         ;
+        verify(userService, times(0)).updateUser(Mockito.any(UserDTO.class));
 
     }
 
@@ -503,6 +515,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
         ;
 
+        verify(userService, times(0)).deleteUser(username);
 
     }
 
@@ -514,6 +527,7 @@ public class UserControllerTest {
                 .andExpect(status().is(400))
         ;
 
+        verify(userService, times(0)).deleteUser(anyString());
 
     }
 }

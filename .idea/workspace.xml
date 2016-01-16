@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85016672-8c73-473e-8615-a2b6a8898e5c" name="Default" comment="">
+    <list default="true" id="85016672-8c73-473e-8615-a2b6a8898e5c" name="Default" comment="Create Test for UserProfileController">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/MessageControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/MessageControllerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserControllerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserProfileControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserProfileControllerTest.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,21 +72,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserControllerTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserControllerTest.java">
+      <file leaf-file-name="UserProfileControllerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserProfileControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5244755">
-              <caret line="474" column="43" selection-start-line="474" selection-start-column="43" selection-end-line="474" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="142" column="42" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java">
+      <file leaf-file-name="MessageControllerTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/MessageControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.84200746">
+              <caret line="128" column="38" selection-start-line="128" selection-start-column="38" selection-end-line="128" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserControllerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <caret line="197" column="49" selection-start-line="197" selection-start-column="49" selection-end-line="197" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserProfileDTO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,7 +156,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/IUserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/IUserController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestControlller/UserControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/MessageControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/repository/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/data.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
@@ -143,7 +166,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/UserAlreadyExists.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/WrongPasswordException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/AlreadyInUseUsername.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserProfileControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/MessageService.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/MessageServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/service/UserProfileService.java" />
@@ -160,11 +182,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/MessageDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/MessageController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserProfileController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserProfileControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/MessageControllerTest.java" />
       </list>
     </option>
   </component>
@@ -381,6 +405,70 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatAroundWS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DTO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatAroundWS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -409,19 +497,45 @@
       <recent name="E:\IdeaProjects\ChatAroundWS\src\test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest.testGetUsersInRadiusFailNullRadius">
-    <configuration default="false" name="MessageRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MessageControllerTest">
+    <configuration default="false" name="UserProfileControllerTest.testUpdateUserProfileFailMissingParam" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.chataround.chataroundws.TestRepository.*" />
+          <option name="PATTERN" value="com.chataround.chataroundws.TestController.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="chataroundws" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestRepository.MessageRepositoryTest" />
+      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestController" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestController.UserProfileControllerTest" />
+      <option name="METHOD_NAME" value="testUpdateUserProfileFailMissingParam" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserProfileControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.chataround.chataroundws.TestController.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="chataroundws" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestController" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestController.UserProfileControllerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -436,19 +550,19 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="UserProfileRepositoryTest.testAddUserProfileFailUsernameSmmallerThanMin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="UserProfileControllerTest.testGetUserProfileFailMissingParam" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.chataround.chataroundws.TestRepository.*" />
+          <option name="PATTERN" value="com.chataround.chataroundws.TestController.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="chataroundws" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestRepository.UserProfileRepositoryTest" />
-      <option name="METHOD_NAME" value="testAddUserProfileFailUsernameSmmallerThanMin" />
+      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestController" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestController.UserProfileControllerTest" />
+      <option name="METHOD_NAME" value="testGetUserProfileFailMissingParam" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -462,59 +576,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="UserProfileRepositoryTest.testAddUserProfileFailUsernameExceedsMax" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.chataround.chataroundws.TestRepository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="chataroundws" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestRepository.UserProfileRepositoryTest" />
-      <option name="METHOD_NAME" value="testAddUserProfileFailUsernameExceedsMax" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="UserProfileRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.chataround.chataroundws.TestRepository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="chataroundws" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestRepository.UserProfileRepositoryTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="UserControllerTest.testGetUsersInRadiusFailNullRadius" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.chataround.chataroundws.TestController.*" />
@@ -526,8 +588,34 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestController" />
       <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestController.UserControllerTest" />
-      <option name="METHOD_NAME" value="testGetUsersInRadiusFailNullRadius" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MessageControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.chataround.chataroundws.TestController.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="chataroundws" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.TestController" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.TestController.MessageControllerTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -990,19 +1078,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.MessageRepositoryTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.UserProfileRepositoryTest.testAddUserProfileFailUsernameSmmallerThanMin" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.UserProfileRepositoryTest.testAddUserProfileFailUsernameExceedsMax" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.UserProfileRepositoryTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.UserControllerTest.testGetUsersInRadiusFailNullRadius" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.UserProfileControllerTest.testUpdateUserProfileFailMissingParam" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.UserProfileControllerTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.UserProfileControllerTest.testGetUserProfileFailMissingParam" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.UserControllerTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.MessageControllerTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.UserControllerTest.testGetUsersInRadiusFailNullRadius" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.UserProfileRepositoryTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.UserProfileRepositoryTest.testAddUserProfileFailUsernameExceedsMax" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.UserProfileRepositoryTest.testAddUserProfileFailUsernameSmmallerThanMin" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.MessageRepositoryTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.MessageControllerTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.UserControllerTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.UserProfileControllerTest.testGetUserProfileFailMissingParam" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.UserProfileControllerTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.UserProfileControllerTest.testUpdateUserProfileFailMissingParam" />
       </list>
     </recent_temporary>
   </component>
@@ -1047,7 +1135,7 @@
       <workItem from="1452759775854" duration="331000" />
       <workItem from="1452761973956" duration="1931000" />
       <workItem from="1452776500836" duration="18050000" />
-      <workItem from="1452944271377" duration="6587000" />
+      <workItem from="1452944271377" duration="10514000" />
     </task>
     <task id="LOCAL-00002" summary="delete message after a specific time">
       <created>1450432468344</created>
@@ -1229,43 +1317,55 @@
       <option name="project" value="LOCAL" />
       <updated>1452950343401</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Create Test for UserController">
+      <created>1452951373941</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1452951373941</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Create Test for MessageController">
+      <created>1452952280888</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1452952280888</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MessageRepositoryTest - 2016.01.15 at 13h 28m 06s.xml">
-      <configuration name="MessageRepositoryTest" configurationId="JUnit" />
+    <history-entry file="MessageControllerTest - 2016.01.16 at 16h 41m 20s.xml">
+      <configuration name="MessageControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserControllerTest_testGetUsersInRadiusFailNullRadius - 2016.01.16 at 14h 44m 45s.xml">
-      <configuration name="UserControllerTest.testGetUsersInRadiusFailNullRadius" configurationId="JUnit" />
+    <history-entry file="UserControllerTest - 2016.01.16 at 16h 32m 39s.xml">
+      <configuration name="UserControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserProfileRepositoryTest - 2016.01.15 at 13h 31m 36s.xml">
-      <configuration name="UserProfileRepositoryTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest - 2016.01.16 at 16h 35m 38s.xml">
+      <configuration name="UserControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserProfileRepositoryTest_testAddUserProfileFailUsernameExceedsMax - 2016.01.15 at 13h 30m 49s.xml">
-      <configuration name="UserProfileRepositoryTest.testAddUserProfileFailUsernameExceedsMax" configurationId="JUnit" />
+    <history-entry file="UserProfileControllerTest - 2016.01.16 at 16h 21m 48s.xml">
+      <configuration name="UserProfileControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserProfileRepositoryTest_testAddUserProfileFailUsernameSmmallerThanMin - 2016.01.15 at 13h 30m 09s.xml">
-      <configuration name="UserProfileRepositoryTest.testAddUserProfileFailUsernameSmmallerThanMin" configurationId="JUnit" />
+    <history-entry file="UserProfileControllerTest - 2016.01.16 at 16h 23m 09s.xml">
+      <configuration name="UserProfileControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserRepositoryTest - 2016.01.15 at 13h 24m 26s.xml">
-      <configuration name="UserRepositoryTest" configurationId="JUnit" />
+    <history-entry file="UserProfileControllerTest_testDeleteUserProfileFailMissingParam - 2016.01.16 at 16h 17m 53s.xml">
+      <configuration name="UserProfileControllerTest.testDeleteUserProfileFailMissingParam" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserRepositoryTest - 2016.01.15 at 13h 24m 49s.xml">
-      <configuration name="UserRepositoryTest" configurationId="JUnit" />
+    <history-entry file="UserProfileControllerTest_testDeleteUserProfileFailNullParam - 2016.01.16 at 16h 14m 57s.xml">
+      <configuration name="UserProfileControllerTest.testDeleteUserProfileFailNullParam" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserRepositoryTest - 2016.01.15 at 13h 25m 29s.xml">
-      <configuration name="UserRepositoryTest" configurationId="JUnit" />
+    <history-entry file="UserProfileControllerTest_testDeleteUserProfileFailNullParam - 2016.01.16 at 16h 15m 42s.xml">
+      <configuration name="UserProfileControllerTest.testDeleteUserProfileFailNullParam" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserRepositoryTest - 2016.01.15 at 13h 27m 41s.xml">
-      <configuration name="UserRepositoryTest" configurationId="JUnit" />
+    <history-entry file="UserProfileControllerTest_testGetUserProfileFailMissingParam - 2016.01.16 at 16h 23m 45s.xml">
+      <configuration name="UserProfileControllerTest.testGetUserProfileFailMissingParam" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserRepositoryTest_testUpdateUserFailPasswordSmallerthanMin - 2016.01.15 at 13h 27m 17s.xml">
-      <configuration name="UserRepositoryTest.testUpdateUserFailPasswordSmallerthanMin" configurationId="JUnit" />
+    <history-entry file="UserProfileControllerTest_testUpdateUserProfileFailMissingParam - 2016.01.16 at 16h 20m 45s.xml">
+      <configuration name="UserProfileControllerTest.testUpdateUserProfileFailMissingParam" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178709000" />
+    <option name="totallyTimeSpent" value="182636000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1278,7 +1378,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1287,7 +1387,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13826367" sideWeight="0.45306122" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17142858" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23822342" sideWeight="0.5469388" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23822342" sideWeight="0.5469388" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6702557" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.218035" sideWeight="0.6" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1362,11 +1462,13 @@
     <MESSAGE value="constraint properties with max and min size" />
     <MESSAGE value="Constraint DTOs and Controllers" />
     <MESSAGE value="Create Test for UserController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Test for UserController" />
+    <MESSAGE value="Create Test for MessageController" />
+    <MESSAGE value="Create Test for UserProfileController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Test for UserProfileController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1676,14 +1778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserProfileController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38041958">
@@ -1700,22 +1794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserProfileControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="187" column="21" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/MessageControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02937063">
-          <caret line="60" column="82" selection-start-line="59" selection-start-column="8" selection-end-line="60" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/exception/GlobalControllerExceptionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21398601">
@@ -1726,16 +1804,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.7846154">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chataround/chataroundws/model/DTO/UserProfileDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserProfileControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="142" column="42" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/UserControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5244755">
-          <caret line="474" column="43" selection-start-line="474" selection-start-column="43" selection-end-line="474" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="197" column="49" selection-start-line="197" selection-start-column="49" selection-end-line="197" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestController/MessageControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84200746">
+          <caret line="128" column="38" selection-start-line="128" selection-start-column="38" selection-end-line="128" selection-end-column="38" />
           <folding />
         </state>
       </provider>
