@@ -1,6 +1,5 @@
 package com.chataround.chataroundws.controller;
 
-import com.chataround.chataroundws.exception.NullLocationPropertiesException;
 import com.chataround.chataroundws.service.IUserService;
 import com.chataround.chataroundws.model.DTO.UserDTO;
 import org.apache.log4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -33,7 +31,6 @@ public class UserController implements IUserController {
     @Override
     @RequestMapping(value="/user",method = RequestMethod.POST )
     public ResponseEntity<?> createUser(@Valid UserDTO dto, Model model) {
-        if(dto.getLatitude()==null || dto.getLongitude()==null) throw new NullLocationPropertiesException();
         userService.addUser(dto);
         return ResponseEntity.ok(HttpStatus.OK);
 
@@ -50,8 +47,6 @@ public class UserController implements IUserController {
     @Override
     @RequestMapping(value="/user",method = RequestMethod.PUT )
     public ResponseEntity<?> updateUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("isOnline") boolean isOnline) {
-        if(latitude==null || longitude==null) throw new NullLocationPropertiesException();
-
 
 
         UserDTO dto=new UserDTO(

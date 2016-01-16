@@ -24,6 +24,7 @@ package com.chataround.chataroundws.TestController;
         import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
         import org.springframework.test.web.servlet.MockMvc;
         import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+        import org.springframework.validation.BindException;
 
         import static org.hamcrest.MatcherAssert.assertThat;
         import static org.mockito.Mockito.*;
@@ -65,7 +66,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testGetUsersInRadius() throws Exception {
+    public void testGetUsersInRadiusSuccess() throws Exception {
 
 
         List<UserDTO> userDTOs = new ArrayList<>();
@@ -122,8 +123,94 @@ public class UserControllerTest {
     }
 
 
+
+    @Test(expected= AssertionError.class)
+    public void testGetUsersInRadiusFailNullUsername() throws Exception {
+
+        String username=null;
+        Double radius=20.000;
+
+
+
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
+                .param("username", username).param("radius", String.valueOf(radius)))
+
+                .andExpect(status().is(500))
+
+
+        ;
+
+        verify(userService, times(0)).getInRadius(username,radius);
+
+    }
+
+    @Test(expected= AssertionError.class)
+    public void testGetUsersInRadiusFailNullRadius() throws Exception {
+
+        String username="test";
+        Double radius=null;
+
+
+
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
+                .param("username", username).param("radius", String.valueOf(radius)))
+
+                .andExpect(status().is(500))
+
+
+        ;
+
+        verify(userService, times(0)).getInRadius(username,radius);
+
+    }
+
+    @Test(expected= AssertionError.class)
+    public void testGetUsersInRadiusFailMissingUsername() throws Exception {
+
+
+        Double radius=20.000;
+
+
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
+                .param("radius", String.valueOf(radius)))
+
+                .andExpect(status().is(500))
+
+        ;
+
+    }
+
+    @Test(expected= AssertionError.class)
+    public void  testGetUsersInRadiusFailMissingRadius()throws Exception {
+
+        String username=null;
+
+
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
+                .param("username", username))
+                .andExpect(status().is(500))
+
+        ;
+
+    }
+
+    @Test(expected= AssertionError.class)
+    public void testGetUsersInRadiusFailWrongTypeofRadius() throws Exception {
+
+        String username="test";
+        String radius="test";
+
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)
+                .param("username", username).param("radius",radius))
+                .andExpect(status().is(400))
+
+        ;
+
+    }
+
+
     @Test
-    public void testGetUser() throws Exception {
+    public void testGetUserSuccess() throws Exception {
         UserDTO dto = new UserDTO();
         String username="testUser";
 
@@ -154,7 +241,29 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testAddUser() throws Exception {
+    public void testGetUserFailNullUsername() throws Exception {
+                String username=null;
+
+                mockMvc.perform(get("/user").accept(MediaType.APPLICATION_JSON)
+                .param("username", username))
+                .andExpect(status().is(400))
+
+        ;
+
+    }
+
+    @Test
+    public void testGetUserFailMissingParam() throws Exception {
+
+        mockMvc.perform(get("/user").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(400))
+
+        ;
+
+    }
+
+    @Test
+    public void testAddUserSuccess() throws Exception {
         String username="test";
         String password="12345";
         Double latitude=41.123456;
@@ -185,7 +294,107 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testUpdateUser() throws Exception {
+    public void testAddUserFailNullParam() throws Exception {
+        String username=null;
+        String password="12345";
+        Double latitude=41.123456;
+        Double longitude=22.122345;
+        Boolean isOnline=true;
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username)
+                .param("password", password)
+                .param("latitude", String.valueOf(latitude))
+                .param("longitude", String.valueOf(longitude))
+                .param("isOnline", String.valueOf(isOnline)))
+                .andExpect(status().is(400))
+        ;
+
+
+    }
+
+    @Test
+    public void testAddUserFailMissingParam() throws Exception {
+        String password="12345";
+        Double latitude=41.123456;
+        Double longitude=22.122345;
+        Boolean isOnline=true;
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("password", password)
+                .param("latitude", String.valueOf(latitude))
+                .param("longitude", String.valueOf(longitude))
+                .param("isOnline", String.valueOf(isOnline)))
+                .andExpect(status().is(400))
+        ;
+
+
+    }
+
+    @Test
+    public void testAddUserFailWrongTypeofParam() throws Exception {
+        String username="test";
+        String password="12345";
+        String latitude="testos";
+        Double longitude=22.122345;
+        Boolean isOnline=true;
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username",username)
+                .param("password", password)
+                .param("latitude", String.valueOf(latitude))
+                .param("longitude", String.valueOf(longitude))
+                .param("isOnline", String.valueOf(isOnline)))
+                .andExpect(status().is(400))
+        ;
+
+
+    }
+
+    @Test
+    public void testAddUserFailUsernameSmallerThanMin() throws Exception {
+        String username="te";
+        String password="12345";
+        Double latitude=41.123456;
+        Double longitude=22.122345;
+        Boolean isOnline=true;
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username",username)
+                .param("password", password)
+                .param("latitude", String.valueOf(latitude))
+                .param("longitude", String.valueOf(longitude))
+                .param("isOnline", String.valueOf(isOnline)))
+                .andExpect(status().is(400))
+        ;
+
+    }
+
+    @Test
+    public void testAddUserFailUsernameBiggerThanMax() throws Exception {
+        String username="test1234567890123456789";
+        String password="12345";
+        Double latitude=41.123456;
+        Double longitude=22.122345;
+        Boolean isOnline=true;
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username",username)
+                .param("password", password)
+                .param("latitude", String.valueOf(latitude))
+                .param("longitude", String.valueOf(longitude))
+                .param("isOnline", String.valueOf(isOnline)))
+                .andExpect(status().is(400))
+        ;
+
+
+    }
+    @Test
+    public void testUpdateUserSuccess() throws Exception {
         String username="test";
         String password="12345";
         Double latitude=41.987654;
@@ -214,7 +423,45 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testDeleteUser() throws Exception {
+    public void testUpdateUserFailNullParam() throws Exception {
+        String username=null;
+        String password="12345";
+        Double latitude=41.987654;
+        Double longitude=22.8765432;
+        Boolean isOnline=true;
+
+        mockMvc.perform(put("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username)
+                .param("password", password)
+                .param("latitude", String.valueOf(latitude))
+                .param("longitude", String.valueOf(longitude))
+                .param("isOnline", String.valueOf(isOnline)))
+                .andExpect(status().is(400))
+        ;
+
+    }
+
+    @Test
+    public void testUpdateUserFailMissingParam() throws Exception {
+        String password="12345";
+        Double latitude=41.987654;
+        Double longitude=22.8765432;
+        Boolean isOnline=true;
+
+        mockMvc.perform(put("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("password", password)
+                .param("latitude", String.valueOf(latitude))
+                .param("longitude", String.valueOf(longitude))
+                .param("isOnline", String.valueOf(isOnline)))
+                .andExpect(status().is(400))
+        ;
+
+    }
+
+    @Test
+    public void testDeleteUserSuccess() throws Exception {
         String username="test";
 
         mockMvc.perform(delete("/user")
@@ -223,6 +470,30 @@ public class UserControllerTest {
                 .andExpect(status().isOk())
                 ;
         verify(userService, times(1)).deleteUser(username);
+
+    }
+
+    @Test
+    public void testDeleteUserFailNullUsername() throws Exception {
+        String username=null;
+
+        mockMvc.perform(delete("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", username))
+                .andExpect(status().is(400))
+        ;
+
+
+    }
+
+    @Test
+    public void testDeleteUserFailMissingParam() throws Exception {
+
+        mockMvc.perform(delete("/user")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED))
+                .andExpect(status().is(400))
+        ;
+
 
     }
 }
