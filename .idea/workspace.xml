@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85016672-8c73-473e-8615-a2b6a8898e5c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/DTO/MessageDTOTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/DTO/UserDTOTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/DTO/UserProfileDTOTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/entity/CoordinatesTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/entity/MessageTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/entity/UserProfileTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/entity/UserTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/MessageMapperTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/MessageMapperTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserProfileMapperTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserProfileMapperTest.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,8 +19,24 @@
     <SUITE FILE_PATH="coverage/chataroundws$UserRepositoryTest.coverage" NAME="UserRepositoryTest Coverage Results" MODIFIED="1453024257638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.chataround.chataroundws.TestRepository.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/chataroundws$UserMapperTest.coverage" NAME="UserMapperTest Coverage Results" MODIFIED="1453031426935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.chataround.chataroundws.mapper.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/chataroundws$UserControllerTest.coverage" NAME="UserControllerTest Coverage Results" MODIFIED="1453024102701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.chataround.chataroundws.TestController.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/chataroundws$com_chataround_chataroundws_in_chataroundws.coverage" NAME="com.chataround.chataroundws in chataroundws Coverage Results" MODIFIED="1453024852521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.chataround.chataroundws.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/chataroundws$Application.coverage" NAME="Application Coverage Results" MODIFIED="1453024767759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/chataroundws$MessageServiceTest.coverage" NAME="MessageServiceTest Coverage Results" MODIFIED="1453024489302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.chataround.chataroundws.TestService.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/chataroundws$MessageMapperTest.coverage" NAME="MessageMapperTest Coverage Results" MODIFIED="1453031449700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.chataround.chataroundws.mapper.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/chataroundws$UserProfileMapperTest.coverage" NAME="UserProfileMapperTest Coverage Results" MODIFIED="1453032820602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.chataround.chataroundws.mapper.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/chataroundws$MessageControllerTest.coverage" NAME="MessageControllerTest Coverage Results" MODIFIED="1453024088532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.chataround.chataroundws.TestController.*</FILTER>
@@ -38,18 +47,11 @@
     <SUITE FILE_PATH="coverage/chataroundws$UserServiceTest.coverage" NAME="UserServiceTest Coverage Results" MODIFIED="1453024165259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.chataround.chataroundws.TestService.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/chataroundws$com_chataround_chataroundws_in_chataroundws.coverage" NAME="com.chataround.chataroundws in chataroundws Coverage Results" MODIFIED="1453024852521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.chataround.chataroundws.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/chataroundws$Application.coverage" NAME="Application Coverage Results" MODIFIED="1453024767759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/chataroundws$UserProfileServiceTest.coverage" NAME="UserProfileServiceTest Coverage Results" MODIFIED="1453024154070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.chataround.chataroundws.TestService.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/chataroundws$MessageRepositoryTest.coverage" NAME="MessageRepositoryTest Coverage Results" MODIFIED="1453024283025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.chataround.chataroundws.TestRepository.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/chataroundws$MessageServiceTest.coverage" NAME="MessageServiceTest Coverage Results" MODIFIED="1453024489302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.chataround.chataroundws.TestService.*</FILTER>
     </SUITE>
   </component>
   <component name="CoverageViewManager">
@@ -99,11 +101,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MessageMapperTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/MessageMapperTest.java">
+      <file leaf-file-name="UserProfileMapperTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserProfileMapperTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22559653">
-              <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
+            <state vertical-scroll-proportion="1.2299349">
+              <caret line="159" column="66" selection-start-line="159" selection-start-column="66" selection-end-line="159" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,7 +117,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserMapperTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -198,9 +200,9 @@
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/entity/MessageTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/entity/UserTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/model/entity/UserProfileTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserProfileMapperTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserMapperTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/MessageMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserProfileMapperTest.java" />
       </list>
     </option>
   </component>
@@ -313,6 +315,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatAroundWS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chataroundws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestService" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -489,8 +521,8 @@
       <recent name="E:\IdeaProjects\ChatAroundWS" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MessageMapperTest.testToDTO1">
-    <configuration default="false" name="UserMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserProfileMapperTest">
+    <configuration default="false" name="UserProfileMapperTest.testFromDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.chataround.chataroundws.mapper.*" />
@@ -501,33 +533,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.chataround.chataroundws.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="MessageMapperTest.testFromDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.chataround.chataroundws.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="chataroundws" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.MessageMapperTest" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.UserProfileMapperTest" />
       <option name="METHOD_NAME" value="testFromDTO" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -542,7 +548,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="MessageMapperTest.testFromDTO1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="UserProfileMapperTest.testToDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.chataround.chataroundws.mapper.*" />
@@ -553,33 +559,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.chataround.chataroundws.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.MessageMapperTest" />
-      <option name="METHOD_NAME" value="testFromDTO1" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="MessageMapperTest.testToDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.chataround.chataroundws.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="chataroundws" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.MessageMapperTest" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.UserProfileMapperTest" />
       <option name="METHOD_NAME" value="testToDTO" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -594,7 +574,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="MessageMapperTest.testToDTO1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="UserProfileMapperTest.testFromDTO1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.chataround.chataroundws.mapper.*" />
@@ -605,9 +585,61 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.chataround.chataroundws.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.MessageMapperTest" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.UserProfileMapperTest" />
+      <option name="METHOD_NAME" value="testFromDTO1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserProfileMapperTest.testToDTO1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.chataround.chataroundws.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="chataroundws" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.UserProfileMapperTest" />
       <option name="METHOD_NAME" value="testToDTO1" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserProfileMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.chataround.chataroundws.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="chataroundws" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.chataround.chataroundws.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.chataround.chataroundws.mapper.UserProfileMapperTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -1070,19 +1102,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.UserMapperTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.MessageMapperTest.testFromDTO" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.MessageMapperTest.testFromDTO1" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.MessageMapperTest.testToDTO" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.MessageMapperTest.testToDTO1" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest.testFromDTO" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest.testToDTO" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest.testFromDTO1" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest.testToDTO1" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.MessageMapperTest.testToDTO1" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MessageMapperTest.testToDTO" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.MessageMapperTest.testFromDTO1" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.MessageMapperTest.testFromDTO" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.UserMapperTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest.testToDTO1" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest.testFromDTO1" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest.testToDTO" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.UserProfileMapperTest.testFromDTO" />
       </list>
     </recent_temporary>
   </component>
@@ -1130,7 +1162,7 @@
       <workItem from="1452944271377" duration="10752000" />
       <workItem from="1452955772299" duration="659000" />
       <workItem from="1452956760563" duration="264000" />
-      <workItem from="1453023721137" duration="7262000" />
+      <workItem from="1453023721137" duration="8812000" />
     </task>
     <task id="LOCAL-00002" summary="delete message after a specific time">
       <created>1450432468344</created>
@@ -1342,24 +1374,21 @@
       <option name="project" value="LOCAL" />
       <updated>1453029578514</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Creates MessageMapperTest">
+      <created>1453031292007</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1453031292007</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MessageMapperTest_testFromDTO - 2016.01.17 at 13h 30m 06s.xml">
-      <configuration name="MessageMapperTest.testFromDTO" configurationId="JUnit" />
+    <history-entry file="MessageMapperTest - 2016.01.17 at 13h 50m 40s.xml">
+      <configuration name="MessageMapperTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessageMapperTest_testFromDTO1 - 2016.01.17 at 13h 34m 51s.xml">
-      <configuration name="MessageMapperTest.testFromDTO1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MessageMapperTest_testFromDTO1 - 2016.01.17 at 13h 36m 53s.xml">
-      <configuration name="MessageMapperTest.testFromDTO1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MessageMapperTest_testFromDTO1 - 2016.01.17 at 13h 37m 28s.xml">
-      <configuration name="MessageMapperTest.testFromDTO1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MessageMapperTest_testToDTO - 2016.01.17 at 13h 39m 29s.xml">
-      <configuration name="MessageMapperTest.testToDTO" configurationId="JUnit" />
+    <history-entry file="MessageMapperTest - 2016.01.17 at 13h 50m 50s.xml">
+      <configuration name="MessageMapperTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="MessageMapperTest_testToDTO - 2016.01.17 at 13h 40m 58s.xml">
       <configuration name="MessageMapperTest.testToDTO" configurationId="JUnit" />
@@ -1367,18 +1396,27 @@
     <history-entry file="MessageMapperTest_testToDTO1 - 2016.01.17 at 13h 47m 53s.xml">
       <configuration name="MessageMapperTest.testToDTO1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserMapperTest - 2016.01.17 at 13h 22m 54s.xml">
+    <history-entry file="UserMapperTest - 2016.01.17 at 13h 50m 27s.xml">
       <configuration name="UserMapperTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserMapperTest_testToDTOList - 2016.01.17 at 13h 18m 06s.xml">
-      <configuration name="UserMapperTest.testToDTOList" configurationId="JUnit" />
+    <history-entry file="UserProfileMapperTest - 2016.01.17 at 14h 13m 41s.xml">
+      <configuration name="UserProfileMapperTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserMapperTest_testToDTOList - 2016.01.17 at 13h 18m 50s.xml">
-      <configuration name="UserMapperTest.testToDTOList" configurationId="JUnit" />
+    <history-entry file="UserProfileMapperTest_testFromDTO - 2016.01.17 at 14h 01m 02s.xml">
+      <configuration name="UserProfileMapperTest.testFromDTO" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserProfileMapperTest_testFromDTO1 - 2016.01.17 at 14h 11m 46s.xml">
+      <configuration name="UserProfileMapperTest.testFromDTO1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserProfileMapperTest_testToDTO - 2016.01.17 at 14h 02m 13s.xml">
+      <configuration name="UserProfileMapperTest.testToDTO" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserProfileMapperTest_testToDTO1 - 2016.01.17 at 14h 13m 32s.xml">
+      <configuration name="UserProfileMapperTest.testToDTO1" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191059000" />
+    <option name="totallyTimeSpent" value="192609000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1401,13 +1439,13 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17142858" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21382637" sideWeight="0.5469388" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37857142" sideWeight="0.5192926" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37857142" sideWeight="0.5276074" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6702557" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21543409" sideWeight="0.6" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35612243" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37857142" sideWeight="0.4807074" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37857142" sideWeight="0.47239265" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1481,7 +1519,8 @@
     <MESSAGE value="Create Test for UserProfileController" />
     <MESSAGE value="change into production profile" />
     <MESSAGE value="Creates UserMapperTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creates UserMapperTest" />
+    <MESSAGE value="Creates MessageMapperTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creates MessageMapperTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1562,13 +1601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37988827">
           <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserProfileServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.37878788">
-          <caret line="211" column="54" selection-start-line="211" selection-start-column="54" selection-end-line="211" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -1803,14 +1835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserProfileMapperTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77272725">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1861,16 +1885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserMapperTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/Assert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33188722">
@@ -1879,10 +1893,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/TestService/UserProfileServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40130153">
+          <caret line="192" column="26" selection-start-line="185" selection-start-column="7" selection-end-line="194" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/MessageMapperTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22559653">
+        <state vertical-scroll-proportion="0.55748373">
           <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/chataround/chataroundws/mapper/UserProfileMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2299349">
+          <caret line="159" column="66" selection-start-line="159" selection-start-column="66" selection-end-line="159" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
