@@ -64,7 +64,7 @@ public class UserProfileMapperTest {
         String username1="test1";
         String firstName1="Test1";
         String surName1="Tester1";
-        String gender1="male1";
+        String gender1="female";
         String country1="Italy";
         String city1="Rome";
         Date birthday1 = sd.parse(s);
@@ -144,7 +144,7 @@ public class UserProfileMapperTest {
         String username1="test1";
         String firstName1="Test1";
         String surName1="Tester1";
-        String gender1="male1";
+        String gender1="female";
         String country1="Italy";
         String city1="Rome";
         Date birthday1 = sd.parse(s);
