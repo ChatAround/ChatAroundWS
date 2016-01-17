@@ -1,7 +1,5 @@
 package com.chataround.chataroundws.model.entity;
 
-import org.springframework.data.geo.Point;
-
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
@@ -23,10 +21,7 @@ public class Coordinates {
         this.longitude = longitude;
     }
 
-    public Coordinates(Point coordinates) {
-        this.latitude = coordinates.getX();
-        this.longitude = coordinates.getY();
-    }
+
 
     public Double getLatitude() {
         return latitude;
@@ -44,12 +39,5 @@ public class Coordinates {
         this.longitude = longitude;
     }
 
-    public Point getCoordinates() {
-        return new Point(latitude, longitude);
-    }
 
-    public void setCoordinates(Point coordinates) {
-        this.latitude = coordinates.getX();
-        this.longitude = coordinates.getY();
-    }
 }
