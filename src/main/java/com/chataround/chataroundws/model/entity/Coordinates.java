@@ -3,9 +3,6 @@ package com.chataround.chataroundws.model.entity;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.geo.Point;
-
 /**
  * @author Georgia Grigoriadou
  */
@@ -24,10 +21,7 @@ public class Coordinates {
         this.longitude = longitude;
     }
 
-    public Coordinates(Point coordinates) {
-        this.latitude = coordinates.getX();
-        this.longitude = coordinates.getY();
-    }
+
 
     public Double getLatitude() {
         return latitude;
@@ -45,13 +39,5 @@ public class Coordinates {
         this.longitude = longitude;
     }
 
-    @JsonIgnore
-    public Point getCoordinates() {
-        return new Point(latitude, longitude);
-    }
 
-    public void setCoordinates(Point coordinates) {
-        this.latitude = coordinates.getX();
-        this.longitude = coordinates.getY();
-    }
 }
