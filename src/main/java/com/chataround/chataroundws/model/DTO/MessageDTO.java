@@ -1,8 +1,6 @@
 package com.chataround.chataroundws.model.DTO;
 
 
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -18,7 +16,6 @@ public class MessageDTO{
     @NotNull
     @Size (min=1,max=150)
     private String content;
-    private MultipartFile file;
     @NotNull
     Double radius;
     @NotNull
@@ -34,14 +31,7 @@ public class MessageDTO{
         this.radius = radius;
         this.duration=duration;
     }
-    public MessageDTO(Long id,String username, String content,MultipartFile file, Double radius,int duration) {
-        this.id=id;
-        this.username = username;
-        this.content = content;
-        this.file=file;
-        this.radius = radius;
-        this.duration=duration;
-    }
+
 
     public Long getId() {
         return id;
@@ -83,12 +73,6 @@ public class MessageDTO{
         this.duration = duration;
     }
 
-    public MultipartFile getFile() {
-        return file;
-    }
 
-    public void setFile(MultipartFile file) {
-        this.file = file;
-    }
 }
 
