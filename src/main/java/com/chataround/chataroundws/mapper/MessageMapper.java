@@ -21,6 +21,10 @@ public class MessageMapper implements IMapper<Message,MessageDTO> {
                 dto.getRadius(),
                 dto.getDuration()
         );
+
+        if(!dto.getFile().isEmpty())  {
+            message.setFile(dto.getFile());
+        }
         return message;
     }
 
@@ -44,7 +48,11 @@ public class MessageMapper implements IMapper<Message,MessageDTO> {
                 message.getRadius(),
                 message.getDuration()
         );
+        if(message.getFile()!=null) {
+            dto.setFile(message.getFile());
+        }
         return dto;
+
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.chataround.chataroundws.model.entity;
 
-import org.hibernate.validator.constraints.Length;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,6 +22,8 @@ public class Message {
     @NotNull
     @Size(min=1, max = 150)
     private String content;
+    @Transient
+    private MultipartFile file;
     @NotNull
     Double radius;
     @NotNull
@@ -30,10 +32,17 @@ public class Message {
 
     public Message() {
     }
-
     public Message(String username, String content, Double radius, int duration) {
         this.username = username;
         this.content = content;
+        this.radius = radius;
+        this.duration=duration;
+    }
+
+    public Message(String username, String content,MultipartFile file, Double radius, int duration) {
+        this.username = username;
+        this.content = content;
+        this.file =file;
         this.radius = radius;
         this.duration=duration;
     }
@@ -76,5 +85,13 @@ public class Message {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }
